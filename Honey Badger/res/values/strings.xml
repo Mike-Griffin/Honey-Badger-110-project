@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HoneyBadger</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="login_text_placeholder">Login ID</string>
+    <string name="login_button">Login</string>
+    <string name="password_text_placeholder">Password</string>
+    <string name="forgot_password_button">Forgot Password</string>
+    <string name="create_account_button">Create Account</string>
+    <color name="white_color">#FFFFFF</color>
+ 
+</resources>
