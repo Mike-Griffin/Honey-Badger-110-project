@@ -33,6 +33,14 @@
             android:name=".SuccessfulLogin"
             android:label="@string/title_activity_successful_login" >
         </activity>
+        <activity
+            android:name=".ForgotPassword"
+            android:label="@string/title_activity_forgot_password" >
+        </activity>
+        <activity
+            android:name=".CreateAccount"
+            android:label="@string/title_activity_create_account" >
+        </activity>
     </application>
 
 </manifest>

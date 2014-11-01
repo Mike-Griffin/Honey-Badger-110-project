@@ -30,8 +30,10 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		final Intent intentSignUp = new Intent(MainActivity.this, SignUp.class);
+		final Intent intentForgotPassword = new Intent(MainActivity.this, ForgotPassword.class);
 		final Button signUpButton = (Button) findViewById(R.id.signUp);
 		final Button loginButton = (Button) findViewById(R.id.login);
+        final Button forgotPasswordButton = (Button) findViewById(R.id.forgotPassword);
 
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL", "ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
@@ -68,17 +70,26 @@ public class MainActivity extends Activity {
 									startActivity(intent);
 									Toast.makeText(getApplicationContext(),
 											"Successfully Logged in",
-											Toast.LENGTH_LONG).show();
+											Toast.LENGTH_SHORT).show();
 									finish();
 								} else {
 									Toast.makeText(
 											getApplicationContext(),
 											"No such user exist, please signup" + e,
-											Toast.LENGTH_LONG).show();
+											Toast.LENGTH_SHORT).show();
 								}
 							}
 
 						});
+			}
+		});
+		
+		forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(intentForgotPassword);
 			}
 		});
 	}

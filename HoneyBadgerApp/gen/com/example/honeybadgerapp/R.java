@@ -27,59 +27,97 @@ public final class R {
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
         public static final int icon_profile=0x7f020001;
-        public static final int profile_image=0x7f020002;
+        public static final int log_out=0x7f020002;
+        public static final int plus_icon=0x7f020003;
+        public static final int profile_image=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f090012;
-        public static final int address=0x7f09000a;
-        public static final int cancelButton=0x7f090010;
-        public static final int city=0x7f09000b;
-        public static final int day=0x7f090006;
-        public static final int doneButton=0x7f090011;
-        public static final int email=0x7f09000f;
-        public static final int forgotPassword=0x7f090003;
-        public static final int login=0x7f090002;
-        public static final int month=0x7f090007;
-        public static final int name=0x7f090005;
-        public static final int password=0x7f090001;
-        public static final int profileImage=0x7f090009;
-        public static final int signUp=0x7f090004;
-        public static final int state=0x7f09000c;
-        public static final int username=0x7f090000;
-        public static final int verifyPassword=0x7f09000e;
-        public static final int year=0x7f090008;
-        public static final int zip=0x7f09000d;
+        public static final int account_number_text=0x7f090019;
+        public static final int account_types=0x7f090000;
+        public static final int action_settings=0x7f090021;
+        public static final int add_account=0x7f090022;
+        public static final int address=0x7f090010;
+        public static final int amount=0x7f090001;
+        public static final int amount_place_holder=0x7f090002;
+        public static final int balance_text=0x7f090018;
+        public static final int cancelButton=0x7f090016;
+        public static final int cancel_button=0x7f090004;
+        public static final int check_account_number_text=0x7f09001d;
+        public static final int check_balance_text=0x7f09001f;
+        public static final int check_text=0x7f09001b;
+        public static final int city=0x7f090011;
+        public static final int confirm_button=0x7f090003;
+        public static final int day=0x7f09000c;
+        public static final int doneButton=0x7f090017;
+        public static final int editText1=0x7f090005;
+        public static final int email=0x7f090015;
+        public static final int forgotPassword=0x7f090009;
+        public static final int log_out=0x7f090023;
+        public static final int login=0x7f090008;
+        public static final int month=0x7f09000d;
+        public static final int name=0x7f09000b;
+        public static final int password=0x7f090007;
+        public static final int profileImage=0x7f09000f;
+        public static final int save_account_number_text=0x7f09001e;
+        public static final int save_balance_text=0x7f090020;
+        public static final int save_text=0x7f09001c;
+        public static final int signUp=0x7f09000a;
+        public static final int state=0x7f090012;
+        public static final int textView1=0x7f09001a;
+        public static final int username=0x7f090006;
+        public static final int verifyPassword=0x7f090014;
+        public static final int year=0x7f09000e;
+        public static final int zip=0x7f090013;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_sign_up=0x7f030001;
-        public static final int activity_successful_login=0x7f030002;
+        public static final int activity_create_account=0x7f030000;
+        public static final int activity_forgot_password=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_sign_up=0x7f030003;
+        public static final int activity_successful_login=0x7f030004;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
-        public static final int sign_up=0x7f080001;
-        public static final int successful_login=0x7f080002;
+        public static final int create_account=0x7f080000;
+        public static final int forgot_password=0x7f080001;
+        public static final int main=0x7f080002;
+        public static final int sign_up=0x7f080003;
+        public static final int successful_login=0x7f080004;
     }
     public static final class string {
+        public static final int account_number_placeholder=0x7f050019;
         public static final int action_settings=0x7f050002;
+        public static final int add_account=0x7f050016;
         public static final int address_placeholder=0x7f05000f;
         public static final int app_name=0x7f050000;
+        public static final int balance_placeholder=0x7f05001a;
         public static final int cancel_button=0x7f050006;
+        public static final int check_account_number_placeholder=0x7f05001d;
+        public static final int check_balance_placeholder=0x7f05001f;
+        public static final int check_placeholder=0x7f05001b;
         public static final int city_placeholder=0x7f050010;
         public static final int day_placeholder=0x7f05000d;
         public static final int done_button=0x7f050007;
         public static final int email_placeholder=0x7f050013;
         public static final int forgot_password_button=0x7f050005;
         public static final int hello_world=0x7f050001;
+        public static final int log_out=0x7f050017;
         public static final int login_button=0x7f050003;
         public static final int month_placeholder=0x7f05000c;
         public static final int name_placeholder=0x7f05000b;
         public static final int password_placeholder=0x7f050009;
         public static final int profile_image_description=0x7f050015;
+        public static final int save_account_number_placeholder=0x7f05001e;
+        public static final int save_balance_placeholder=0x7f050020;
+        public static final int save_placeholder=0x7f05001c;
         public static final int sign_up_button=0x7f050004;
         public static final int state_placeholder=0x7f050011;
+        public static final int title_activity_create_account=0x7f050023;
+        public static final int title_activity_forgot_password=0x7f050022;
         public static final int title_activity_sign_up=0x7f05000a;
-        public static final int title_activity_successful_login=0x7f050016;
+        public static final int title_activity_successful_login=0x7f050021;
+        /**  Successful Login 
+         */
+        public static final int type_placeholder=0x7f050018;
         public static final int username_placeholder=0x7f050008;
         public static final int verify_password_placeholder=0x7f050014;
         public static final int year_placeholder=0x7f05000e;

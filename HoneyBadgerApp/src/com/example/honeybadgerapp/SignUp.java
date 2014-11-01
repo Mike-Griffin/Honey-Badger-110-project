@@ -74,7 +74,11 @@ public class SignUp extends Activity implements OnItemSelectedListener {
 		stateSpinner.setAdapter(adapter);
 		
         final Intent intentSuccessfulLogin = new Intent(SignUp.this, SuccessfulLogin.class);
+        final Intent intentLogin = new Intent(SignUp.this, MainActivity.class);
         final Button doneButton = (Button) findViewById(R.id.doneButton);
+        final Button cancelButton = (Button) findViewById(R.id.cancelButton);
+
+        
         doneButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -88,7 +92,7 @@ public class SignUp extends Activity implements OnItemSelectedListener {
 						day_edit_text.getText().toString().trim() + "/" + year_edit_text.getText().toString().trim();
 				address = address_edit_text.getText().toString().trim();
 				city = city_edit_text.getText().toString().trim();
-				//zip = Integer.parseInt(zip_edit_text.getText().toString().trim());
+				zip = Integer.parseInt(zip_edit_text.getText().toString().trim());
 				
 				// if(error check) {} else {
 				// Save new user data into Parse.com Data Storage
@@ -96,24 +100,24 @@ public class SignUp extends Activity implements OnItemSelectedListener {
                 user.setUsername(username);
                 user.setPassword(password);
                 user.setEmail(email);
-                // user.put("name", name);
-                //user.put("birthday", birthday);
-                //user.put("address", address);
-                //user.put("city", city);
-                //user.put("state", state);
-                //user.put("zipCode", zip);
+                user.put("name", name);
+                user.put("birthday", birthday);
+                user.put("address", address);
+                user.put("city", city);
+                user.put("state", state);
+                user.put("zipCode", zip);
+                
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
                         if (e == null) {
                             // Show a simple Toast message upon successful registration
                             Toast.makeText(getApplicationContext(),
                                     "Successfully Signed up.",
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getApplicationContext(),
-                                    "Sign up Error" + e, Toast.LENGTH_LONG)
+                                    "Sign up Error" + e, Toast.LENGTH_SHORT)
                                     .show();
-                            
                         }
                     }
                 });
@@ -121,8 +125,17 @@ public class SignUp extends Activity implements OnItemSelectedListener {
 				startActivity(intentSuccessfulLogin);
 			}
 		});
+        
+cancelButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(intentLogin);
+			}
+		});
     }
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

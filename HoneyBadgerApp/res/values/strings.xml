@@ -4,6 +4,8 @@
     <string name="app_name">HoneyBadgerApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+   
+    <!-- Sign Up -->
     <string name="login_button">Login</string>
     <string name="sign_up_button">Sign Up</string>
     <string name="forgot_password_button">Forgot Password?</string>
@@ -23,6 +25,26 @@
     <string name="email_placeholder">Email</string>
     <string name="verify_password_placeholder">Verify Password</string>
     <string name="profile_image_description">Profile Image</string>
+    <string name="add_account">Add Account</string>
+    <string name="log_out">Log Out</string>
+
+    <!-- Create Account -->
+    <string name="confirm_button">Confirm</string>
+    <string-array name="account_types">
+        <item>Saving Account</item>
+        <item>Checking Account</item>
+    </string-array>
+    
+    <!-- Successful Login -->
+    <string name="type_placeholder">TYPE</string>
+    <string name="account_number_placeholder">ACCOUNT NUMBER</string>
+    <string name="balance_placeholder">BALANCE</string>
+    <string name="check_placeholder">CHECK</string>
+    <string name="save_placeholder">SAV</string>
+    <string name="check_account_number_placeholder">1234567890</string>
+    <string name="save_account_number_placeholder">1234567890</string>
+    <string name="check_balance_placeholder">$ 0.00</string>
+    <string name="save_balance_placeholder">$ 0.00</string>
 
     <string-array name="state_names">
         <item>AL</item>
@@ -77,6 +99,11 @@
         <item>WY</item>
     </string-array>
 
+    <string name="title_activity_sign_up">SignUp</string>
     <string name="title_activity_successful_login">SuccessfulLogin</string>
+    <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string name="title_activity_create_account">CreateAccount</string>
+
+    
 
 </resources>
