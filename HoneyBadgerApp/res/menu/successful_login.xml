@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.honeybadgerapp.SuccessfulLogin" >
+
+    
+     <item
+        android:id="@+id/add_account"
+        android:orderInCategory="100"
+        android:title="@string/add_account"
+        android:icon="@drawable/plus_icon"
+        android:showAsAction="ifRoom"/>
+     
+     <item
+         android:id="@+id/log_out"
+         android:orderInCategory="100"
+         android:title="@string/log_out"
+         android:icon="@drawable/log_out"
+         android:showAsAction="ifRoom" />
+    
+
+</menu>

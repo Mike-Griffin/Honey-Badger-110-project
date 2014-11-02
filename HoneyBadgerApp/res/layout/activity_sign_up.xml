@@ -63,7 +63,7 @@
     
     <EditText
         android:id="@+id/city"
-        android:layout_width="115dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/address"
         android:layout_below="@+id/address"
@@ -72,10 +72,11 @@
 
     <Spinner
         android:id="@+id/state"
-        android:layout_width="50dp"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/address"
-        android:layout_toRightOf="@+id/day"
+        android:layout_toLeftOf="@+id/zip"
+        android:layout_toRightOf="@+id/city"
         android:entries="@array/state_names"
         android:hint="@string/state_placeholder"
         android:prompt="@string/state_placeholder" />
@@ -131,7 +132,7 @@
         android:hint="@string/month_placeholder" />
 
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/cancelButtonSignUpPage"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -143,8 +144,8 @@
         android:id="@+id/doneButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cancelButton"
-        android:layout_alignBottom="@+id/cancelButton"
+        android:layout_alignBaseline="@+id/cancelButtonSignUpPage"
+        android:layout_alignBottom="@+id/cancelButtonSignUpPage"
         android:layout_alignRight="@+id/zip"
         android:text="@string/done_button" />
 

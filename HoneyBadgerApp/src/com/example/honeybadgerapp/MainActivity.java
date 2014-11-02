@@ -29,14 +29,16 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
+				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
+
 		final Intent intentSignUp = new Intent(MainActivity.this, SignUp.class);
-		final Intent intentForgotPassword = new Intent(MainActivity.this, ForgotPassword.class);
+		final Intent intentForgotPassword = new Intent(MainActivity.this,
+				ForgotPassword.class);
 		final Button signUpButton = (Button) findViewById(R.id.signUp);
 		final Button loginButton = (Button) findViewById(R.id.login);
-        final Button forgotPasswordButton = (Button) findViewById(R.id.forgotPassword);
+		final Button forgotPasswordButton = (Button) findViewById(R.id.forgotPassword);
 
-		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL", "ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
-		
 		username_edit_text = (EditText) findViewById(R.id.username);
 		password_edit_text = (EditText) findViewById(R.id.password);
 
@@ -75,15 +77,16 @@ public class MainActivity extends Activity {
 								} else {
 									Toast.makeText(
 											getApplicationContext(),
-											"No such user exist, please signup" + e,
-											Toast.LENGTH_SHORT).show();
+											"No such user exist, please signup"
+													+ e, Toast.LENGTH_SHORT)
+											.show();
 								}
 							}
 
 						});
 			}
 		});
-		
+
 		forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override

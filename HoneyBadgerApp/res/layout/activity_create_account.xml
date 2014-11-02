@@ -24,29 +24,32 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
         android:ems="10"
-        android:hint="@+id/amount_place_holder"
-        android:inputType="numberDecimal" >
+        android:hint="@string/amount_placeholder"
+        android:inputType="numberDecimal"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true" >
 
         <requestFocus />
     </EditText>
 
     <Button
-        android:id="@+id/confirm_button"
+        android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/account_types"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="123dp"
-        android:layout_marginLeft="22dp"
-        android:text="Button" />
+        android:layout_alignRight="@+id/account_types"
+        android:layout_marginBottom="114dp"
+        android:layout_marginRight="17dp"
+        android:text="@string/confirm_button" />
 
     <Button
-        android:id="@+id/cancel_button"
+        android:id="@+id/cancelButtonCreateAccountPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/confirm_button"
-        android:layout_alignBottom="@+id/confirm_button"
-        android:layout_alignRight="@+id/editText1"
-        android:text="Button" />
+        android:layout_alignBaseline="@+id/confirmButton"
+        android:layout_alignBottom="@+id/confirmButton"
+        android:layout_alignLeft="@+id/amount"
+        android:text="@string/cancel_button" />
 
 </RelativeLayout>

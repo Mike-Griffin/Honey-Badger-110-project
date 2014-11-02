@@ -4,7 +4,7 @@
     <string name="app_name">HoneyBadgerApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-   
+
     <!-- Sign Up -->
     <string name="login_button">Login</string>
     <string name="sign_up_button">Sign Up</string>
@@ -13,7 +13,6 @@
     <string name="done_button">Done</string>
     <string name="username_placeholder">Username</string>
     <string name="password_placeholder">Password</string>
-    <string name="title_activity_sign_up">SignUp</string>
     <string name="name_placeholder">Name</string>
     <string name="month_placeholder">MM</string>
     <string name="day_placeholder">DD</string>
@@ -29,12 +28,14 @@
     <string name="log_out">Log Out</string>
 
     <!-- Create Account -->
+    <string name="amount_placeholder">Initial Amount Deposit</string>
     <string name="confirm_button">Confirm</string>
+
     <string-array name="account_types">
         <item>Saving Account</item>
         <item>Checking Account</item>
     </string-array>
-    
+
     <!-- Successful Login -->
     <string name="type_placeholder">TYPE</string>
     <string name="account_number_placeholder">ACCOUNT NUMBER</string>
@@ -103,7 +104,5 @@
     <string name="title_activity_successful_login">SuccessfulLogin</string>
     <string name="title_activity_forgot_password">ForgotPassword</string>
     <string name="title_activity_create_account">CreateAccount</string>
-
-    
 
 </resources>
