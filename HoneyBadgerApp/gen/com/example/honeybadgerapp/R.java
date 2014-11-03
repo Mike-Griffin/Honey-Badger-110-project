@@ -39,13 +39,8 @@ public final class R {
         public static final int account_type_text=0x7f09001d;
         public static final int account_types=0x7f090000;
         public static final int action=0x7f090007;
-<<<<<<< HEAD
         public static final int action_settings=0x7f090024;
         public static final int add_account=0x7f090025;
-=======
-        public static final int action_settings=0x7f090022;
-        public static final int add_account=0x7f090023;
->>>>>>> FETCH_HEAD
         public static final int address=0x7f090013;
         public static final int amount=0x7f090001;
         public static final int amount_cred=0x7f090004;
@@ -56,25 +51,15 @@ public final class R {
         public static final int city=0x7f090014;
         public static final int conf_cred=0x7f090006;
         public static final int confirmButton=0x7f090002;
-<<<<<<< HEAD
         public static final int creditDebitButton=0x7f090022;
-=======
->>>>>>> FETCH_HEAD
         public static final int day=0x7f09000f;
         public static final int doneButton=0x7f09001a;
         public static final int email=0x7f090018;
         public static final int forgotPassword=0x7f09000c;
-<<<<<<< HEAD
         public static final int listView1=0x7f09001f;
         public static final int listView2=0x7f090020;
         public static final int listView3=0x7f090021;
         public static final int log_out=0x7f090026;
-=======
-        public static final int listView1=0x7f090020;
-        public static final int listView2=0x7f09001f;
-        public static final int listView3=0x7f090021;
-        public static final int log_out=0x7f090024;
->>>>>>> FETCH_HEAD
         public static final int login=0x7f09000b;
         public static final int month=0x7f090010;
         public static final int name=0x7f09000e;
@@ -83,10 +68,7 @@ public final class R {
         public static final int relativeLayout=0x7f09001e;
         public static final int signUp=0x7f09000d;
         public static final int state=0x7f090015;
-<<<<<<< HEAD
         public static final int text1=0x7f090023;
-=======
->>>>>>> FETCH_HEAD
         public static final int username=0x7f090009;
         public static final int verifyPassword=0x7f090017;
         public static final int year=0x7f090011;
@@ -99,10 +81,7 @@ public final class R {
         public static final int activity_main=0x7f030003;
         public static final int activity_sign_up=0x7f030004;
         public static final int activity_successful_login=0x7f030005;
-<<<<<<< HEAD
         public static final int custom_list_item=0x7f030006;
-=======
->>>>>>> FETCH_HEAD
     }
     public static final class menu {
         public static final int create_account=0x7f080000;
@@ -113,20 +92,12 @@ public final class R {
         public static final int successful_login=0x7f080005;
     }
     public static final class string {
-<<<<<<< HEAD
         public static final int account_num=0x7f050029;
-=======
-        public static final int account_num=0x7f050028;
->>>>>>> FETCH_HEAD
         public static final int account_number_placeholder=0x7f05001a;
         public static final int action_settings=0x7f050002;
         public static final int add_account=0x7f050015;
         public static final int address_placeholder=0x7f05000e;
-<<<<<<< HEAD
         public static final int amount_hint=0x7f050028;
-=======
-        public static final int amount_hint=0x7f050027;
->>>>>>> FETCH_HEAD
         /**  Create Account 
          */
         public static final int amount_placeholder=0x7f050017;
@@ -157,19 +128,11 @@ public final class R {
         public static final int save_placeholder=0x7f05001d;
         public static final int sign_up_button=0x7f050004;
         public static final int state_placeholder=0x7f050010;
-<<<<<<< HEAD
         public static final int title_activity_create_account=0x7f050026;
         public static final int title_activity_credit_debit=0x7f050027;
         public static final int title_activity_forgot_password=0x7f050025;
         public static final int title_activity_sign_up=0x7f050023;
         public static final int title_activity_successful_login=0x7f050024;
-=======
-        public static final int title_activity_create_account=0x7f050025;
-        public static final int title_activity_credit_debit=0x7f050026;
-        public static final int title_activity_forgot_password=0x7f050024;
-        public static final int title_activity_sign_up=0x7f050022;
-        public static final int title_activity_successful_login=0x7f050023;
->>>>>>> FETCH_HEAD
         /**  Successful Login 
          */
         public static final int type_placeholder=0x7f050019;

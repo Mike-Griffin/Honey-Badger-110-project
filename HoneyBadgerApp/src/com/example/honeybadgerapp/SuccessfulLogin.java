@@ -21,10 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
-<<<<<<< HEAD
 import android.widget.Button;
-=======
->>>>>>> FETCH_HEAD
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -32,26 +29,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SuccessfulLogin extends Activity {
-<<<<<<< HEAD
-	private List<ParseObject> account = new ArrayList<ParseObject>();
-	private List<String> accType = new ArrayList<String>();
-	private List<String> accNum = new ArrayList<String>();
-	private List<Integer> accBal = new ArrayList<Integer>();
-=======
+
+
+
 	private List<ParseObject> account = new ArrayList();
 	private List<String> accType = new ArrayList();
-	private List<Integer> accNum = new ArrayList();
+	private List<String> accNum = new ArrayList();
 	private List<Integer> accBal = new ArrayList();
->>>>>>> FETCH_HEAD
+
 	private ListView lv1;
 	private ListView lv2;
 	private ListView lv3;
 	private ArrayAdapter<String> adapter1;
-<<<<<<< HEAD
+
 	private ArrayAdapter<String> adapter2;
-=======
-	private ArrayAdapter<Integer> adapter2;
->>>>>>> FETCH_HEAD
+
+
+
 	private ArrayAdapter<Integer> adapter3;
 
 	@Override
@@ -67,17 +61,16 @@ public class SuccessfulLogin extends Activity {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		// query.whereEqualTo("parent", ParseUser.getCurrentUser());
 		query.whereEqualTo("parent", ParseUser.getCurrentUser());
-<<<<<<< HEAD
-=======
+
 		query.whereEqualTo("parent", ParseUser.getCurrentUser());
->>>>>>> FETCH_HEAD
+
 		try {
 			account = query.find();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
+
 		/*
 		 * query.findInBackground(new FindCallback<ParseObject>() { public void
 		 * done(List<ParseObject> accountList, ParseException e) { //
@@ -120,7 +113,9 @@ public class SuccessfulLogin extends Activity {
 				// TODO Auto-generated method stub
 				startActivity(new Intent(SuccessfulLogin.this,
 						CreditDebit.class));
-=======
+			}
+		});}
+
 		/*query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> accountList, ParseException e) {
 				// commentList now contains the last ten comments, and the
@@ -132,7 +127,7 @@ public class SuccessfulLogin extends Activity {
 			}
 		});*/
 		
-<<<<<<< HEAD
+
 		/*
 		 * ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		 * query.whereEqualTo("parent", ParseUser.getCurrentUser());
@@ -192,34 +187,8 @@ public class SuccessfulLogin extends Activity {
 		 * 
 		 * }
 		 */
-=======
-		if(account == null) {
-			Log.d("dosjasodaisojdoisad", "why the fuck is it not working... whyyy");
-		}
 
-		// Get account info in the three lists
-		for(int i = 0; i < account.size(); i++){
-			accType.add(account.get(i).getString("type"));
-			accNum.add(account.get(i).getInt("accountNumber"));
-			accBal.add(account.get(i).getInt("balance"));
-		}
-		
-		lv1 = (ListView) findViewById(R.id.listView1);
-		lv2 = (ListView) findViewById(R.id.listView2);
-		lv3 = (ListView) findViewById(R.id.listView3);
-	
-		adapter1 = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,
-				accType);
-		adapter2 = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1,
-				accNum);
-		adapter3 = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1,
-				accBal);
-		
-		lv1.setAdapter(adapter1);
-		lv2.setAdapter(adapter2);
-		lv3.setAdapter(adapter3);
-		
-		int i = 0;
+
 		/*for (ParseObject account_iterator : account) {
 			// This does not require a network access.
 			String accountType = account_iterator.getString("type");
@@ -278,9 +247,9 @@ public class SuccessfulLogin extends Activity {
 			Log.d("account balance", Integer.toString(balance));
 			
 		}*/
->>>>>>> FETCH_HEAD
+
 		// Log.d("abcdefg", "asdasdasdsad");
-	}
+	//}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

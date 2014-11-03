@@ -28,6 +28,7 @@ public class CreditDebit extends Activity {
 	private List<ParseObject> accountList = new ArrayList();
 	private List<Integer> accNum = new ArrayList();
 	private ArrayAdapter<Integer> accNumAdapt;
+	private ArrayAdapter<CharSequence> actionAdapt;
 	
 	
 	@Override
@@ -60,8 +61,17 @@ public class CreditDebit extends Activity {
 	
 		accNumAdapt = new ArrayAdapter<Integer>(getApplicationContext(),
 				android.R.layout.simple_spinner_item, accNum);
+		accNumAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		
+		actionAdapt = ArrayAdapter.createFromResource(
+				this, R.array.cred_or_deb,
+				android.R.layout.simple_spinner_item);
+		actionAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		accounts.setAdapter(accNumAdapt);
+		actionSpinner.setAdapter(actionAdapt);
+		
+		
 	}
 
 	@Override
@@ -82,8 +92,4 @@ public class CreditDebit extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> FETCH_HEAD

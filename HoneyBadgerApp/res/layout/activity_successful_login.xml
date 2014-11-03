@@ -96,8 +96,8 @@
         android:layout_toLeftOf="@+id/balance_text"
         android:text="@string/account_number_placeholder"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
-<<<<<<< HEAD
+    
+    
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -140,46 +140,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/credit_or_debit_button" />
-=======
-       <RelativeLayout
-           android:id="@+id/relativeLayout"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:layout_below="@+id/balance_text"
-           android:layout_toLeftOf="@+id/listView2" >
 
-       </RelativeLayout>
 
-       <ListView
-           android:id="@+id/listView1"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignLeft="@+id/account_type_text"
-           android:layout_below="@+id/account_type_text"
-           android:layout_toLeftOf="@+id/listView2" >
 
-       </ListView>
+ 
 
-       <ListView
-           android:id="@+id/listView2"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignLeft="@+id/account_number_text"
-           android:layout_alignRight="@+id/account_number_text"
-           android:layout_below="@+id/balance_text" >
-
-       </ListView>
-
-       <ListView
-           android:id="@+id/listView3"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignRight="@+id/balance_text"
-           android:layout_alignLeft="@+id/balance_text"
-           android:layout_below="@+id/balance_text"
-           android:layout_toRightOf="@+id/account_number_text" >
-
-       </ListView>
->>>>>>> FETCH_HEAD
+      
 
 </RelativeLayout>
