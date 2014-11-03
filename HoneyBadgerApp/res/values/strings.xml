@@ -46,6 +46,7 @@
     <string name="save_account_number_placeholder">1234567890</string>
     <string name="check_balance_placeholder">$ 0.00</string>
     <string name="save_balance_placeholder">$ 0.00</string>
+    <string name="credit_or_debit_button">Credit Or Debit</string>
 
     <string-array name="state_names">
         <item>AL</item>
@@ -104,5 +105,13 @@
     <string name="title_activity_successful_login">SuccessfulLogin</string>
     <string name="title_activity_forgot_password">ForgotPassword</string>
     <string name="title_activity_create_account">CreateAccount</string>
+    <string name="title_activity_credit_debit">CreditDebit</string>
+        <string name="amount_hint">Amount</string>
+    <string name="account_num">Account Number</string>
+    
+    <string-array name="cred_or_deb">
+        <item>Credit</item>
+        <item>Debit</item>
+    </string-array>
 
 </resources>

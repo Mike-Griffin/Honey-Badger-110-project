@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.honeybadgerapp.CreditDebit" >
+
+    <EditText
+        android:id="@+id/amount_cred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:ems="10"
+        android:hint="@string/amount_hint"
+        android:inputType="number" />
+
+    <Spinner
+        android:id="@+id/account_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/conf_cred"
+        android:layout_below="@+id/action"
+        android:layout_marginTop="43dp" />
+
+    <Button
+        android:id="@+id/conf_cred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/amount_cred"
+        android:layout_below="@+id/account_num"
+        android:layout_marginTop="26dp"
+        android:text="@string/confirm_button" />
+
+    <Button
+        android:id="@+id/cancel_cred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/conf_cred"
+        android:layout_alignBottom="@+id/conf_cred"
+        android:layout_alignRight="@+id/amount_cred"
+        android:text="@string/cancel_button" />
+
+    <Spinner
+        android:id="@+id/action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/account_num"
+        android:layout_below="@+id/amount_cred"
+        android:layout_marginTop="38dp" />
+
+</RelativeLayout>
