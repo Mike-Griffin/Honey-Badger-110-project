@@ -8,4 +8,8 @@
         android:showAsAction="never"
         android:title="@string/action_settings"/>
 
+<<<<<<< HEAD
 </menu>
+=======
+</menu>
+>>>>>>> FETCH_HEAD

@@ -82,4 +82,8 @@ public class CreditDebit extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> FETCH_HEAD
