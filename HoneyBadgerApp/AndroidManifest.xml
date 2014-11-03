@@ -41,6 +41,10 @@
             android:name=".CreateAccount"
             android:label="@string/title_activity_create_account" >
         </activity>
+        <activity
+            android:name=".CreditDebit"
+            android:label="@string/title_activity_credit_debit" >
+        </activity>
     </application>
 
 </manifest>
