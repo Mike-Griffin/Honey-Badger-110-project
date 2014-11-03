@@ -1,5 +1,6 @@
 package com.example.honeybadgerapp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.parse.FindCallback;
@@ -19,14 +20,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class SuccessfulLogin extends Activity {
-	private List<ParseObject> account;
+	private List<ParseObject> account = new ArrayList();
+	private List<String> accType = new ArrayList();
+	private List<Integer> accNum = new ArrayList();
+	private List<Integer> accBal = new ArrayList();
+	private ListView lv1;
+	private ListView lv2;
+	private ListView lv3;
+	private ArrayAdapter<String> adapter1;
+	private ArrayAdapter<Integer> adapter2;
+	private ArrayAdapter<Integer> adapter3;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +50,14 @@ public class SuccessfulLogin extends Activity {
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		query.whereEqualTo("parent", ParseUser.getCurrentUser());
-		query.findInBackground(new FindCallback<ParseObject>() {
+		query.whereEqualTo("parent", ParseUser.getCurrentUser());
+		try {
+			account = query.find();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> accountList, ParseException e) {
 				// commentList now contains the last ten comments, and the
 				// "post"
@@ -46,12 +65,34 @@ public class SuccessfulLogin extends Activity {
 				account = accountList;
 				Log.d("dosjasodaisojdoisad", Integer.toString(account.size()));
 			}
-		});
+		});*/
 		
 		if(account == null) {
 			Log.d("dosjasodaisojdoisad", "why the fuck is it not working... whyyy");
 		}
 
+		// Get account info in the three lists
+		for(int i = 0; i < account.size(); i++){
+			accType.add(account.get(i).getString("type"));
+			accNum.add(account.get(i).getInt("accountNumber"));
+			accBal.add(account.get(i).getInt("balance"));
+		}
+		
+		lv1 = (ListView) findViewById(R.id.listView1);
+		lv2 = (ListView) findViewById(R.id.listView2);
+		lv3 = (ListView) findViewById(R.id.listView3);
+	
+		adapter1 = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,
+				accType);
+		adapter2 = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1,
+				accNum);
+		adapter3 = new ArrayAdapter<Integer>(getApplicationContext(),android.R.layout.simple_list_item_1,
+				accBal);
+		
+		lv1.setAdapter(adapter1);
+		lv2.setAdapter(adapter2);
+		lv3.setAdapter(adapter3);
+		
 		int i = 0;
 		/*for (ParseObject account_iterator : account) {
 			// This does not require a network access.
