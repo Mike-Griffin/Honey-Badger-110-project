@@ -89,14 +89,14 @@ public class SignUp extends Activity implements OnItemSelectedListener {
 				username = username_edit_text.getText().toString().trim();
 				password = password_edit_text.getText().toString().trim();
 				email = email_edit_text.getText().toString().trim();
-				birthday = month_edit_text.getText().toString().trim() + "/"
-						+ day_edit_text.getText().toString().trim() + "/"
-						+ year_edit_text.getText().toString().trim();
-				address = address_edit_text.getText().toString().trim();
-				city = city_edit_text.getText().toString().trim();
-				state = stateSpinner.getSelectedItem().toString().trim();
-				zip = Integer.parseInt(zip_edit_text.getText().toString()
-						.trim());
+				//birthday = month_edit_text.getText().toString().trim() + "/"
+				//		+ day_edit_text.getText().toString().trim() + "/"
+				//		+ year_edit_text.getText().toString().trim();
+				//address = address_edit_text.getText().toString().trim();
+				//city = city_edit_text.getText().toString().trim();
+				//state = stateSpinner.getSelectedItem().toString().trim();
+				//zip = Integer.parseInt(zip_edit_text.getText().toString()
+				//		.trim());
 
 				// if(error check) {} else {
 				// Save new user data into Parse.com Data Storage
@@ -105,11 +105,11 @@ public class SignUp extends Activity implements OnItemSelectedListener {
 				user.setPassword(password);
 				user.setEmail(email);
 				user.put("name", name);
-				user.put("birthday", birthday);
-				user.put("address", address);
-				user.put("city", city);
-				user.put("state", state);
-				user.put("zipCode", zip);
+				//user.put("birthday", birthday);
+				//user.put("address", address);
+				//user.put("city", city);
+				//user.put("state", state);
+				//user.put("zipCode", zip);
 
 				user.signUpInBackground(new SignUpCallback() {
 					public void done(ParseException e) {

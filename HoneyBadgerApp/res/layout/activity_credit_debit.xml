@@ -49,10 +49,9 @@
         android:id="@+id/action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:entries="@array/cred_or_deb"
         android:layout_alignLeft="@+id/account_num"
         android:layout_below="@+id/amount_cred"
         android:layout_marginTop="38dp" />
 
-
 </RelativeLayout>
-

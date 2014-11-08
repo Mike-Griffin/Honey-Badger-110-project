@@ -29,23 +29,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SuccessfulLogin extends Activity {
-
-
-
-	private List<ParseObject> account = new ArrayList();
-	private List<String> accType = new ArrayList();
-	private List<String> accNum = new ArrayList();
-	private List<Integer> accBal = new ArrayList();
-
+	private List<ParseObject> account = new ArrayList<ParseObject>();
+	private List<String> accType = new ArrayList<String>();
+	private List<String> accNum = new ArrayList<String>();
+	private List<Integer> accBal = new ArrayList<Integer>();
 	private ListView lv1;
 	private ListView lv2;
 	private ListView lv3;
 	private ArrayAdapter<String> adapter1;
-
 	private ArrayAdapter<String> adapter2;
-
-
-
 	private ArrayAdapter<Integer> adapter3;
 
 	@Override
@@ -61,16 +53,12 @@ public class SuccessfulLogin extends Activity {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		// query.whereEqualTo("parent", ParseUser.getCurrentUser());
 		query.whereEqualTo("parent", ParseUser.getCurrentUser());
-
-		query.whereEqualTo("parent", ParseUser.getCurrentUser());
-
 		try {
 			account = query.find();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		/*
 		 * query.findInBackground(new FindCallback<ParseObject>() { public void
 		 * done(List<ParseObject> accountList, ParseException e) { //
@@ -114,20 +102,8 @@ public class SuccessfulLogin extends Activity {
 				startActivity(new Intent(SuccessfulLogin.this,
 						CreditDebit.class));
 			}
-		});}
-
-		/*query.findInBackground(new FindCallback<ParseObject>() {
-			public void done(List<ParseObject> accountList, ParseException e) {
-				// commentList now contains the last ten comments, and the
-				// "post"
-				// field has been populated. For example:
-				account = accountList;
-				Log.d("dosjasodaisojdoisad", Integer.toString(account.size()));
->>>>>>> FETCH_HEAD
-			}
-		});*/
+		});
 		
-
 		/*
 		 * ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		 * query.whereEqualTo("parent", ParseUser.getCurrentUser());
@@ -187,69 +163,8 @@ public class SuccessfulLogin extends Activity {
 		 * 
 		 * }
 		 */
-
-
-		/*for (ParseObject account_iterator : account) {
-			// This does not require a network access.
-			String accountType = account_iterator.getString("type");
-			String accountNumber = account_iterator.getObjectId();
-			int balance = account_iterator.getInt("balance");
-
-			RelativeLayout rl = (RelativeLayout) findViewById(R.id.relativeLayout);
-			
-	        int width = 90;
-	        int height = 60;
-
-	        TextView textview = new TextView(this);
-	        textview.setText(accountNumber);
-	        textview.setId(2000 + 1);
-
-	        if (true) {
-	            RelativeLayout.LayoutParams rlp2 = new RelativeLayout.LayoutParams(
-	                    RelativeLayout.LayoutParams.FILL_PARENT,
-	                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-	            rlp2.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-	            rlp2.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-	            textview.setLayoutParams(rlp2);
-	            rl.addView(textview);
-	            RelativeLayout.LayoutParams rlp1 = new RelativeLayout.LayoutParams(
-	                    width, height);
-	            rlp1.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-	            rlp1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-	        } else {
-	            RelativeLayout.LayoutParams rlp2 = new RelativeLayout.LayoutParams(
-	                    RelativeLayout.LayoutParams.FILL_PARENT,
-	                    RelativeLayout.LayoutParams.WRAP_CONTENT);
-	            rlp2.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-	            textview.setLayoutParams(rlp2);
-	            rl.addView(textview);
-	            RelativeLayout.LayoutParams rlp1 = new RelativeLayout.LayoutParams(
-	                    width, height);
-	            rlp1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-	        }
-			
-			
-			
-			
-	        // add text view
-	        TextView tv1 = new TextView(this);
-	        tv1.setText(accountType);
-	        TextView tv2 = new TextView(this);
-	        tv2.setText(accountNumber);
-	        TextView tv3 = new TextView(this);
-	        tv3.setText(balance);
-	        // ll.addView(tv1);
-	        // ll.addView(tv2);
-	        // ll.addView(tv3);
-
-			Log.d("account type", accountType);
-			Log.d("account account number", accountNumber);
-			Log.d("account balance", Integer.toString(balance));
-			
-		}*/
-
 		// Log.d("abcdefg", "asdasdasdsad");
-	//}
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

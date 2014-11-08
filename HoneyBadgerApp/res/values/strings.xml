@@ -106,9 +106,7 @@
     <string name="title_activity_forgot_password">ForgotPassword</string>
     <string name="title_activity_create_account">CreateAccount</string>
     <string name="title_activity_credit_debit">CreditDebit</string>
-
-    <string name="amount_hint">Amount</string>
-
+        <string name="amount_hint">Amount</string>
     <string name="account_num">Account Number</string>
     
     <string-array name="cred_or_deb">

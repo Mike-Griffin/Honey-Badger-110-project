@@ -96,8 +96,7 @@
         android:layout_toLeftOf="@+id/balance_text"
         android:text="@string/account_number_placeholder"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-    
-    
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -140,11 +139,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/credit_or_debit_button" />
-
-
-
- 
-
-      
 
 </RelativeLayout>
