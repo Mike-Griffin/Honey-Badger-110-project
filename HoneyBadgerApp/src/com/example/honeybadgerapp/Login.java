@@ -4,7 +4,6 @@ import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 import com.parse.LogInCallback;
 
 import android.app.Activity;
@@ -18,7 +17,7 @@ import android.widget.EditText;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class Login extends Activity {
 	private String username;
 	private String password;
 	private EditText username_edit_text;
@@ -32,8 +31,8 @@ public class MainActivity extends Activity {
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 
-		final Intent intentSignUp = new Intent(MainActivity.this, SignUp.class);
-		final Intent intentForgotPassword = new Intent(MainActivity.this,
+		final Intent intentSignUp = new Intent(Login.this, SignUp.class);
+		final Intent intentForgotPassword = new Intent(Login.this,
 				ForgotPassword.class);
 		final Button signUpButton = (Button) findViewById(R.id.signUp);
 		final Button loginButton = (Button) findViewById(R.id.login);
@@ -67,8 +66,8 @@ public class MainActivity extends Activity {
 									// If user exist and authenticated, send
 									// user to Welcome.class
 									Intent intent = new Intent(
-											MainActivity.this,
-											SuccessfulLogin.class);
+											Login.this,
+											AccountInfo.class);
 									startActivity(intent);
 									Toast.makeText(getApplicationContext(),
 											"Successfully Logged in",

@@ -56,8 +56,8 @@ public class SignUp extends Activity implements OnItemSelectedListener {
 		// ParseACL.setDefaultACL(defaultACL, this);
 
 		final Intent intentSuccessfulLogin = new Intent(SignUp.this,
-				SuccessfulLogin.class);
-		final Intent intentLogin = new Intent(SignUp.this, MainActivity.class);
+				AccountInfo.class);
+		final Intent intentLogin = new Intent(SignUp.this, Login.class);
 		final Button doneButton = (Button) findViewById(R.id.doneButton);
 		final Button cancelButton = (Button) findViewById(R.id.cancelButtonSignUpPage);
 

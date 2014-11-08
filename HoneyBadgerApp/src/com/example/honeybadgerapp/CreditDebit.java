@@ -50,7 +50,7 @@ public class CreditDebit extends Activity implements OnItemSelectedListener {
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
 		final Intent intentSuccessfulLogin = new Intent(CreditDebit.this,
-				SuccessfulLogin.class);
+				AccountInfo.class);
 		final Intent intentCreditDebit = new Intent(CreditDebit.this,
 				CreditDebit.class);
 		

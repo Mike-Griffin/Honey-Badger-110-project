@@ -28,7 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SuccessfulLogin extends Activity {
+public class AccountInfo extends Activity {
 	private List<ParseObject> account = new ArrayList<ParseObject>();
 	private List<String> accType = new ArrayList<String>();
 	private List<String> accNum = new ArrayList<String>();
@@ -99,7 +99,7 @@ public class SuccessfulLogin extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(SuccessfulLogin.this,
+				startActivity(new Intent(AccountInfo.this,
 						CreditDebit.class));
 			}
 		});
@@ -183,7 +183,7 @@ public class SuccessfulLogin extends Activity {
 		switch (item.getItemId()) {
 		case R.id.add_account:
 			// Do something
-			final Intent intentCreateAccount = new Intent(SuccessfulLogin.this,
+			final Intent intentCreateAccount = new Intent(AccountInfo.this,
 					CreateAccount.class);
 			startActivity(intentCreateAccount);
 
@@ -193,8 +193,8 @@ public class SuccessfulLogin extends Activity {
 			if (ParseUser.getCurrentUser() == null) {
 				Toast.makeText(getApplicationContext(), "successfully logout!",
 						Toast.LENGTH_SHORT).show();
-				final Intent intentLogin = new Intent(SuccessfulLogin.this,
-						MainActivity.class);
+				final Intent intentLogin = new Intent(AccountInfo.this,
+						Login.class);
 				startActivity(intentLogin);
 			}
 

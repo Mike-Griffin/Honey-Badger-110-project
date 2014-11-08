@@ -35,7 +35,7 @@ public class CreateAccount extends Activity implements OnItemSelectedListener {
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 
 		final Intent intentSuccessfulLogin = new Intent(CreateAccount.this,
-				SuccessfulLogin.class);
+				AccountInfo.class);
 		final Button confirmButton = (Button) findViewById(R.id.confirmButton);
 		final Button cancelButton = (Button) findViewById(R.id.cancelButtonCreateAccountPage);
 
