@@ -50,6 +50,7 @@ public class SignUp extends Activity implements OnItemSelectedListener {
 
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
+		
 		ParseUser.enableAutomaticUser();
 		ParseACL defaultACL = new ParseACL();
 		defaultACL.setPublicReadAccess(true);

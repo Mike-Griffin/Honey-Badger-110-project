@@ -102,15 +102,18 @@ public class CreditDebit extends Activity implements OnItemSelectedListener {
 				ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 				// query.whereEqualTo("parent", ParseUser.getCurrentUser());
 				try {
-					accountObject = query.get(accountNumber);;
+					accountObject = query.get(accountNumber);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 				if(action.equals("Debit")) {
 					amount = -amount;
 				}
+				
 				double num = accountObject.getInt("balance");
+				
 				if((num + amount) < 0) {
 					Toast.makeText(getApplicationContext(),
 							"Need More Money", Toast.LENGTH_SHORT)

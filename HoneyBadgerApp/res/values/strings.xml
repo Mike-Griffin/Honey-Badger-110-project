@@ -36,7 +36,7 @@
         <item>Checking Account</item>
     </string-array>
 
-    <!-- Successful Login -->
+    <!-- AccountInfo -->
     <string name="type_placeholder">TYPE</string>
     <string name="account_number_placeholder">ACCOUNT NUMBER</string>
     <string name="balance_placeholder">BALANCE</string>
@@ -101,17 +101,19 @@
         <item>WY</item>
     </string-array>
 
+    <!-- CreditDebit -->
+    <string name="amount_hint">Amount</string>
+    <string name="account_num">Account Number</string>
+
+    <string-array name="cred_or_deb">
+        <item>Credit</item>
+        <item>Debit</item>
+    </string-array>
+
     <string name="title_activity_sign_up">SignUp</string>
     <string name="title_activity_successful_login">SuccessfulLogin</string>
     <string name="title_activity_forgot_password">ForgotPassword</string>
     <string name="title_activity_create_account">CreateAccount</string>
     <string name="title_activity_credit_debit">CreditDebit</string>
-        <string name="amount_hint">Amount</string>
-    <string name="account_num">Account Number</string>
-    
-    <string-array name="cred_or_deb">
-        <item>Credit</item>
-        <item>Debit</item>
-    </string-array>
 
 </resources>
