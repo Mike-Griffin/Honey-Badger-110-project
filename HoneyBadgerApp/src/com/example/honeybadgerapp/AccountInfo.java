@@ -49,6 +49,8 @@ public class AccountInfo extends Activity {
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
 		final Button creditDebitButton = (Button) findViewById(R.id.creditDebitButton);
+		final Button closeAccountButton = (Button) findViewById(R.id.closeAccountButton);
+
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		// query.whereEqualTo("parent", ParseUser.getCurrentUser());
@@ -74,9 +76,11 @@ public class AccountInfo extends Activity {
 
 		// Get account info in the three lists
 		for (int i = 0; i < account.size(); i++) {
-			accType.add(account.get(i).getString("type"));
-			accNum.add(account.get(i).getObjectId());
-			accBal.add(account.get(i).getInt("balance"));
+			if(account.get(i).getBoolean("active") == true){
+			  accType.add(account.get(i).getString("type"));
+			  accNum.add(account.get(i).getObjectId());
+			  accBal.add(account.get(i).getInt("balance"));
+			}
 		}
 		
 		lv1 = (ListView) findViewById(R.id.listView1);
@@ -104,6 +108,16 @@ public class AccountInfo extends Activity {
 			}
 		});
 		
+		closeAccountButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(AccountInfo.this,
+										CloseAccount.class ));
+				
+			}
+		});
 		/*
 		 * ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		 * query.whereEqualTo("parent", ParseUser.getCurrentUser());

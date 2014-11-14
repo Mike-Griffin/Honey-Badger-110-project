@@ -63,6 +63,7 @@ public class CreateAccount extends Activity implements OnItemSelectedListener {
 				account.put("type", accountType);
 				account.put("balance", amount);
 				account.put("parent", ParseUser.getCurrentUser());
+				account.put("active", true);
 				account.saveInBackground();
 
 				startActivity(intentSuccessfulLogin);

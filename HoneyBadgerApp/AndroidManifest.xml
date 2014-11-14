@@ -45,6 +45,14 @@
             android:name=".CreditDebit"
             android:label="@string/title_activity_credit_debit" >
         </activity>
+        <activity
+            android:name=".Close_account"
+            android:label="@string/title_activity_close_account" >
+        </activity>
+        <activity
+            android:name=".CloseAccount"
+            android:label="@string/title_activity_close_account" >
+        </activity>
     </application>
 
 </manifest>
