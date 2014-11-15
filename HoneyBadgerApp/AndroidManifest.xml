@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name=".AccountInfo"
-            android:label="@string/title_activity_successful_login" >
+            android:label="@string/title_activity_account_info" >
         </activity>
         <activity
             android:name=".ForgotPassword"

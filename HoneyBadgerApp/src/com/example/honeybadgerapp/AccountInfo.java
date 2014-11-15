@@ -46,7 +46,7 @@ public class AccountInfo extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_successful_login);
+		setContentView(R.layout.activity_account_info);
 
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
@@ -94,33 +94,37 @@ public class AccountInfo extends Activity {
 		TextView aNum = new TextView(this);
 		TextView bal = new TextView(this);
 		type.setText("Type");
-		type.setText("Account Number");
-		type.setText("Balance");
+		aNum.setText("Account Number");
+		aNum.setPadding(60, 0, 0, 0);
+		bal.setText("Balance");
+		bal.setPadding(60, 0, 0, 0);		
 		row0.addView(type);
 		row0.addView(aNum);
 		row0.addView(bal);
 		accountTable.addView(row0);
 		
-		for(int i = 0; i < account.size();){
+		Log.d("check1", "check1");
+		
+		for(int i = 0; i < account.size(); i++){
 			if(account.get(i).getBoolean("active") == true){
 				TableRow row = new TableRow(this);
 				TextView tx1 = new TextView(this);
 				TextView tx2 = new TextView(this);
+				tx2.setPadding(60, 50, 0, 0);
 				TextView tx3 = new TextView(this);
+				tx3.setPadding(60, 50, 0, 0);
 				
 				tx1.setText(account.get(i).getString("type"));
-				tx2.setText(account.get(i).getObjectId());
-				tx3.setText(account.get(i).getInt("balance"));
+				tx2.setText(Integer.toString(account.get(i).getInt("accountNumber")));
+				tx3.setText(Integer.toString(account.get(i).getInt("balance")));
 				
+				Log.d("check3", "check3");
 				row.addView(tx1);
 				row.addView(tx2);
 				row.addView(tx3);
 				accountTable.addView(row);
-				
-				i++;
+				Log.d("check4", "check4");
 			}
-			
-			
 		}
 		
 		
@@ -224,8 +228,8 @@ public class AccountInfo extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		getMenuInflater().inflate(R.menu.successful_login, menu);
+		getMenuInflater().inflate(R.menu.login, menu);
+		getMenuInflater().inflate(R.menu.account_info, menu);
 		return true;
 	}
 

@@ -7,7 +7,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.honeybadgerapp.AccountInfo" >
-	<!--
+
+    <!--
     <TextView
         android:id="@+id/balance_text"
         android:layout_width="wrap_content"
@@ -17,7 +18,7 @@
         android:layout_marginRight="15dp"
         android:text="@string/balance_placeholder"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-	-->
+    -->
     <!--
     <TextView
         android:id="@+id/check_text"
@@ -77,7 +78,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
     -->
 
-	<!-- 
+
+    <!--
     <TextView
         android:id="@+id/account_type_text"
         android:layout_width="wrap_content"
@@ -97,42 +99,53 @@
         android:layout_toLeftOf="@+id/balance_text"
         android:text="@string/account_number_placeholder"
         android:textAppearance="?android:attr/textAppearanceSmall" />
--->
+    -->
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/closeAccountButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="41dp"
-        android:layout_marginRight="48dp"
-        android:text="@string/title_activity_close_account" />
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="75dp" >
 
-    <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true" >
-        
-	    <TableLayout
-	        android:id="@+id/accountTable"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content">
-	       <!-- android:layout_centerHorizontal="true"
+            <TableLayout
+                android:id="@+id/accountTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <!--
+            android:layout_centerHorizontal="true"
 	        android:layout_centerVertical="true" 
-	        android:layout_alignBottom="@+id/closeAccountButton">-->
-			
-	    </TableLayout>
-    </ScrollView>
+	        android:layout_alignBottom="@+id/closeAccountButton">
+                -->
+
+            </TableLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/creditDebitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/closeAccountButton"
+            android:layout_centerHorizontal="true"
+            android:text="@string/credit_or_debit_button" />
+
+        <Button
+            android:id="@+id/closeAccountButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/creditDebitButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/creditDebitButton"
+            android:text="@string/title_activity_close_account" />
 
     </RelativeLayout>
-<!--
+    <!--
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
@@ -160,16 +173,6 @@
         android:layout_below="@+id/balance_text"
         android:layout_toRightOf="@+id/account_number_text" >
     </ListView>
--->
-    <Button
-        android:id="@+id/creditDebitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/credit_or_debit_button" />
-    
-    
-    
+    -->
 
 </RelativeLayout>

@@ -4,6 +4,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 import android.app.Activity;
@@ -34,7 +35,7 @@ public class CreateAccount extends Activity implements OnItemSelectedListener {
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 
-		final Intent intentSuccessfulLogin = new Intent(CreateAccount.this,
+		final Intent intentAccountInfo = new Intent(CreateAccount.this,
 				AccountInfo.class);
 		final Button confirmButton = (Button) findViewById(R.id.confirmButton);
 		final Button cancelButton = (Button) findViewById(R.id.cancelButtonCreateAccountPage);
@@ -56,20 +57,36 @@ public class CreateAccount extends Activity implements OnItemSelectedListener {
 				accountType = accountTypeSpinner.getSelectedItem().toString().trim();
 				amount = Double.parseDouble(amount_edit_text.getText()
 						.toString().trim());
-
-				// if(error check) {} else {
+				
 				// Save new user data into Parse.com Data Storage
-				ParseObject account = new ParseObject("Account");
+				final ParseObject account = new ParseObject("Account");
 				account.put("type", accountType);
 				account.put("balance", amount);
 				account.put("parent", ParseUser.getCurrentUser());
 				account.put("active", true);
-				account.saveInBackground();
-
-				startActivity(intentSuccessfulLogin);
+				account.saveInBackground(new SaveCallback() {
+					  public void done(ParseException e) {
+					    if (e == null) {
+					      // Success!
+					    	account.put("accountNumber", account.getObjectId().hashCode());
+					    	account.saveInBackground();
+							startActivity(intentAccountInfo);
+					    } else {
+					      // Failure!
+					    }
+					  }
+					});
 			}
 		});
 
+		cancelButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(intentAccountInfo);
+			}
+		});
 	}
 
 	@Override

@@ -63,7 +63,7 @@ public class CloseAccount extends Activity {
 			e.printStackTrace();
 		}
 		for(int i = 0; i < accountList.size(); i++){
-			accNum.add(accountList.get(i).getObjectId());
+			accNum.add(Integer.toString(accountList.get(i).getInt("accountNumber")));
 		}
 		accountSpinner = (Spinner)findViewById(R.id.account_num);
 		cancelButton = (Button)findViewById(R.id.canel_close_account);
@@ -73,9 +73,6 @@ public class CloseAccount extends Activity {
 				android.R.layout.simple_spinner_item, accNum);
 		accNumAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		accountSpinner.setAdapter(accNumAdapt);
-		
-
-		
 		
 		// Close account button
 		closeAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +114,6 @@ public class CloseAccount extends Activity {
 			}
 		});
 		
-		
 		// Cancel Button
 		cancelButton.setOnClickListener(new View.OnClickListener() {
 
@@ -126,10 +122,7 @@ public class CloseAccount extends Activity {
 				// TODO Auto-generated method stub
 				startActivity(intentSuccessfulLogin);
 			}
-		});
-
-		
-		
+		});		
 	}
 
 	@Override

@@ -64,7 +64,7 @@ public class CreditDebit extends Activity implements OnItemSelectedListener {
 		}
 		
 		for(int i = 0; i < accountList.size(); i++){
-			accNum.add(accountList.get(i).getObjectId());
+			accNum.add(Integer.toString(accountList.get(i).getInt("accountNumber")));
 		}
 		
 		accountSpinner = (Spinner) findViewById(R.id.account_num);

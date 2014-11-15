@@ -110,18 +110,13 @@
         <item>Debit</item>
     </string-array>
 
+    <!-- Close Account -->
+    <string name="title_close_account_label">Close Account</string>
     <string name="title_activity_sign_up">SignUp</string>
-    <string name="title_activity_successful_login">SuccessfulLogin</string>
+    <string name="title_activity_account_info">AccountInfo</string>
     <string name="title_activity_forgot_password">ForgotPassword</string>
     <string name="title_activity_create_account">CreateAccount</string>
     <string name="title_activity_credit_debit">CreditDebit</string>
-    <string name="title_activity_close_account">Close_account</string>
-    
-    <!--  Close Account -->
-    <string name="title_close_account_label">Close Account</string>
-    
-    
-
-    
+    <string name="title_activity_close_account">CloseAccount</string>
 
 </resources>
