@@ -25,6 +25,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,7 @@ public class AccountInfo extends Activity {
 	private ArrayAdapter<String> adapter1;
 	private ArrayAdapter<String> adapter2;
 	private ArrayAdapter<Integer> adapter3;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,28 +78,66 @@ public class AccountInfo extends Activity {
 		}
 
 		// Get account info in the three lists
-		for (int i = 0; i < account.size(); i++) {
+		/*for (int i = 0; i < account.size(); i++) {
 			if(account.get(i).getBoolean("active") == true){
-			  accType.add(account.get(i).getString("type"));
-			  accNum.add(account.get(i).getObjectId());
-			  accBal.add(account.get(i).getInt("balance"));
+			  accType.add(account.get(i).getString("type") +
+					  "\t\t\t" + account.get(i).getObjectId() +
+					  "\t\t\t" + account.get(i).getInt("balance"));
+			  //accNum.add(account.get(i).getObjectId());
+			  //accBal.add(account.get(i).getInt("balance"));
 			}
+		}*/
+		
+		TableLayout accountTable = (TableLayout) findViewById(R.id.accountTable);
+		TableRow row0 = new TableRow(this);
+		TextView type = new TextView(this);
+		TextView aNum = new TextView(this);
+		TextView bal = new TextView(this);
+		type.setText("Type");
+		type.setText("Account Number");
+		type.setText("Balance");
+		row0.addView(type);
+		row0.addView(aNum);
+		row0.addView(bal);
+		accountTable.addView(row0);
+		
+		for(int i = 0; i < account.size();){
+			if(account.get(i).getBoolean("active") == true){
+				TableRow row = new TableRow(this);
+				TextView tx1 = new TextView(this);
+				TextView tx2 = new TextView(this);
+				TextView tx3 = new TextView(this);
+				
+				tx1.setText(account.get(i).getString("type"));
+				tx2.setText(account.get(i).getObjectId());
+				tx3.setText(account.get(i).getInt("balance"));
+				
+				row.addView(tx1);
+				row.addView(tx2);
+				row.addView(tx3);
+				accountTable.addView(row);
+				
+				i++;
+			}
+			
+			
 		}
 		
-		lv1 = (ListView) findViewById(R.id.listView1);
-		lv2 = (ListView) findViewById(R.id.listView2);
-		lv3 = (ListView) findViewById(R.id.listView3);
+		
+	//	lv1 = (ListView) findViewById(R.id.listView1);
+	//	lv2 = (ListView) findViewById(R.id.listView2);
+	//	lv3 = (ListView) findViewById(R.id.listView3);
 
-		adapter1 = new ArrayAdapter<String>(getApplicationContext(),
+	/*	adapter1 = new ArrayAdapter<String>(getApplicationContext(),
 				R.layout.custom_list_item, accType);
 		adapter2 = new ArrayAdapter<String>(getApplicationContext(),
 				R.layout.custom_list_item, accNum);
 		adapter3 = new ArrayAdapter<Integer>(getApplicationContext(),
 				R.layout.custom_list_item, accBal);
-		
-		lv1.setAdapter(adapter1);
-		lv2.setAdapter(adapter2);
-		lv3.setAdapter(adapter3);
+	*/	
+//		lv1.setAdapter(adapter1);
+//		lv2.setAdapter(adapter2);
+	//	lv3.setAdapter(adapter3);
 
 		creditDebitButton.setOnClickListener(new View.OnClickListener() {
 
