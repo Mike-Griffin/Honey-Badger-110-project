@@ -3,7 +3,6 @@ package com.example.honeybadgerapp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -11,20 +10,13 @@ import com.parse.ParseQuery;
 import com.parse.ParseException;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -32,16 +24,19 @@ import android.widget.Toast;
 
 public class AccountInfo extends Activity {
 	private List<ParseObject> account = new ArrayList<ParseObject>();
-	private List<String> accType = new ArrayList<String>();
-	private List<String> accNum = new ArrayList<String>();
-	private List<Integer> accBal = new ArrayList<Integer>();
-	private ListView lv1;
-	private ListView lv2;
-	private ListView lv3;
-	private ArrayAdapter<String> adapter1;
-	private ArrayAdapter<String> adapter2;
-	private ArrayAdapter<Integer> adapter3;
-	
+	private TableLayout accountTable;
+	private TableRow row0;
+	private TextView type;
+	private TextView aNum;
+	private TextView bal;
+
+	/*
+	 * private List<String> accType = new ArrayList<String>(); private
+	 * List<String> accNum = new ArrayList<String>(); private List<Integer>
+	 * accBal = new ArrayList<Integer>(); private ListView lv1; private ListView
+	 * lv2; private ListView lv3; private ArrayAdapter<String> adapter1; private
+	 * ArrayAdapter<String> adapter2; private ArrayAdapter<Integer> adapter3;
+	 */
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +47,7 @@ public class AccountInfo extends Activity {
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
 		final Button creditDebitButton = (Button) findViewById(R.id.creditDebitButton);
+		final Button accountTransferButton = (Button) findViewById(R.id.accountTransferButton);
 		final Button closeAccountButton = (Button) findViewById(R.id.closeAccountButton);
 
 
@@ -63,18 +59,6 @@ public class AccountInfo extends Activity {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		/*
-		 * query.findInBackground(new FindCallback<ParseObject>() { public void
-		 * done(List<ParseObject> accountList, ParseException e) { //
-		 * commentList now contains the last ten comments, and the // "post" //
-		 * field has been populated. For example: account = accountList;
-		 * Log.d("dosjasodaisojdoisad", Integer.toString(account.size())); } });
-		 */
-
-		if (account == null) {
-			Log.d("dosjasodaisojdoisad",
-					"why the fuck is it not working... whyyy");
 		}
 
 		// Get account info in the three lists
@@ -88,11 +72,11 @@ public class AccountInfo extends Activity {
 			}
 		}*/
 		
-		TableLayout accountTable = (TableLayout) findViewById(R.id.accountTable);
-		TableRow row0 = new TableRow(this);
-		TextView type = new TextView(this);
-		TextView aNum = new TextView(this);
-		TextView bal = new TextView(this);
+		accountTable = (TableLayout) findViewById(R.id.accountTable);
+		row0 = new TableRow(this);
+		type = new TextView(this);
+		aNum = new TextView(this);
+		bal = new TextView(this);
 		type.setText("Type");
 		aNum.setText("Account Number");
 		aNum.setPadding(60, 0, 0, 0);
@@ -103,27 +87,24 @@ public class AccountInfo extends Activity {
 		row0.addView(bal);
 		accountTable.addView(row0);
 		
-		Log.d("check1", "check1");
-		
 		for(int i = 0; i < account.size(); i++){
 			if(account.get(i).getBoolean("active") == true){
 				TableRow row = new TableRow(this);
-				TextView tx1 = new TextView(this);
-				TextView tx2 = new TextView(this);
-				tx2.setPadding(60, 50, 0, 0);
-				TextView tx3 = new TextView(this);
-				tx3.setPadding(60, 50, 0, 0);
+				TextView accountType = new TextView(this);
+				TextView accountNumber = new TextView(this);
+				TextView balance = new TextView(this);
 				
-				tx1.setText(account.get(i).getString("type"));
-				tx2.setText(Integer.toString(account.get(i).getInt("accountNumber")));
-				tx3.setText(Integer.toString(account.get(i).getInt("balance")));
+				accountNumber.setPadding(60, 50, 0, 0);
+				balance.setPadding(60, 50, 0, 0);
 				
-				Log.d("check3", "check3");
-				row.addView(tx1);
-				row.addView(tx2);
-				row.addView(tx3);
+				accountType.setText(account.get(i).getString("type"));
+				accountNumber.setText(Integer.toString(account.get(i).getInt("accountNumber")));
+				balance.setText(Integer.toString(account.get(i).getInt("balance")));
+				
+				row.addView(accountType);
+				row.addView(accountNumber);
+				row.addView(balance);
 				accountTable.addView(row);
-				Log.d("check4", "check4");
 			}
 		}
 		
@@ -153,13 +134,21 @@ public class AccountInfo extends Activity {
 			}
 		});
 		
+		accountTransferButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent(AccountInfo.this, AccountTransfer.class));
+			}
+		});
+		
 		closeAccountButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(new Intent(AccountInfo.this,
-										CloseAccount.class ));
+				startActivity(new Intent(AccountInfo.this, CloseAccount.class ));
 				
 			}
 		});

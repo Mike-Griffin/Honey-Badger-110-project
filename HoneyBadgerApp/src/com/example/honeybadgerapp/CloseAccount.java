@@ -33,7 +33,7 @@ public class CloseAccount extends Activity {
 	// Parse account numbers text
 	private List<String> accNum = new ArrayList<String>();
 	// Parse account objects
-	private List<ParseObject> accountList = new ArrayList<ParseObject>();
+	private List<ParseObject> accountObjectList = new ArrayList<ParseObject>();
 	// List account number
 	private ArrayAdapter<String> accNumAdapt;
 	// Account object
@@ -49,7 +49,7 @@ public class CloseAccount extends Activity {
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
-		final Intent intentSuccessfulLogin = new Intent(CloseAccount.this,
+		final Intent intentAccountInfo = new Intent(CloseAccount.this,
 				AccountInfo.class);
 		final Intent intentCloseAccount = new Intent(CloseAccount.this,
 				CloseAccount.class);
@@ -57,17 +57,19 @@ public class CloseAccount extends Activity {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		query.whereEqualTo("parent", ParseUser.getCurrentUser());
 		try {
-			accountList = query.find();
+			accountObjectList = query.find();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(int i = 0; i < accountList.size(); i++){
-			accNum.add(Integer.toString(accountList.get(i).getInt("accountNumber")));
+		
+		for(int i = 0; i < accountObjectList.size(); i++){
+			accNum.add(Integer.toString(accountObjectList.get(i).getInt("accountNumber")));
 		}
+		
 		accountSpinner = (Spinner)findViewById(R.id.account_num);
-		cancelButton = (Button)findViewById(R.id.canel_close_account);
-		closeAccountButton = (Button)findViewById(R.id.close_account);
+		cancelButton = (Button)findViewById(R.id.canelCloseAccount);
+		closeAccountButton = (Button)findViewById(R.id.closeAccount);
 		
 		accNumAdapt = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, accNum);
@@ -83,21 +85,24 @@ public class CloseAccount extends Activity {
 				// Gets the user selected account
 				ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 				accountSelected = accountSpinner.getSelectedItem().toString().trim();
-				
+				Log.d("num", accountSelected);
+				query.whereEqualTo("accountNumber", Integer.parseInt(accountSelected));
 				try {
-					accountObject = query.get(accountSelected);
+					accountObject = query.getFirst();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				Log.d("num", "test1");
 				double num = accountObject.getInt("balance");
+				Log.d("num", "test2");
 				Log.d("num", " "+ num);
 				
 				if(( num ) != 0) {
 					Toast.makeText(getApplicationContext(),
 							"Account must have zero balance", Toast.LENGTH_SHORT)
 							.show();
-					startActivity(intentCloseAccount);
+					return;
 				}
 				else{
 					accountObject.put("active", false);
@@ -109,7 +114,7 @@ public class CloseAccount extends Activity {
 						e.printStackTrace();
 					}
 					
-					startActivity(intentSuccessfulLogin);
+					startActivity(intentAccountInfo);
 				}
 			}
 		});
@@ -120,7 +125,7 @@ public class CloseAccount extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(intentSuccessfulLogin);
+				startActivity(intentAccountInfo);
 			}
 		});		
 	}

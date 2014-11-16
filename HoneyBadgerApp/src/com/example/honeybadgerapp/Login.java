@@ -1,7 +1,6 @@
 package com.example.honeybadgerapp;
 
 import com.parse.Parse;
-import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.LogInCallback;
@@ -14,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 public class Login extends Activity {

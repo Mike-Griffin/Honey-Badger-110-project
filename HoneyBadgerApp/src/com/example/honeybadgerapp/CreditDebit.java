@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,9 +33,8 @@ public class CreditDebit extends Activity implements OnItemSelectedListener {
 	private List<ParseObject> accountList = new ArrayList<ParseObject>();
 	private List<String> accNum = new ArrayList<String>();
 	private ArrayAdapter<String> accNumAdapt;
-	private ArrayAdapter<String> actionAdapt;
 	private String action;
-	private String accountNumber;
+	private String accountSelected;
 	private double amount = 0.0;
 	private ParseObject accountObject;
 	
@@ -49,7 +47,7 @@ public class CreditDebit extends Activity implements OnItemSelectedListener {
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
-		final Intent intentSuccessfulLogin = new Intent(CreditDebit.this,
+		final Intent intentAccountInfo = new Intent(CreditDebit.this,
 				AccountInfo.class);
 		final Intent intentCreditDebit = new Intent(CreditDebit.this,
 				CreditDebit.class);
@@ -93,16 +91,16 @@ public class CreditDebit extends Activity implements OnItemSelectedListener {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				accountNumber = accountSpinner.getSelectedItem().toString().trim();
+				accountSelected = accountSpinner.getSelectedItem().toString().trim();
 				action = actionSpinner.getSelectedItem().toString().trim();
 				amount = Double.parseDouble(amount_edit_text.getText()
 						.toString().trim());
 				
 				
 				ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
-				// query.whereEqualTo("parent", ParseUser.getCurrentUser());
+				query.whereEqualTo("accountNumber", Integer.parseInt(accountSelected));
 				try {
-					accountObject = query.get(accountNumber);
+					accountObject = query.getFirst();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -131,7 +129,7 @@ public class CreditDebit extends Activity implements OnItemSelectedListener {
 					e.printStackTrace();
 				}
 				
-				startActivity(intentSuccessfulLogin);
+				startActivity(intentAccountInfo);
 			}
 		});
 		
@@ -140,7 +138,7 @@ public class CreditDebit extends Activity implements OnItemSelectedListener {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				startActivity(intentSuccessfulLogin);
+				startActivity(intentAccountInfo);
 			}
 		});
 	}

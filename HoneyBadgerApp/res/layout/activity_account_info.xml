@@ -8,99 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.honeybadgerapp.AccountInfo" >
 
-    <!--
-    <TextView
-        android:id="@+id/balance_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/account_number_text"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:text="@string/balance_placeholder"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-    -->
-    <!--
-    <TextView
-        android:id="@+id/check_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="38dp"
-        android:text="@string/check_placeholder"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-
-    <TextView
-        android:id="@+id/save_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/check_text"
-        android:layout_marginTop="16dp"
-        android:text="@string/save_placeholder"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/check_account_number_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/check_text"
-        android:layout_alignLeft="@+id/account_number_text"
-        android:text="@string/check_account_number_placeholder"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/save_account_number_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/save_text"
-        android:layout_alignBottom="@+id/save_text"
-        android:layout_alignLeft="@+id/check_account_number_text"
-        android:text="@string/save_account_number_placeholder"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/check_balance_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/check_account_number_text"
-        android:layout_alignLeft="@+id/balance_text"
-        android:text="@string/check_balance_placeholder"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/save_balance_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/save_account_number_text"
-        android:layout_alignBottom="@+id/save_account_number_text"
-        android:layout_alignLeft="@+id/check_balance_text"
-        android:text="@string/save_balance_placeholder"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-    -->
-
-
-    <!--
-    <TextView
-        android:id="@+id/account_type_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="36dp"
-        android:text="@string/type_placeholder"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/account_number_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/account_type_text"
-        android:layout_alignBottom="@+id/account_type_text"
-        android:layout_marginRight="24dp"
-        android:layout_toLeftOf="@+id/balance_text"
-        android:text="@string/account_number_placeholder"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-    -->
-
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -117,23 +24,17 @@
                 android:id="@+id/accountTable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
-
-                <!--
-            android:layout_centerHorizontal="true"
-	        android:layout_centerVertical="true" 
-	        android:layout_alignBottom="@+id/closeAccountButton">
-                -->
-
             </TableLayout>
         </ScrollView>
 
         <Button
-            android:id="@+id/creditDebitButton"
+            android:id="@+id/accountTransferButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/closeAccountButton"
-            android:layout_centerHorizontal="true"
-            android:text="@string/credit_or_debit_button" />
+            android:layout_alignLeft="@+id/closeAccountButton"
+            android:layout_alignRight="@+id/closeAccountButton"
+            android:text="@string/account_tranfer_button" />
 
         <Button
             android:id="@+id/closeAccountButton"
@@ -142,37 +43,16 @@
             android:layout_alignLeft="@+id/creditDebitButton"
             android:layout_alignParentBottom="true"
             android:layout_alignRight="@+id/creditDebitButton"
-            android:text="@string/title_activity_close_account" />
+            android:text="@string/close_account_button" />
+
+        <Button
+            android:id="@+id/creditDebitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/accountTransferButton"
+            android:layout_centerHorizontal="true"
+            android:text="@string/credit_or_debit_button" />
 
     </RelativeLayout>
-    <!--
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/account_type_text"
-        android:layout_below="@+id/account_type_text"
-        android:layout_toLeftOf="@+id/listView2" >
-    </ListView>
-
-    <ListView
-        android:id="@+id/listView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/account_number_text"
-        android:layout_alignRight="@+id/account_number_text"
-        android:layout_below="@+id/balance_text" >
-    </ListView>
-
-    <ListView
-        android:id="@+id/listView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/balance_text"
-        android:layout_alignRight="@+id/balance_text"
-        android:layout_below="@+id/balance_text"
-        android:layout_toRightOf="@+id/account_number_text" >
-    </ListView>
-    -->
 
 </RelativeLayout>

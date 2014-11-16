@@ -5,7 +5,6 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.parse.SignUpCallback;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -60,15 +59,19 @@ public class CreateAccount extends Activity implements OnItemSelectedListener {
 				
 				// Save new user data into Parse.com Data Storage
 				final ParseObject account = new ParseObject("Account");
+				final ParseObject user = ParseUser.getCurrentUser();
 				account.put("type", accountType);
 				account.put("balance", amount);
-				account.put("parent", ParseUser.getCurrentUser());
+				account.put("parent", user);
 				account.put("active", true);
 				account.saveInBackground(new SaveCallback() {
 					  public void done(ParseException e) {
 					    if (e == null) {
 					      // Success!
 					    	account.put("accountNumber", account.getObjectId().hashCode());
+					    	if(user.getInt("primaryAccount") == 0 && accountType.equals("Checking Account"))
+					    		user.put("primaryAccount", account.getObjectId().hashCode());
+					    	
 					    	account.saveInBackground();
 							startActivity(intentAccountInfo);
 					    } else {

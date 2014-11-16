@@ -53,6 +53,10 @@
             android:name=".CloseAccount"
             android:label="@string/title_activity_close_account" >
         </activity>
+        <activity
+            android:name=".AccountTransfer"
+            android:label="@string/title_activity_account_transfer" >
+        </activity>
     </application>
 
 </manifest>

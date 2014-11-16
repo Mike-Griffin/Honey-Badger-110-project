@@ -37,10 +37,9 @@
         android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/account_types"
-        android:layout_marginBottom="114dp"
-        android:layout_marginRight="17dp"
+        android:layout_alignRight="@+id/amount"
+        android:layout_below="@+id/amount"
+        android:layout_marginTop="119dp"
         android:text="@string/confirm_button" />
 
     <Button

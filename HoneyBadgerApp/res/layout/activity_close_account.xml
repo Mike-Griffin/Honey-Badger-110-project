@@ -9,7 +9,7 @@
     tools:context="com.example.honeybadgerapp.CloseAccount" >
 
     <Button
-        android:id="@+id/close_account"
+        android:id="@+id/closeAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -19,7 +19,7 @@
         android:text="@string/title_activity_close_account" />
 
     <Button
-        android:id="@+id/canel_close_account"
+        android:id="@+id/canelCloseAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -28,19 +28,19 @@
         android:text="@string/cancel_button" />
 
     <Spinner
-        android:id="@+id/account_num"
+        android:id="@+id/accountNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/close_account"
+        android:layout_above="@+id/closeAccount"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="98dp"
         android:layout_marginRight="30dp" />
     
     <TextView
-        android:id="@+id/label_close_account"
+        android:id="@+id/labelCloseAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/account_num"
+        android:layout_above="@+id/accountNumber"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="54dp"
         android:text="@string/title_close_account_label"
