@@ -115,6 +115,7 @@ public class AccountTransfer extends Activity {
 					}
 				});
 
+		
 		confirm_button.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -139,8 +140,17 @@ public class AccountTransfer extends Activity {
 				if (accountToSelected.equals(accountToList.get(accountToList
 						.size() - 1))) {
 					ParseQuery<ParseUser> userQuery = ParseUser.getQuery();
-					userQuery.whereEqualTo("email", email_edit_text.getText().toString()
+					ParseQuery<ParseUser> emailQuery = ParseUser.getQuery();
+					ParseQuery<ParseUser> phoneQuery = ParseUser.getQuery();
+					emailQuery.whereEqualTo("email", email_edit_text.getText().toString()
 							.trim());
+					phoneQuery.whereEqualTo("phone", email_edit_text.getText().toString()
+							.trim());
+					List<ParseQuery<ParseUser>> queries = new ArrayList<ParseQuery<ParseUser>>();
+					queries.add(emailQuery);
+					queries.add(phoneQuery);
+					userQuery = ParseQuery.or(queries);
+					
 					try {
 						accountToUser = userQuery.getFirst();
 					} catch (ParseException e) {

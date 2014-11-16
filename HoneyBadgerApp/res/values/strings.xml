@@ -21,7 +21,7 @@
     <string name="address_placeholder">Address</string>
     <string name="city_placeholder">City</string>
     <string name="state_placeholder">CA</string>
-    <string name="zip_code_placeholder">Zip</string>
+    <string name="zip_code_placeholder">Zip</string><string name="phone_placeholder">Phone</string>
     <string name="email_placeholder">E-mail</string>
     <string name="verify_password_placeholder">Verify Password</string>
     <string name="profile_image_description">Profile Image</string>
@@ -100,7 +100,7 @@
 
     <!-- AccountTransfer -->
     <string name="amount_to_transfer_placeholder">Amount To Transfer</string>
-    <string name="account_transfer_email_placeholder">Receiver\'s e-mail</string>
+    <string name="account_transfer_email_placeholder">Receiver\'s e-mail or phone</string>
 
     <!-- CreditDebit -->
     <string name="amount_hint">Amount</string>
@@ -122,5 +122,6 @@
     <string name="title_activity_credit_debit">CreditDebit</string>
     <string name="title_activity_close_account">CloseAccount</string>
     <string name="title_activity_account_transfer">AccountTransfer</string>
+    
 
 </resources>

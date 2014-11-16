@@ -33,6 +33,7 @@ public class SignUp extends Activity implements DatePickerFragment.TheListener {
 	private EditText address_edit_text;
 	private EditText city_edit_text;
 	private EditText zip_edit_text;
+	private EditText phone_edit_text;
 	private String name;
 	private String username;
 	private String password;
@@ -41,6 +42,7 @@ public class SignUp extends Activity implements DatePickerFragment.TheListener {
 	private String address;
 	private String city;
 	private String state;
+	private String phone;
 	private int zip;
 
 	@Override
@@ -75,6 +77,7 @@ public class SignUp extends Activity implements DatePickerFragment.TheListener {
 		address_edit_text = (EditText) findViewById(R.id.address);
 		city_edit_text = (EditText) findViewById(R.id.city);
 		zip_edit_text = (EditText) findViewById(R.id.zip);
+		phone_edit_text = (EditText) findViewById(R.id.phone);
 
 		stateSpinner = (Spinner) findViewById(R.id.state);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter
@@ -115,6 +118,7 @@ public class SignUp extends Activity implements DatePickerFragment.TheListener {
 				address = address_edit_text.getText().toString().trim();
 				city = city_edit_text.getText().toString().trim();
 				state = stateSpinner.getSelectedItem().toString().trim();
+				phone = phone_edit_text.getText().toString().trim();
 				try {
 				zip = Integer.parseInt(zip_edit_text.getText().toString()
 						.trim());
@@ -148,6 +152,7 @@ public class SignUp extends Activity implements DatePickerFragment.TheListener {
 				user.put("state", state);
 				user.put("zipCode", zip);
 				user.put("primaryAccount", 0);
+				user.put("phone", phone);
 
 				user.signUpInBackground(new SignUpCallback() {
 					public void done(ParseException e) {

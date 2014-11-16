@@ -163,4 +163,16 @@
         android:layout_alignRight="@+id/username"
         android:text="@string/done_button" />
 
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/email"
+        android:layout_below="@+id/city"
+        android:ems="10"
+        android:hint="@string/phone_placeholder"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true" />
+
 </RelativeLayout>
