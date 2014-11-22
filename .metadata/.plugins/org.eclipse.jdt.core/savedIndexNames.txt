@@ -1,0 +1,6 @@
+INDEX VERSION 1.126+/Users/edenlin/Desktop/adt-bundle-mac-x86_64-20140702/Honey-Badger-110-project/.metadata/.plugins/org.eclipse.jdt.core
+2768848989.index
+44727741.index
+999923930.index
+1270315800.index
+3881731688.index
