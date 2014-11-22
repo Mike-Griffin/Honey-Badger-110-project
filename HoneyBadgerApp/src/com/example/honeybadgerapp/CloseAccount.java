@@ -67,9 +67,11 @@ public class CloseAccount extends Activity {
 			accNum.add(Integer.toString(accountObjectList.get(i).getInt("accountNumber")));
 		}
 		
-		accountSpinner = (Spinner)findViewById(R.id.account_num);
+		accountSpinner = (Spinner)findViewById(R.id.accountNumber);
 		cancelButton = (Button)findViewById(R.id.canelCloseAccount);
 		closeAccountButton = (Button)findViewById(R.id.closeAccount);
+		
+		Log.d("acct", accNum.get(0));
 		
 		accNumAdapt = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, accNum);

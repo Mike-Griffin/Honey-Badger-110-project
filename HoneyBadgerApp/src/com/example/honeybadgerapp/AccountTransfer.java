@@ -173,6 +173,15 @@ public class AccountTransfer extends Activity {
 						e.printStackTrace();
 					}
 				}
+				else {
+					query = ParseQuery.getQuery("Account");
+					query.whereEqualTo("accountNumber", Integer.parseInt(accountToSelected));
+					try {
+						accountToObject = query.getFirst();
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+				}
 				
 				double accountFromBalance = accountFromObject.getInt("balance");
 				double accountToBalance = accountToObject.getInt("balance");
