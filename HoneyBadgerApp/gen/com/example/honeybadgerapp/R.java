@@ -103,12 +103,19 @@ public final class R {
     }
     public static final class string {
         public static final int account_num=0x7f050024;
+<<<<<<< Updated upstream
         public static final int account_number_placeholder=0x7f05001c;
         public static final int account_tranfer_button=0x7f05001f;
         public static final int account_transfer_email_placeholder=0x7f050022;
         public static final int action_settings=0x7f050002;
         public static final int add_account=0x7f050017;
         public static final int address_placeholder=0x7f05000f;
+=======
+        public static final int account_number_placeholder=0x7f05001a;
+        public static final int action_settings=0x7f050002;
+        public static final int add_account=0x7f050015;
+        public static final int address_placeholder=0x7f05000e;
+>>>>>>> Stashed changes
         /**  CreditDebit 
          */
         public static final int amount_hint=0x7f050023;
@@ -141,6 +148,7 @@ public final class R {
         public static final int phone_placeholder=0x7f050013;
         public static final int profile_image_description=0x7f050016;
         public static final int sign_up_button=0x7f050004;
+<<<<<<< Updated upstream
         public static final int state_placeholder=0x7f050011;
         public static final int title_activity_account_info=0x7f050027;
         public static final int title_activity_account_transfer=0x7f05002c;
@@ -154,6 +162,14 @@ public final class R {
         /**  CloseAccount 
          */
         public static final int title_close_account_label=0x7f050025;
+=======
+        public static final int state_placeholder=0x7f050010;
+        public static final int title_activity_create_account=0x7f050028;
+        public static final int title_activity_credit_debit=0x7f050029;
+        public static final int title_activity_forgot_password=0x7f050027;
+        public static final int title_activity_sign_up=0x7f050025;
+        public static final int title_activity_successful_login=0x7f050026;
+>>>>>>> Stashed changes
         /**  AccountInfo 
          */
         public static final int type_placeholder=0x7f05001b;
