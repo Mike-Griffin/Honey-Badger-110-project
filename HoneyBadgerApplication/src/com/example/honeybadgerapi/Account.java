@@ -2,13 +2,19 @@ package com.example.honeybadgerapi;
 
 public abstract class Account {
 
+<<<<<<< Updated upstream
 	protected InterestCalculator calculator;	
 	protected double interestRate;
 	protected double dailyAverageBalance;
+=======
+	protected InterestCalculator calculator;
+	private double interestRate;
+>>>>>>> Stashed changes
 	private double balance;
 	private int accountNum;
 	private int lastUpdated;
 
+<<<<<<< Updated upstream
 	
 	public double getBalance(){return balance;}
 	
@@ -34,4 +40,20 @@ public abstract class Account {
 	
 
 	
+=======
+	public double getBalance() {
+		return 0.0;
+	}
+
+	public void setBalance() {
+		return;
+	}
+
+	public abstract void updateInterest();
+
+	public void updatePenalty() {
+		penalty = 0.0;
+	}
+
+>>>>>>> Stashed changes
 }

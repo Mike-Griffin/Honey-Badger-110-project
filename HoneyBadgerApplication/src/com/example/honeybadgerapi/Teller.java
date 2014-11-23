@@ -2,14 +2,27 @@ package com.example.honeybadgerapi;
 
 import java.util.ArrayList;
 
+import com.parse.ParseObject;
+
 public class Teller implements User {
 
 	private Customer activeCustomer;
+	private ParseObject teller;
+
+	public Teller(String username, String password) {
+		
+	}
 	
 	@Override
-	public void signUp() {
+	public int getLoginStatus() {
 		// TODO Auto-generated method stub
+		return 0;
+	}
 
+	@Override
+	public boolean getSignUpStatus() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -60,29 +73,28 @@ public class Teller implements User {
 
 	}
 
-	public void updateInterest(){
-		
+	public void updateInterest() {
+
 	}
-	
-	public void updatePenalty(){
-		
+
+	public void updatePenalty() {
+
 	}
-	
-	public void credit(double d){
-		
+
+	public void credit(double d) {
+
 	}
-	
-	public void debit(double d){
-		
+
+	public void debit(double d) {
+
 	}
-	
-	public void setCustomer(){
-		
+
+	public void setCustomer() {
+
 	}
-	
-	public Customer getCustomer(){
+
+	public Customer getCustomer() {
 		return activeCustomer;
 	}
-	
-	
+
 }

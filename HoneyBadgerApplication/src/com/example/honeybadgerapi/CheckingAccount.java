@@ -2,10 +2,10 @@ package com.example.honeybadgerapi;
 
 public class CheckingAccount extends Account {
 
-	public CheckingAccount(){
+	public CheckingAccount() {
 		this.calculator = new CheckingInterest();
 	}
-	
+
 	@Override
 	public void updateInterestRate() {
 		// TODO Auto-generated method stub
