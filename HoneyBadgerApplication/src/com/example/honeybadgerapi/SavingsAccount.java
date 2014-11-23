@@ -7,9 +7,9 @@ public class SavingsAccount extends Account {
 	}
 	
 	@Override
-	public void updateInterest() {
+	public void updateInterestRate() {
 		// TODO Auto-generated method stub
-
+		this.interestRate = calculator.calculate(dailyAverageBalance);
 	}
 
 }
