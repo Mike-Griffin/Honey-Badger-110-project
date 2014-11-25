@@ -8,12 +8,12 @@ import com.parse.SignUpCallback;
 
 import java.util.ArrayList;
 
-public class Customer implements User {
+public class Customer extends User {
 	private int loginStatus = 0; // 0 fails, 1 success
 	private int numAccounts;
 
 	private boolean signUpStatus = true;
-	
+
 	private ArrayList<Account> accountList;
 	private ParseUser customer;
 
@@ -64,7 +64,7 @@ public class Customer implements User {
 		// TODO Auto-generated method stub
 		return signUpStatus;
 	}
-	
+
 	@Override
 	public void setBalance(double d) {
 		// TODO Auto-generated method stub
@@ -112,7 +112,5 @@ public class Customer implements User {
 		// TODO Auto-generated method stub
 
 	}
-
-
 
 }

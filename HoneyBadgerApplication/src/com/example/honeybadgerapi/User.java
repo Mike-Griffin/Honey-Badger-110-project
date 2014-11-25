@@ -2,26 +2,26 @@ package com.example.honeybadgerapi;
 
 import java.util.ArrayList;
 
-public interface User {
-	
-	public int getLoginStatus();
-	
-	public boolean getSignUpStatus();
-	
-	public void setBalance(double d);
+public abstract class User {
 
-	public double getBalance();
+	public abstract int getLoginStatus();
 
-	public int getNumOfAccounts();
+	public abstract boolean getSignUpStatus();
 
-	public void transfer(int accFrom, double amount, int accTo);
+	public abstract void setBalance(double d);
 
-	public void transfer(int accFrom, double amount, String phone_email);
+	public abstract double getBalance();
 
-	public ArrayList<Account> getAccountList();
+	public abstract int getNumOfAccounts();
 
-	public void closeAccount();
+	public abstract void transfer(int accFrom, double amount, int accTo);
 
-	public void updateUserInfo();
+	public abstract void transfer(int accFrom, double amount, String phone_email);
+
+	public abstract  ArrayList<Account> getAccountList();
+
+	public abstract void closeAccount();
+
+	public abstract void updateUserInfo();
 
 }

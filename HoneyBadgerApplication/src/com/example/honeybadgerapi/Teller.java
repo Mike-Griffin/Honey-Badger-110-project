@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 import com.parse.ParseObject;
 
-public class Teller implements User {
+public class Teller extends User {
 
 	private Customer activeCustomer;
 	private ParseObject teller;
 
 	public Teller(String username, String password) {
-		
+
 	}
-	
+
 	@Override
 	public int getLoginStatus() {
 		// TODO Auto-generated method stub
