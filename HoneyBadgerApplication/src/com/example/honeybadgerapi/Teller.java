@@ -2,7 +2,9 @@ package com.example.honeybadgerapi;
 
 import java.util.ArrayList;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 public class Teller extends User {
 
@@ -10,37 +12,37 @@ public class Teller extends User {
 	private ParseObject teller;
 
 	public Teller(String username, String password) {
+		try {
+			teller = ParseUser.logIn(username, password);
+		} catch (ParseException e) {
+		}
 
+		if (teller != null) {
+			loginStatus = 1;
+		}
 	}
 
 	@Override
-	public int getLoginStatus() {
+	public void setBalance(int code, double d) {
 		// TODO Auto-generated method stub
-		return 0;
+		activeCustomer.setBalance(code, d);
 	}
 
 	@Override
-	public boolean getSignUpStatus() {
+	public double getBalance(int code) {
 		// TODO Auto-generated method stub
-		return false;
+		return activeCustomer.getBalance(code);
 	}
 
 	@Override
-	public void setBalance(double d) {
-		// TODO Auto-generated method stub
-
+	public void setAccountCombo(int code) {
+		activeCustomer.setNumOfAccounts(code);
 	}
-
+	
 	@Override
-	public double getBalance() {
+	public int getAccountCombo() {
 		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getNumOfAccounts() {
-		// TODO Auto-generated method stub
-		return 0;
+		return activeCustomer.getAccountCombo();
 	}
 
 	@Override
@@ -54,17 +56,22 @@ public class Teller extends User {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	@Override
-	public ArrayList<Account> getAccountList() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateAccountList() {
+		activeCustomer.updateAccountList();
 	}
 
 	@Override
-	public void closeAccount() {
+	public Account[] getAccountList() {
 		// TODO Auto-generated method stub
+		return activeCustomer.getAccountList();
+	}
 
+	@Override
+	public boolean closeAccount(int code) {
+		// TODO Auto-generated method stub
+		return activeCustomer.closeAccount(code);
 	}
 
 	@Override
@@ -81,16 +88,18 @@ public class Teller extends User {
 
 	}
 
-	public void credit(double d) {
-
+	@Override
+	public boolean credit(int code, double d) {
+		return activeCustomer.credit(code, d);
 	}
 
-	public void debit(double d) {
-
+	@Override
+	public boolean debit(int code, double d) {
+		return activeCustomer.debit(code, d);
 	}
 
-	public void setCustomer() {
-
+	public void setCustomer(String username) {
+		activeCustomer = new Customer(username);
 	}
 
 	public Customer getCustomer() {

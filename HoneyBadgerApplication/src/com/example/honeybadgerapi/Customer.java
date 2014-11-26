@@ -3,19 +3,21 @@ package com.example.honeybadgerapi;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 import java.util.ArrayList;
 
 public class Customer extends User {
-	private int loginStatus = 0; // 0 fails, 1 success
-	private int numAccounts;
 
-	private boolean signUpStatus = true;
+	private int accountCombo;
 
-	private ArrayList<Account> accountList;
+	private Account[] accounts = new Account[2];
 	private ParseUser customer;
+	private int checkingNumber;
+	private int savingNumber;
 
 	// login
 	public Customer(String username, String password) {
@@ -26,6 +28,11 @@ public class Customer extends User {
 
 		if (customer != null) {
 			loginStatus = 1;
+		}
+
+		if (loginStatus == 1) {
+			checkingNumber = customer.getInt("checkingAccount");
+			savingNumber = customer.getInt("savingAccount");
 		}
 	}
 
@@ -53,34 +60,59 @@ public class Customer extends User {
 		}
 	}
 
-	@Override
-	public int getLoginStatus() {
-		// TODO Auto-generated method stub
-		return loginStatus;
+	// teller look up
+	public Customer(String username) {
+		ParseQuery<ParseUser> query = ParseUser.getQuery();
+		query.whereEqualTo("username", username);
+		try {
+			customer = query.getFirst();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public boolean getSignUpStatus() {
+	public void setBalance(int code, double d) {
 		// TODO Auto-generated method stub
-		return signUpStatus;
+		switch (code) {
+		case 1:
+			accounts[0].setBalance(d);
+			break;
+		case 2:
+			accounts[1].setBalance(d);
+			break;
+		default:
+			break;
+		}
 	}
 
 	@Override
-	public void setBalance(double d) {
+	public double getBalance(int code) {
 		// TODO Auto-generated method stub
-
+		switch (code) {
+		case 1:
+			return accounts[0].getBalance();
+		case 2:
+			return accounts[1].getBalance();
+		default:
+			return 0.00;
+		}
 	}
 
 	@Override
-	public double getBalance() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void setAccountCombo(int code) {
+		accountCombo = code;
+	}
+
+	public void setNumOfAccounts(int code) {
+		accountCombo = code;
 	}
 
 	@Override
-	public int getNumOfAccounts() {
+	public int getAccountCombo() {
 		// TODO Auto-generated method stub
-		return 0;
+		return accountCombo;
 	}
 
 	@Override
@@ -96,21 +128,91 @@ public class Customer extends User {
 	}
 
 	@Override
-	public ArrayList<Account> getAccountList() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateAccountList() {
+		accounts[0] = null;
+		accounts[1] = null;
+
+		// just checking account
+		if (accountCombo == 1) {
+			accounts[0] = new CheckingAccount(checkingNumber);
+		}
+		// just saving account
+		else if (accountCombo == 2) {
+			accounts[1] = new SavingsAccount(savingNumber);
+		}
+		// both checking and saving
+		else if (accountCombo == 3) {
+			accounts[0] = new CheckingAccount(checkingNumber);
+			accounts[1] = new SavingsAccount(savingNumber);
+		}
 	}
 
 	@Override
-	public void closeAccount() {
+	public Account[] getAccountList() {
 		// TODO Auto-generated method stub
+		return accounts;
+	}
 
+	@Override
+	public boolean closeAccount(int code) {
+		// TODO Auto-generated method stub
+		switch (code) {
+		case 1:
+			return accounts[0].close();
+		case 2:
+			return accounts[1].close();
+		default:
+			return false;
+		}
 	}
 
 	@Override
 	public void updateUserInfo() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public boolean credit(int code, double d) {
+		// TODO Auto-generated method stub
+		switch (code) {
+		case 1:
+			if(accounts[0].getActive() == false)
+				return false;
+			accounts[0].setBalance(accounts[0].getBalance() + d);
+			return true;
+		case 2:
+			if(accounts[1].getActive() == false)
+				return false;
+			accounts[1].setBalance(accounts[1].getBalance() + d);
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	@Override
+	public boolean debit(int code, double d) {
+		// TODO Auto-generated method stub
+		switch (code) {
+		case 1:
+			if(accounts[0].getActive() == false)
+				return false;
+			if(accounts[0].getBalance() < d)
+				return false;
+			accounts[0].setBalance(accounts[0].getBalance() - d);
+			return true;
+		case 2:
+			if(accounts[1].getActive() == false)
+				return false;
+			if(accounts[1].getBalance() < d)
+				return false;
+			accounts[1].setBalance(accounts[1].getBalance() - d);
+			return true;
+		default:
+			return false;
+		}
+		
 	}
 
 }
