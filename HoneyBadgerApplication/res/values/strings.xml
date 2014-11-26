@@ -1,8 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">HoneyBadgerApplication</string>
+    <string name="app_name">HoneyBadgerApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Sign Up -->
+    <string name="login_button">Login</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="forgot_password_button">Forgot Password?</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="done_button">Done</string>
+    <string name="username_placeholder">Username</string>
+    <string name="password_placeholder">Password</string>
+    <string name="name_placeholder">Name</string>
+    <string name="birthday_placeholder">Birthday</string>
+    <string name="month_placeholder">MM</string>
+    <string name="day_placeholder">DD</string>
+    <string name="year_placeholder">YYYY</string>
+    <string name="address_placeholder">Address</string>
+    <string name="city_placeholder">City</string>
+    <string name="state_placeholder">CA</string>
+    <string name="zip_code_placeholder">Zip</string><string name="phone_placeholder">Phone</string>
+    <string name="email_placeholder">E-mail</string>
+    <string name="verify_password_placeholder">Verify Password</string>
+    <string name="profile_image_description">Profile Image</string>
+    <string name="add_account">Add Account</string>
+    <string name="log_out">Log Out</string>
+
+    <string-array name="state_names">
+        <item>AL</item>
+        <item>AK</item>
+        <item>AZ</item>
+        <item>CA</item>
+        <item>CO</item>
+        <item>CT</item>
+        <item>DE</item>
+        <item>DC</item>
+        <item>FL</item>
+        <item>GA</item>
+        <item>HI</item>
+        <item>ID</item>
+        <item>IL</item>
+        <item>IN</item>
+        <item>IA</item>
+        <item>KS</item>
+        <item>KY</item>
+        <item>LA</item>
+        <item>ME</item>
+        <item>MD</item>
+        <item>MA</item>
+        <item>MI</item>
+        <item>MN</item>
+        <item>MS</item>
+        <item>MO</item>
+        <item>MT</item>
+        <item>NE</item>
+        <item>NV</item>
+        <item>NH</item>
+        <item>NJ</item>
+        <item>NM</item>
+        <item>NY</item>
+        <item>NC</item>
+        <item>ND</item>
+        <item>OH</item>
+        <item>OK</item>
+        <item>OR</item>
+        <item>PA</item>
+        <item>RI</item>
+        <item>SC</item>
+        <item>SD</item>
+        <item>TN</item>
+        <item>TX</item>
+        <item>UT</item>
+        <item>VT</item>
+        <item>VA</item>
+        <item>WA</item>
+        <item>WV</item>
+        <item>WI</item>
+        <item>WY</item>
+    </string-array>
+
+    <!-- Create Account -->
+    <string name="amount_placeholder">Initial Amount Deposit</string>
+    <string name="confirm_button">Confirm</string>
+
+    <string-array name="account_types">
+        <item>Saving Account</item>
+        <item>Checking Account</item>
+    </string-array>
+
+    <!-- AccountInfo -->
+    <string name="type_placeholder">ACCOUNT TYPE</string>
+    <string name="account_number_placeholder">ACCOUNT NUMBER</string>
+    <string name="balance_placeholder">BALANCE</string>
+    <string name="credit_or_debit_button">Credit Or Debit</string>
+    <string name="account_tranfer_button">Transfer</string>
+    <string name="close_account_button">Close Account</string>
+
+    <!-- AccountTransfer -->
+    <string name="amount_to_transfer_placeholder">Amount To Transfer</string>
+    <string name="account_transfer_email_placeholder">Receiver\'s e-mail or phone</string>
+
+    <!-- CreditDebit -->
+    <string name="amount_hint">Amount</string>
+    <string name="account_num">Account Number</string>
+
+    <string-array name="cred_or_deb">
+        <item>Credit</item>
+        <item>Debit</item>
+    </string-array>
+
+    <!-- CloseAccount -->
+    <string name="title_close_account_label">Close Account</string>
+
+    <!-- Android -->
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_account_info">AccountInfo</string>
+    <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string name="title_activity_create_account">CreateAccount</string>
+    <string name="title_activity_credit_debit">CreditDebit</string>
+    <string name="title_activity_close_account">CloseAccount</string>
+    <string name="title_activity_account_transfer">AccountTransfer</string>
+    
 
 </resources>

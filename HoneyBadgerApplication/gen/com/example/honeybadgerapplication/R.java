@@ -16,6 +16,11 @@ public final class R {
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
     }
+    public static final class array {
+        public static final int account_types=0x7f0c0001;
+        public static final int cred_or_deb=0x7f0c0002;
+        public static final int state_names=0x7f0c0000;
+    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1632,7 +1637,9 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020030;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020031;
         public static final int abc_textfield_search_material=0x7f020032;
-        public static final int ic_launcher=0x7f020033;
+        public static final int bg1=0x7f020033;
+        public static final int bg2=0x7f020034;
+        public static final int ic_launcher=0x7f020035;
     }
     public static final class id {
         public static final int action_bar=0x7f090031;
@@ -1648,7 +1655,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f09003f;
+        public static final int action_settings=0x7f090044;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
@@ -1663,6 +1670,7 @@ containing a value of this type.
         public static final int end=0x7f09001c;
         public static final int expand_activities_button=0x7f090022;
         public static final int expanded_menu=0x7f090028;
+        public static final int forgotPassword=0x7f090042;
         public static final int home=0x7f090000;
         public static final int homeAsUp=0x7f09000e;
         public static final int icon=0x7f090026;
@@ -1670,10 +1678,12 @@ containing a value of this type.
         public static final int image=0x7f090023;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090025;
+        public static final int login=0x7f090041;
         public static final int middle=0x7f09001d;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
+        public static final int password=0x7f090040;
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09002b;
@@ -1691,12 +1701,14 @@ containing a value of this type.
         public static final int showCustom=0x7f090010;
         public static final int showHome=0x7f090011;
         public static final int showTitle=0x7f090012;
+        public static final int signUp=0x7f090043;
         public static final int split_action_bar=0x7f090004;
         public static final int submit_area=0x7f09003c;
         public static final int tabMode=0x7f09000c;
         public static final int title=0x7f090027;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
+        public static final int username=0x7f09003f;
         public static final int withText=0x7f090018;
         public static final int wrap_content=0x7f090009;
     }
@@ -1753,7 +1765,7 @@ containing a value of this type.
         public static final int support_simple_spinner_dropdown_item=0x7f030018;
     }
     public static final class menu {
-        public static final int main=0x7f0c0000;
+        public static final int main=0x7f0d0000;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1812,9 +1824,65 @@ containing a value of this type.
         /**  Content description for the Toolbar icon used to collapse an expanded action mode. [CHAR LIMIT=NONE] 
          */
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
+        public static final int account_num=0x7f0a0034;
+        public static final int account_number_placeholder=0x7f0a002c;
+        public static final int account_tranfer_button=0x7f0a002f;
+        public static final int account_transfer_email_placeholder=0x7f0a0032;
         public static final int action_settings=0x7f0a0012;
+        public static final int add_account=0x7f0a0027;
+        public static final int address_placeholder=0x7f0a001f;
+        /**  CreditDebit 
+         */
+        public static final int amount_hint=0x7f0a0033;
+        /**  Create Account 
+         */
+        public static final int amount_placeholder=0x7f0a0029;
+        /**  AccountTransfer 
+         */
+        public static final int amount_to_transfer_placeholder=0x7f0a0031;
         public static final int app_name=0x7f0a0010;
+        public static final int balance_placeholder=0x7f0a002d;
+        public static final int birthday_placeholder=0x7f0a001b;
+        public static final int cancel_button=0x7f0a0016;
+        public static final int city_placeholder=0x7f0a0020;
+        public static final int close_account_button=0x7f0a0030;
+        public static final int confirm_button=0x7f0a002a;
+        public static final int credit_or_debit_button=0x7f0a002e;
+        public static final int day_placeholder=0x7f0a001d;
+        public static final int done_button=0x7f0a0017;
+        public static final int email_placeholder=0x7f0a0024;
+        public static final int forgot_password_button=0x7f0a0015;
         public static final int hello_world=0x7f0a0011;
+        public static final int log_out=0x7f0a0028;
+        /**  Sign Up 
+         */
+        public static final int login_button=0x7f0a0013;
+        public static final int month_placeholder=0x7f0a001c;
+        public static final int name_placeholder=0x7f0a001a;
+        public static final int password_placeholder=0x7f0a0019;
+        public static final int phone_placeholder=0x7f0a0023;
+        public static final int profile_image_description=0x7f0a0026;
+        public static final int sign_up_button=0x7f0a0014;
+        public static final int state_placeholder=0x7f0a0021;
+        public static final int title_activity_account_info=0x7f0a0037;
+        public static final int title_activity_account_transfer=0x7f0a003c;
+        public static final int title_activity_close_account=0x7f0a003b;
+        public static final int title_activity_create_account=0x7f0a0039;
+        public static final int title_activity_credit_debit=0x7f0a003a;
+        public static final int title_activity_forgot_password=0x7f0a0038;
+        /**  Android 
+         */
+        public static final int title_activity_sign_up=0x7f0a0036;
+        /**  CloseAccount 
+         */
+        public static final int title_close_account_label=0x7f0a0035;
+        /**  AccountInfo 
+         */
+        public static final int type_placeholder=0x7f0a002b;
+        public static final int username_placeholder=0x7f0a0018;
+        public static final int verify_password_placeholder=0x7f0a0025;
+        public static final int year_placeholder=0x7f0a001e;
+        public static final int zip_code_placeholder=0x7f0a0022;
     }
     public static final class style {
         /** 
