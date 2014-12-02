@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg1"
+    android:background="@drawable/bg5"
     tools:context="com.example.honeybadgerapp.Login" >
     
     
@@ -20,7 +20,6 @@
         android:layout_alignLeft="@+id/password"
         android:layout_alignParentTop="true"
         android:layout_marginTop="163dp"
-        android:background="@android:color/white"
         android:hint="@string/username_placeholder"
         android:ems="10" />
 
@@ -33,22 +32,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
         android:ems="10"
-        android:hint="@string/password_placeholder"
-                android:background="@android:color/white"
-        
+        android:hint="@string/password_placeholder"   
         android:inputType="textPassword" />
-
-   
-
-    <Button
-        android:id="@+id/login"
-        android:layout_width="fill_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="@string/login_button" />
 
     <Button
         android:id="@+id/forgotPassword"
@@ -59,13 +44,31 @@
         android:layout_marginRight="16dp"
         android:text="@string/forgot_password_button" />
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/username"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/lg1" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/signUp"
+        android:layout_alignLeft="@+id/password"
+        android:layout_weight="1"
+        android:background="@drawable/login" />
+
     <Button
         android:id="@+id/signUp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/forgotPassword"
         android:layout_alignLeft="@+id/login"
-        android:layout_below="@+id/login"
+        android:layout_marginBottom="22dp"
         android:layout_weight="1"
-        android:text="@string/sign_up_button" />
+        android:background="@drawable/signup" />
 
 </RelativeLayout>
