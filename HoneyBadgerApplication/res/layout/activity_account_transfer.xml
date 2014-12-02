@@ -6,11 +6,77 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.honeybadgerapplication.AccountTransfer" >
+        android:background="@drawable/bg5"
+    
+    tools:context="com.example.honeybadgerapp.AccountTransfer" >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/amountToTransfer"
+        android:layout_alignLeft="@+id/amountToTransfer"
+        android:layout_alignRight="@+id/confirmButton"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <Spinner
+            android:id="@+id/transferFromSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/transferToSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/amountToTransfer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignLeft="@+id/confirmButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/confirmButton"
+        android:layout_marginBottom="190dp"
+        android:ems="10"
+        android:hint="@string/amount_to_transfer_placeholder"
+        android:inputType="numberDecimal" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/accountEmailToTransfer"
+        android:layout_marginTop="5dp"
+        
+        android:background="@drawable/confirmbut" />
+
+    <EditText
+        android:id="@+id/accountEmailToTransfer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/amountToTransfer"
+        android:layout_alignRight="@+id/confirmButton"
+        android:layout_alignTop="@+id/amountToTransfer"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="@string/account_transfer_email_placeholder"
+        android:inputType="textEmailAddress" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/confirmButton"
+        android:layout_alignRight="@+id/confirmButton"
+        android:layout_below="@+id/confirmButton"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/cancelbut" />
 
 </RelativeLayout>
