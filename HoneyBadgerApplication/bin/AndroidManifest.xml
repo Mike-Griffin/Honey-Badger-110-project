@@ -22,6 +22,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SignUp"
+            android:label="@string/title_activity_sign_up" >
+        </activity>
+        <activity
+            android:name=".UserHomePage"
+            android:label="@string/title_activity_user_home_page" >
+        </activity>
+        <activity
+            android:name=".TellerHomePage"
+            android:label="@string/title_activity_teller_home_page" >
+        </activity>
+        <activity
+            android:name=".AccountTransfer"
+            android:label="@string/title_activity_account_transfer" >
+        </activity>
+        <activity
+            android:name=".CloseAccount"
+            android:label="@string/title_activity_close_account" >
+        </activity>
     </application>
 
 </manifest>
