@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/amount"
         android:layout_marginTop="119dp"
-        android:background="@drawable/blank3"
+        android:background="@drawable/button_background_selector"
         android:text="@string/confirm_button"
         android:textColor="#FFFFFF" />
 
@@ -52,7 +52,7 @@
         android:layout_alignLeft="@+id/confirmButton"
         android:layout_below="@+id/confirmButton"
         android:layout_marginTop="14dp"
-        android:background="@drawable/blank3"
+        android:background="@drawable/button_background_selector"
         android:text="@string/cancel_button"
         android:textColor="#FFFFFF" />
 

@@ -55,7 +55,7 @@
         android:layout_below="@+id/accountEmailToTransfer"
         android:layout_marginTop="5dp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/blank3"
+        android:background="@drawable/button_background_selector"
         android:text="@string/confirm_button" />
         
 
@@ -80,7 +80,7 @@
         android:layout_below="@+id/confirmButton"
         android:layout_marginTop="5dp"
        android:textColor="#FFFFFF"
-        android:background="@drawable/blank3"        
+        android:background="@drawable/button_background_selector"        
         android:text="@string/cancel_button"
         />
 

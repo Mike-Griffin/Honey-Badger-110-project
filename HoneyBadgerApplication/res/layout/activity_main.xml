@@ -50,10 +50,9 @@
         android:layout_above="@+id/forgotPassword"
         android:layout_alignLeft="@+id/login"
         android:layout_marginBottom="61dp"
-        android:layout_weight="1"
         android:text="@string/sign_up_button"
        android:textColor="#FFFFFF"
-        android:background="@drawable/blank3"    />
+        android:background="@drawable/button_background_selector"    />
 
     <Button
         android:id="@+id/login"
@@ -61,10 +60,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/signUp"
         android:layout_alignLeft="@+id/password"
-        android:layout_weight="1"
         android:text="@string/login_button"
        android:textColor="#FFFFFF"
-        android:background="@drawable/blank3"        
+        android:background="@drawable/button_background_selector"        
         
         />
 
@@ -75,7 +73,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/signUp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/blank3"
+        android:background="@drawable/button_background_selector"
         android:text="@string/forgot_password_button"
         android:textColor="#FFFFFF" />
 

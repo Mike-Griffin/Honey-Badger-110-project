@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/conf_cred"
-        android:background="@drawable/blank3"
+        android:background="@drawable/button_background_selector"
         android:text="@string/cancel_button"
         android:textColor="#FFFFFF" 
                 android:layout_marginTop="10dp"
@@ -56,7 +56,7 @@
         android:layout_alignLeft="@+id/cancel_cred"
         android:layout_below="@+id/account_num"
         android:layout_marginTop="22dp"
-        android:background="@drawable/blank3"
+        android:background="@drawable/button_background_selector"
         android:text="@string/confirm_button"
         android:textColor="#FFFFFF" />
 

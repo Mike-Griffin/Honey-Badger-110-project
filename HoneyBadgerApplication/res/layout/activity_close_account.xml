@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/canelCloseAccount"
         android:layout_marginBottom="82dp"
-        android:background="@drawable/blank3"
+        android:background="@drawable/button_background_selector"
         android:text="@string/title_close_account_label"
         android:textColor="#FFFFFF" />
 
@@ -30,7 +30,7 @@
         android:layout_marginBottom="30dp"
         android:text="@string/cancel_button" 
                android:textColor="#FFFFFF"
-        android:background="@drawable/blank3"
+        android:background="@drawable/button_background_selector"
         />
 
     <Spinner
