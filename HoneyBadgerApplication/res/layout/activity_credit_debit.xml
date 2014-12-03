@@ -6,11 +6,58 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.honeybadgerapplication.CreditDebit" >
+    android:background="@drawable/bg5"
+    
+    tools:context="com.example.honeybadgerapp.CreditDebit" >
 
-    <TextView
+    <EditText
+        android:id="@+id/amount_cred"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:ems="10"
+        android:hint="@string/amount_hint"
+        android:inputType="number" />
+
+    <Spinner
+        android:id="@+id/account_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/conf_cred"
+        android:layout_below="@+id/action"
+        android:layout_marginTop="43dp" />
+
+    <Spinner
+        android:id="@+id/action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/cred_or_deb"
+        android:layout_alignLeft="@+id/account_num"
+        android:layout_below="@+id/amount_cred"
+        android:layout_marginTop="38dp" />
+
+    <Button
+        android:id="@+id/cancel_cred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conf_cred"
+        android:background="@drawable/blank3"
+        android:text="@string/cancel_button"
+        android:textColor="#FFFFFF" 
+                android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/conf_cred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cancel_cred"
+        android:layout_below="@+id/account_num"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/blank3"
+        android:text="@string/confirm_button"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

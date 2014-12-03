@@ -6,11 +6,50 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.honeybadgerapplication.CloseAccount" >
+    android:background="@drawable/bg5"
+    
+    tools:context="com.example.honeybadgerapp.CloseAccount" >
 
-    <TextView
+    <Button
+        android:id="@+id/closeAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/canelCloseAccount"
+        android:layout_marginBottom="82dp"
+        android:background="@drawable/blank3"
+        android:text="@string/title_close_account_label"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/canelCloseAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="@string/cancel_button" 
+               android:textColor="#FFFFFF"
+        android:background="@drawable/blank3"
+        />
+
+    <Spinner
+        android:id="@+id/accountNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/closeAccount"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="98dp"
+        android:layout_marginRight="30dp" />
+    
+    <TextView
+        android:id="@+id/labelCloseAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/accountNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp"
+        android:text="@string/title_close_account_label"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

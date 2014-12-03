@@ -54,8 +54,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/accountEmailToTransfer"
         android:layout_marginTop="5dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/blank3"
+        android:text="@string/confirm_button" />
         
-        android:background="@drawable/confirmbut" />
 
     <EditText
         android:id="@+id/accountEmailToTransfer"
@@ -77,6 +79,9 @@
         android:layout_alignRight="@+id/confirmButton"
         android:layout_below="@+id/confirmButton"
         android:layout_marginTop="5dp"
-        android:background="@drawable/cancelbut" />
+       android:textColor="#FFFFFF"
+        android:background="@drawable/blank3"        
+        android:text="@string/cancel_button"
+        />
 
 </RelativeLayout>

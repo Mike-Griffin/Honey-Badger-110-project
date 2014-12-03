@@ -6,11 +6,54 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.honeybadgerapplication.CreateAccount" >
+    android:background="@drawable/bg5"
+    
+    tools:context="com.example.honeybadgerapp.CreateAccount" >
 
-    <TextView
+    <Spinner
+        android:id="@+id/account_types"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
+
+    <EditText
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/account_types"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:hint="@string/amount_placeholder"
+        android:inputType="numberDecimal"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/amount"
+        android:layout_marginTop="119dp"
+        android:background="@drawable/blank3"
+        android:text="@string/confirm_button"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/cancelButtonCreateAccountPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/confirmButton"
+        android:layout_below="@+id/confirmButton"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/blank3"
+        android:text="@string/cancel_button"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
