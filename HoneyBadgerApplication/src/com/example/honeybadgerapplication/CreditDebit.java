@@ -1,9 +1,12 @@
 package com.example.honeybadgerapplication;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class CreditDebit extends ActionBarActivity {
 
@@ -11,6 +14,29 @@ public class CreditDebit extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_credit_debit);
+		
+		final Intent intentUserHome = new Intent(CreditDebit.this, UserHomePage.class);
+		
+		final Button confirmButton = (Button) findViewById(R.id.conf_cred);
+		final Button cancelButton = (Button) findViewById(R.id.cancel_cred);
+		
+		confirmButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(intentUserHome);
+			}
+		});
+		
+		cancelButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(intentUserHome);
+			}
+		});
 	}
 
 	@Override

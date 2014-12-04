@@ -1,5 +1,8 @@
 package com.example.honeybadgerapi;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
@@ -19,8 +22,25 @@ public class Customer extends User {
 	private int checkingNumber;
 	private int savingNumber;
 
+	public Customer(){
+		
+	}
+	
+	public Customer(Parcel in){
+		this.accountCombo = in.readInt();
+		this.accounts = (Account[]) in.readArray(Account.class.getClassLoader());
+		this.checkingNumber = in.readInt();
+		this.savingNumber = in.readInt();
+		
+		this.signUpStatus = (Boolean) in.readValue(null);
+		this.loginStatus = in.readInt();
+		
+		customer = ParseUser.getCurrentUser();
+		
+	}
+	
 	// login
-	public Customer(String username, String password) {
+	/*public Customer(String username, String password) {
 		try {
 			customer = ParseUser.logIn(username, password);
 		} catch (ParseException e) {
@@ -34,7 +54,7 @@ public class Customer extends User {
 			checkingNumber = customer.getInt("checkingAccount");
 			savingNumber = customer.getInt("savingAccount");
 		}
-	}
+	}*/
 
 	// sign up
 	public Customer(String name, String username, String password,
@@ -214,5 +234,39 @@ public class Customer extends User {
 		}
 		
 	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		dest.writeInt(accountCombo);
+		dest.writeArray(accounts);
+		dest.writeInt(checkingNumber);
+		dest.writeInt(savingNumber);
+		
+		dest.writeValue(signUpStatus);
+		dest.writeInt(loginStatus);
+	}
+
+	static final Parcelable.Creator<Customer> CREATOR = new Parcelable.Creator<Customer>(){
+
+		@Override
+		public Customer createFromParcel(Parcel source) {
+			// TODO Auto-generated method stub
+			return new Customer(source);
+		}
+
+		@Override
+		public Customer[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new Customer[size];
+		}
+		
+	};
 
 }

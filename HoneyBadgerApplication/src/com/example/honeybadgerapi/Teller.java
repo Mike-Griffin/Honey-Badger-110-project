@@ -2,6 +2,8 @@ package com.example.honeybadgerapi;
 
 import java.util.ArrayList;
 
+import android.os.Parcel;
+
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -11,6 +13,10 @@ public class Teller extends User {
 	private Customer activeCustomer;
 	private ParseObject teller;
 
+	public Teller(){
+		
+	}
+	
 	public Teller(String username, String password) {
 		try {
 			teller = ParseUser.logIn(username, password);
@@ -104,6 +110,18 @@ public class Teller extends User {
 
 	public Customer getCustomer() {
 		return activeCustomer;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

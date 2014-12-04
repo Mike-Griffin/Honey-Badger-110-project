@@ -1,8 +1,11 @@
 package com.example.honeybadgerapi;
 
+
 import java.util.ArrayList;
 
-public abstract class User {
+import android.os.Parcelable;
+
+public abstract class User implements Parcelable{
 	
 	protected int loginStatus = 0; // 0 fails, 1 success
 	protected boolean signUpStatus = true;

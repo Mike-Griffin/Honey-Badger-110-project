@@ -15,14 +15,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/canelCloseAccount"
+        android:layout_alignRight="@+id/cancelCloseAccount"
         android:layout_marginBottom="82dp"
         android:background="@drawable/button_background_selector"
         android:text="@string/title_close_account_label"
         android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/canelCloseAccount"
+        android:id="@+id/cancelCloseAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
