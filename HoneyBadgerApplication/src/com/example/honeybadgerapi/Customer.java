@@ -30,10 +30,18 @@ public class Customer extends User {
 	Customer(Parcel in){
 		super(in);
 		this.accountCombo = in.readInt();
-		this.accounts = (Account[]) in.readArray(Account.class.getClassLoader());
+		Log.d("combo", Integer.toString(accountCombo));
+		// this.accounts = (Account[]) in.readParcelableArray(Account.class.getClassLoader());
+		this.accounts[0] = (Account) in.readParcelable(Account.class.getClassLoader());
+		if(accounts[0] == null)
+			Log.d("ajosdiajsd", "it is null");
+		this.accounts[1] = (Account) in.readParcelable(Account.class.getClassLoader());
 		this.customerID = in.readString();
+		Log.d("customerID", customerID);
 		this.checkingNumber = in.readInt();
+		Log.d("checking", Integer.toString(checkingNumber));
 		this.savingNumber = in.readInt();
+		Log.d("saving", Integer.toString(savingNumber));
 	}
 	
 	// login
@@ -51,8 +59,10 @@ public class Customer extends User {
 
 		if (loginStatus == 1) {
 			customerID = customer.getObjectId();
+			accountCombo = customer.getInt("accountCombo");
 			checkingNumber = customer.getInt("checkingAccount");
 			savingNumber = customer.getInt("savingAccount");
+			updateAccountList();
 		}
 	}
 
@@ -233,7 +243,6 @@ public class Customer extends User {
 		default:
 			return false;
 		}
-		
 	}
 
 	@Override
@@ -247,13 +256,15 @@ public class Customer extends User {
 		// TODO Auto-generated method stub
 		super.writeToParcel(dest, flags);
 		dest.writeInt(accountCombo);
-		dest.writeArray(accounts);
+		dest.writeParcelable(accounts[0], flags);
+		dest.writeParcelable(accounts[1], flags);
+		//dest.writeParcelableArray(accounts, flags);
 		dest.writeString(customerID);
 		dest.writeInt(checkingNumber);
 		dest.writeInt(savingNumber);
 	}
 
-	public static final Parcelable.Creator<Customer> CREATOR = new Parcelable.Creator<Customer>(){
+	public static final Parcelable.Creator<Customer> CREATOR = new Parcelable.Creator<Customer>() {
 
 		@Override
 		public Customer createFromParcel(Parcel source) {

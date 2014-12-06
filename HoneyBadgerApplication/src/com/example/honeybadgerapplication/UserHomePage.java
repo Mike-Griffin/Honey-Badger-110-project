@@ -58,8 +58,8 @@ public class UserHomePage extends ActionBarActivity {
 		if(userBundle != null)
 			customer = userBundle.getParcelable("user");
 		
-		customer.updateAccountList();
-		Log.d("hi", "hi");
+		// customer.updateAccountList();
+		// Log.d("hi", "hi");
 		Log.d("username", Integer.toString((int) customer.getBalance(1)));
 			
 	}
