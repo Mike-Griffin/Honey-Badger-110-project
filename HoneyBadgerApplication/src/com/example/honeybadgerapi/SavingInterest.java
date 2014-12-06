@@ -40,7 +40,7 @@ public class SavingInterest implements InterestCalculator, Parcelable {
 		
 	}
 
-	static final Parcelable.Creator<SavingInterest> CREATOR = 
+	public static final Parcelable.Creator<SavingInterest> CREATOR = 
 			new Parcelable.Creator<SavingInterest>(){
 
 		@Override

@@ -3,12 +3,26 @@ package com.example.honeybadgerapi;
 
 import java.util.ArrayList;
 
+import android.os.Parcel;
 import android.os.Parcelable;
 
 public abstract class User implements Parcelable{
 	
 	protected int loginStatus = 0; // 0 fails, 1 success
 	protected boolean signUpStatus = true;
+ 
+	public User() {}
+	
+    public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(loginStatus);
+		dest.writeValue(signUpStatus);;
+    } 
+ 
+    protected User(Parcel in) {
+		this.loginStatus = in.readInt();
+		this.signUpStatus = (Boolean) in.readValue(null);
+    } 
+	
 	
 	public int getLoginStatus() {
 		return loginStatus;

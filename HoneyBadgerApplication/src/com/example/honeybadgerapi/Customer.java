@@ -2,6 +2,7 @@ package com.example.honeybadgerapi;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
@@ -18,7 +19,7 @@ public class Customer extends User {
 	private int accountCombo;
 
 	private Account[] accounts = new Account[2];
-	private ParseUser customer;
+	private String customerID;
 	private int checkingNumber;
 	private int savingNumber;
 
@@ -27,20 +28,18 @@ public class Customer extends User {
 	}
 	
 	Customer(Parcel in){
+		super(in);
 		this.accountCombo = in.readInt();
 		this.accounts = (Account[]) in.readArray(Account.class.getClassLoader());
+		this.customerID = in.readString();
 		this.checkingNumber = in.readInt();
 		this.savingNumber = in.readInt();
-		
-		this.signUpStatus = (Boolean) in.readValue(null);
-		this.loginStatus = in.readInt();
-		
-		customer = ParseUser.getCurrentUser();
-		
 	}
 	
 	// login
-	/*public Customer(String username, String password) {
+	public Customer(String username, String password) {
+		ParseUser customer = null;
+		// Log.d("asdasd", password);
 		try {
 			customer = ParseUser.logIn(username, password);
 		} catch (ParseException e) {
@@ -51,16 +50,17 @@ public class Customer extends User {
 		}
 
 		if (loginStatus == 1) {
+			customerID = customer.getObjectId();
 			checkingNumber = customer.getInt("checkingAccount");
 			savingNumber = customer.getInt("savingAccount");
 		}
-	}*/
+	}
 
 	// sign up
 	public Customer(String name, String username, String password,
 			String email, String birthday, String address, String city,
 			String state, String phoneNumber, int zip) {
-		customer = new ParseUser();
+		ParseUser customer = new ParseUser();
 		customer.setUsername(username);
 		customer.setPassword(password);
 		customer.setEmail(email);
@@ -82,6 +82,7 @@ public class Customer extends User {
 
 	// teller look up
 	public Customer(String username) {
+		ParseUser customer = null;
 		ParseQuery<ParseUser> query = ParseUser.getQuery();
 		query.whereEqualTo("username", username);
 		try {
@@ -242,18 +243,17 @@ public class Customer extends User {
 	}
 
 	@Override
-	public void writeToParcel(Parcel dest, int flags) {
+	public void writeToParcel(Parcel dest, int flags) {		
 		// TODO Auto-generated method stub
+		super.writeToParcel(dest, flags);
 		dest.writeInt(accountCombo);
 		dest.writeArray(accounts);
+		dest.writeString(customerID);
 		dest.writeInt(checkingNumber);
 		dest.writeInt(savingNumber);
-		
-		dest.writeValue(signUpStatus);
-		dest.writeInt(loginStatus);
 	}
 
-	static final Parcelable.Creator<Customer> CREATOR = new Parcelable.Creator<Customer>(){
+	public static final Parcelable.Creator<Customer> CREATOR = new Parcelable.Creator<Customer>(){
 
 		@Override
 		public Customer createFromParcel(Parcel source) {
@@ -268,5 +268,4 @@ public class Customer extends User {
 		}
 		
 	};
-
 }

@@ -53,14 +53,14 @@ public class UserHomePage extends ActionBarActivity {
 			}
 		});
 		
-		/*Bundle userBundle = this.getIntent().getExtras();
+		Bundle userBundle = this.getIntent().getExtras();
 		User customer = null;
 		if(userBundle != null)
 			customer = userBundle.getParcelable("user");
 		
-		customer.updateAccountList();*/
+		customer.updateAccountList();
 		Log.d("hi", "hi");
-		//Log.d("username", Integer.toString((int) customer.getBalance(1)));
+		Log.d("username", Integer.toString((int) customer.getBalance(1)));
 			
 	}
 

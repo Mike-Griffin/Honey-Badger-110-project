@@ -19,19 +19,10 @@ public class SavingsAccount extends Account {
 		this.accountNumber = in.readInt();
 		this.lastUpdated = in.readInt();
 		this.active = (Boolean) in.readValue(null);
-		
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
-		query.whereEqualTo("accountNumber", accountNumber);
-		query.whereEqualTo("type", "Saving Account");
-		try {
-			account = query.getFirst();
-		} catch(ParseException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public SavingsAccount(int accountNumber) {
-		
+		ParseObject account = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		query.whereEqualTo("accountNumber", accountNumber);
 		query.whereEqualTo("type", "Saving Account");
@@ -74,7 +65,7 @@ public class SavingsAccount extends Account {
 	}
 
 	
-	static final Parcelable.Creator<SavingsAccount> CREATOR = 
+	public static final Parcelable.Creator<SavingsAccount> CREATOR = 
 			new Parcelable.Creator<SavingsAccount>(){
 
 		@Override

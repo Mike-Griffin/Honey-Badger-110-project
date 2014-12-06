@@ -3,6 +3,8 @@ package com.example.honeybadgerapi;
 import android.os.Parcelable;
 
 import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import com.parse.ParseObject;
 
@@ -16,15 +18,17 @@ public abstract class Account implements Parcelable{
 	protected int lastUpdated;
 	protected boolean active;
 	
-	protected ParseObject account;
+
 
 	public double getBalance() {
 		return balance;
 	}
 	
 	public void setStatus(boolean status) {
+		ParseObject account = query();
 		if(account != null) {
 			account.put("active", status);
+			active = status;
 			try {
 				account.save();
 			} catch(ParseException e) {
@@ -34,13 +38,11 @@ public abstract class Account implements Parcelable{
 	}
 	
 	public boolean getStatus() {
-		if(account != null)
-			return account.getBoolean("active");
-		else
-			return false;
+		return active;
 	}
 
 	public void setBalance(double newBal) {
+		ParseObject account = query();
 		balance = newBal;
 		account.put("balance", newBal);
 		try {
@@ -74,6 +76,7 @@ public abstract class Account implements Parcelable{
 	}
 	
 	public boolean close() {
+		ParseObject account = query();
 		if(account.getInt("balance") != 0.00)
 			return false;
 		account.put("active", false);
@@ -90,5 +93,19 @@ public abstract class Account implements Parcelable{
 	
 	public boolean getActive() {
 		return active;
+	}
+	
+	public ParseObject query() {
+		ParseObject account = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
+		query.whereEqualTo("accountNumber", accountNumber);
+		try {
+			account = query.getFirst();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return account;
 	}
 }

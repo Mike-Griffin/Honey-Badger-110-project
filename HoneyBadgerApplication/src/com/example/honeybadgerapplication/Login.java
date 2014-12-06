@@ -66,7 +66,7 @@ public class Login extends Activity {
 		loginButton.setOnClickListener(new View.OnClickListener(){		
 			public void onClick(View v){
 				username = username_edit_text.getText().toString().trim();
-				//password = password_edit_text.getText().toString().trim();
+				password = password_edit_text.getText().toString().trim();
 				
 				int userType = 0;
 				ParseObject parseUser = null;
@@ -74,7 +74,7 @@ public class Login extends Activity {
 				
 				ParseQuery<ParseUser> query = ParseUser.getQuery();
 				query.whereEqualTo("username", username);
-				query.whereEqualTo("password", password);
+				// query.whereEqualTo("password", password);
 				UserFactory factory = new UserFactory();
 				
 				try {
@@ -90,28 +90,32 @@ public class Login extends Activity {
 				
 				//Log.d("parse user address", parseUser.getString("address"));
 				
-				if(parseUser == null){
+				/*if(parseUser == null)
 					Toast.makeText(
 							getApplicationContext(),
 							"No such user exist, please signup", Toast.LENGTH_SHORT).show();
 				}
-				else{
+				else
+				{*/
+				if(parseUser != null) {
 				userType = parseUser.getInt("userType");
 				
 				user = factory.makeUser(userType, username, password);
 				
 				Intent nextPage = new Intent();
-				Bundle userBundle = new Bundle();
-				userBundle.putParcelable("user", user);
-				nextPage.putExtras(userBundle);
+				// Bundle userBundle = new Bundle();
+				// userBundle.putParcelable("user", user);
+				
 				
 				if(userType == 1)
 					nextPage.setClass(Login.this, UserHomePage.class);
 				else if(userType == 2)
 					nextPage.setClass(Login.this, TellerHomePage.class);
 				
+				nextPage.putExtra("user", user);
 				startActivity(nextPage);
 				}
+				//}
 				
 			}
 			
