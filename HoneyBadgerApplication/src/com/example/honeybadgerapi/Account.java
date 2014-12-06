@@ -17,8 +17,16 @@ public abstract class Account implements Parcelable{
 	protected int accountNumber;
 	protected int lastUpdated;
 	protected boolean active;
+	protected String accountType;
 	
 
+	public int getAccountNumber(){
+		return accountNumber;
+	}
+	
+	public String getAccountType(){
+		return accountType;
+	}
 
 	public double getBalance() {
 		return balance;

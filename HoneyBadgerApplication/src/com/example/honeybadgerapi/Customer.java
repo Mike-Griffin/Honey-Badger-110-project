@@ -18,7 +18,7 @@ public class Customer extends User {
 
 	private int accountCombo;
 
-	private Account[] accounts = new Account[2];
+	private Account[] accounts = new Account[2];  // [0] is checking, [1] is saving
 	private String customerID;
 	private int checkingNumber;
 	private int savingNumber;

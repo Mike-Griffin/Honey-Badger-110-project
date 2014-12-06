@@ -18,6 +18,7 @@ public class CheckingAccount extends Account {
 		this.accountNumber = in.readInt();
 		this.lastUpdated = in.readInt();
 		this.active = (Boolean) in.readValue(null);
+		this.accountType = in.readString();
 	}
 	
 	public CheckingAccount(int accountNumber) {
@@ -35,6 +36,7 @@ public class CheckingAccount extends Account {
 		balance = account.getInt("balance");
 		active = account.getBoolean("active");
 		calculator = new CheckingInterest();
+		accountType = "Checking Account";
 	}
 
 	@Override
@@ -59,6 +61,7 @@ public class CheckingAccount extends Account {
 		dest.writeInt(accountNumber);
 		dest.writeInt(lastUpdated);
 		dest.writeValue(active);
+		dest.writeString(accountType);
 	}
 
 	
