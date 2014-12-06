@@ -1,7 +1,18 @@
 package com.example.honeybadgerapi;
 
-public class SavingInterest implements InterestCalculator {
+import android.os.Parcel;
+import android.os.Parcelable;
 
+public class SavingInterest implements InterestCalculator, Parcelable {
+
+	SavingInterest(Parcel in){
+		
+	}
+	
+	public SavingInterest(){
+		
+	}
+	
 	@Override
 	public double calculate(double dailyAverageBalance) {
 		// TODO Auto-generated method stub
@@ -17,4 +28,33 @@ public class SavingInterest implements InterestCalculator {
 			return 0.0;
 	}
 
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	static final Parcelable.Creator<SavingInterest> CREATOR = 
+			new Parcelable.Creator<SavingInterest>(){
+
+		@Override
+		public SavingInterest createFromParcel(Parcel source) {
+			// TODO Auto-generated method stub
+			return new SavingInterest(source);
+		}
+
+		@Override
+		public SavingInterest[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new SavingInterest[size];
+		}
+		
+	};
+	
 }

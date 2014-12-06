@@ -1,6 +1,6 @@
 package com.example.honeybadgerapi;
 
-public interface InterestCalculator {
+public interface InterestCalculator{
 
 	final double UPPER = 3000.00;
 	final double MID = 2000.00;

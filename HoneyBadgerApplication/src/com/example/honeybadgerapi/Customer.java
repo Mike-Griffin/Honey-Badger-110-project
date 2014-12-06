@@ -26,7 +26,7 @@ public class Customer extends User {
 		
 	}
 	
-	public Customer(Parcel in){
+	Customer(Parcel in){
 		this.accountCombo = in.readInt();
 		this.accounts = (Account[]) in.readArray(Account.class.getClassLoader());
 		this.checkingNumber = in.readInt();

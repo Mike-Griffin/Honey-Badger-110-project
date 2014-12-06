@@ -1,10 +1,12 @@
 package com.example.honeybadgerapi;
 
+import android.os.Parcelable;
+
 import com.parse.ParseException;
 
 import com.parse.ParseObject;
 
-public abstract class Account {
+public abstract class Account implements Parcelable{
 
 	protected InterestCalculator calculator;
 	protected double interestRate;
