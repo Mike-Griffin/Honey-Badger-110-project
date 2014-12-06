@@ -21,7 +21,8 @@
     <string name="address_placeholder">Address</string>
     <string name="city_placeholder">City</string>
     <string name="state_placeholder">CA</string>
-    <string name="zip_code_placeholder">Zip</string><string name="phone_placeholder">Phone</string>
+    <string name="zip_code_placeholder">Zip</string>
+    <string name="phone_placeholder">Phone</string>
     <string name="email_placeholder">E-mail</string>
     <string name="verify_password_placeholder">Verify Password</string>
     <string name="profile_image_description">Profile Image</string>
@@ -124,6 +125,6 @@
     <string name="title_activity_account_transfer">AccountTransfer</string>
     <string name="title_activity_user_home_page">User Home Page</string>
     <string name="title_activity_teller_home_page">Teller Home Page</string>
-    
+    <string name="title_activity_reset_password">ResetPassword</string>
 
 </resources>

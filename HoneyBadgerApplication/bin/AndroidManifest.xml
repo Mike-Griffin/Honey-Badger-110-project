@@ -7,7 +7,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -39,7 +39,7 @@
         </activity>
         <activity
             android:name=".CreditDebit"
-            android:label="@string/title_activity_credit_debit">
+            android:label="@string/title_activity_credit_debit" >
         </activity>
         <activity
             android:name=".AccountTransfer"
@@ -48,6 +48,10 @@
         <activity
             android:name=".CloseAccount"
             android:label="@string/title_activity_close_account" >
+        </activity>
+        <activity
+            android:name=".ResetPassword"
+            android:label="@string/title_activity_reset_password" >
         </activity>
     </application>
 
