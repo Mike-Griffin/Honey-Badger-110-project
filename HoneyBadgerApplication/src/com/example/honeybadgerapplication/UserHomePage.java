@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.example.honeybadgerapi.Account;
 import com.example.honeybadgerapi.User;
+
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserHomePage extends ActionBarActivity {
 
@@ -146,9 +149,23 @@ public class UserHomePage extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_logout) {
+			ParseUser.logOut();
+			if (ParseUser.getCurrentUser() == null) {
+				Toast.makeText(getApplicationContext(), "successfully logout!",
+						Toast.LENGTH_SHORT).show();
+				final Intent intentLogin = new Intent(UserHomePage.this,
+						Login.class);
+				startActivity(intentLogin);
+			}
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public boolean onMenuOpened(int featureId, Menu menu){
+		
+		 return super.onMenuOpened(featureId, menu);
 	}
 }

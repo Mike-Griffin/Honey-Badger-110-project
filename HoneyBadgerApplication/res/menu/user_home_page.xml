@@ -4,8 +4,9 @@
     tools:context="com.example.honeybadgerapplication.UserHomePage" >
 
  
-	<item android:id="@+id/action_cancel"
+ 	<item android:id="@+id/action_logout"
           android:icon="@drawable/ic_action_cancel"
-          android:title="@string/log_out"
-          android:showAsAction="ifRoom|withText"/>
+          android:title="Logout"
+          app:showAsAction="always"  />
+
 </menu>
