@@ -122,9 +122,8 @@
     <string name="title_activity_create_account">CreateAccount</string>
     <string name="title_activity_credit_debit">CreditDebit</string>
     <string name="title_activity_close_account">CloseAccount</string>
-    <string name="title_activity_account_transfer">AccountTransfer</string>
-    <string name="title_activity_user_home_page">User Home Page</string>
+    <string name="title_activity_account_transfer">AccountTransfer</string>    
     <string name="title_activity_teller_home_page">Teller Home Page</string>
     <string name="title_activity_reset_password">ResetPassword</string>
-
-</resources>
+    <string name="title_activity_user_home_page">User Home Page</string>
+    </resources>
