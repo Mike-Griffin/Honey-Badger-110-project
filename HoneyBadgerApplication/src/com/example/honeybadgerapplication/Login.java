@@ -1,5 +1,8 @@
 package com.example.honeybadgerapplication;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import com.example.honeybadgerapi.UserFactory;
 import com.example.honeybadgerapi.User;
 
@@ -32,6 +35,7 @@ import android.widget.Toast;
 
 public class Login extends Activity {
 
+	private int numberOfAttempts = 0;
 	private String username;
 	private String password;
 	private EditText username_edit_text;
@@ -90,6 +94,7 @@ public class Login extends Activity {
 				try {
 					parseUser = query.getFirst();
 				} catch (ParseException e) {
+				
 					// TODO Auto-generated catch block
 					Toast.makeText(
 						getApplicationContext(),
@@ -113,9 +118,12 @@ public class Login extends Activity {
 				user = factory.makeUser(userType, username, password);
 				
 				if(user.getLoginStatus() == 0) {
+					numberOfAttempts++;
+					
 					Toast.makeText(
 							getApplicationContext(),
 							"Login Failed!!", Toast.LENGTH_SHORT).show();
+					
 					return;
 				}
 				

@@ -33,7 +33,7 @@ public class Customer extends User {
 		// in.readParcelableArray(Account.class.getClassLoader());
 		this.accounts[0] = (Account) in.readParcelable(Account.class
 				.getClassLoader());
-		if (accounts[0] == null)
+		// if (accounts[0] == null)
 		//	Log.d("ajosdiajsd", "it is null");
 		this.accounts[1] = (Account) in.readParcelable(Account.class
 				.getClassLoader());
@@ -75,6 +75,7 @@ public class Customer extends User {
 		try {
 			customer = ParseUser.logIn(username, password);
 		} catch (ParseException e) {
+			Log.d("Login", "fail");
 		}
 
 		if (customer != null) {
@@ -147,7 +148,22 @@ public class Customer extends User {
 
 	@Override
 	public void setAccountCombo(int code) {
+		ParseUser customer = null;
+		ParseQuery<ParseUser> query = ParseUser.getQuery();
+		query.whereEqualTo("objectId", customerID);
+		try {
+			customer = query.getFirst();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		accountCombo = code;
+		customer.put("accountCombo", accountCombo);
+		try {
+			customer.save();
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setNumOfAccounts(int code) {
@@ -285,13 +301,13 @@ public class Customer extends User {
 		switch (code) {
 		case 1:
 			if(accounts[0].close()) {
-				accountCombo--;
+				setAccountCombo(--accountCombo);
 				return true;
 			}
 			return false;
 		case 2:
 			if(accounts[1].close()) {
-				accountCombo -= 2;
+				setAccountCombo((accountCombo -= 2));
 				return true;
 			}
 			return false;

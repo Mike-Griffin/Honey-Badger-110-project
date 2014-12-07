@@ -3,9 +3,10 @@ package com.example.honeybadgerapplication;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.ParseException;
+
 import com.example.honeybadgerapi.Account;
 import com.example.honeybadgerapi.User;
-
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -109,7 +110,8 @@ public class UserHomePage extends ActionBarActivity {
         			break;
         		case 2: account.add(list[1]);
         			break;
-        		case 3: account.add(list[0]);
+        		case 3: 
+        			account.add(list[0]);
         			account.add(list[1]);
         			break;
         		default:
@@ -162,7 +164,13 @@ public class UserHomePage extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_logout) {
+			Log.d("user", ParseUser.getCurrentUser().getObjectId());
+			try{
 			ParseUser.logOut();
+			}catch(ParseException e) {
+				e.printStackTrace();
+			}
+			//Log.d("user", ParseUser.getCurrentUser().getObjectId());
 			if (ParseUser.getCurrentUser() == null) {
 				Toast.makeText(getApplicationContext(), "Successful Logout!",
 						Toast.LENGTH_SHORT).show();

@@ -53,6 +53,7 @@ public class SignUp extends ActionBarActivity implements
 	private String phone;
 	private int zip;
 	private int accountNumber;
+	private int passwordLength;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,11 +112,30 @@ public class SignUp extends ActionBarActivity implements
 				name = name_edit_text.getText().toString().trim();
 				username = username_edit_text.getText().toString().trim();
 				password = password_edit_text.getText().toString().trim();
+				passwordLength = password.length();
 				if (!password.equals(verify_password_edit_text.getText()
 						.toString().trim())) {
 					Toast.makeText(getApplicationContext(),
 							"Passwords do not match!", Toast.LENGTH_SHORT)
 							.show();
+					return;
+				}
+				if (passwordLength < 6) {
+					Toast.makeText(getApplicationContext(),
+							"Password must be at least 6 characters!",
+							Toast.LENGTH_SHORT).show();
+					return;
+				}
+				if (password.matches("[0-9]+")) {
+					Toast.makeText(getApplicationContext(),
+							"Password must contain at least 1 letter!",
+							Toast.LENGTH_SHORT).show();
+					return;
+				}
+				if (password.matches("[a-zA-Z]+")) {
+					Toast.makeText(getApplicationContext(),
+							"Password must contain at least 1 number!",
+							Toast.LENGTH_SHORT).show();
 					return;
 				}
 				email = email_edit_text.getText().toString().trim();
@@ -183,20 +203,35 @@ public class SignUp extends ActionBarActivity implements
 				customer.signup(name, username, password, email, birthday,
 						address, city, state, phone, zip, accountNumber);
 
+				ParseUser user = ParseUser.getCurrentUser();
 				if (customer.getSignUpStatus()) {
 					customer.login(username, password);
 					if (accountNumber != 0) {
-						account.put("parent", ParseUser.getCurrentUser());
+						String accountType = account.getString("type");
+						if (accountType.equals("Checking Account")) {
+							user.put("accountCombo", 1);
+							user.put("checkingAccount", accountNumber);
+						}
+						else {
+							user.put("accountCombo", 2);
+							user.put("savingAccount", accountNumber);
+						}
+						account.put("parent", user);
 						try {
 							account.save();
 						} catch (ParseException e) {
 						}
+
+					} else {
+						user.put("accountCombo", 0);
+					}
+					try {
+						user.save();
+					} catch (ParseException e) {
 					}
 					startActivity(intentUserHomePage);
-				} else
-				{
-					Toast.makeText(getApplicationContext(),
-							"Sign Up Failed!!",
+				} else {
+					Toast.makeText(getApplicationContext(), "Sign Up Failed!!",
 							Toast.LENGTH_SHORT).show();
 				}
 				/*
@@ -248,18 +283,17 @@ public class SignUp extends ActionBarActivity implements
 	}
 
 	@Override
-    public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
-                                                        INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        return true;
-    }
-	
+	public boolean onTouchEvent(MotionEvent event) {
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+		return true;
+	}
+
 	@Override
 	public void onBackPressed() {
-	    // do nothing.
+		// do nothing.
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
