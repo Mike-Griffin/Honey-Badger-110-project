@@ -2,17 +2,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg5"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg5"
-    
     tools:context="com.example.honeybadgerapplication.TellerHomePage" >
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Teller Home Page" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="Username" >
+
+        <requestFocus />
+    </EditText>
+
+        <Button
+            android:id="@+id/lookUp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/editText1"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/button_background_selector"
+            android:text="Look Up"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/updateInterest"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/lookUp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/lookUp"
+            android:layout_marginBottom="35dp"
+            android:background="@drawable/button_background_selector"
+            android:text="Update Interest"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/updatePenalty"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/updateInterest"
+            android:layout_alignLeft="@+id/updateInterest"
+            android:layout_alignRight="@+id/lookUp"
+            android:background="@drawable/button_background_selector"
+            android:text="Update Penalty"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/signUpTeller"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/updatePenalty"
+            android:layout_alignLeft="@+id/updatePenalty"
+            android:layout_alignRight="@+id/updatePenalty"
+            android:layout_marginBottom="23dp"
+            android:background="@drawable/button_background_selector"
+            android:text="Sign Up Teller"
+            android:textColor="#FFFFFF" />
 
 </RelativeLayout>
