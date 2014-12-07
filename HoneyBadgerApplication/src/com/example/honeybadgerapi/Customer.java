@@ -202,12 +202,16 @@ public class Customer extends User {
 		if (!debit(accFrom, amount))
 			return false;
 
+		if(!credit(accTo, amount))
+			return false;
+		/*
 		accountTo.put("balance", accountTo.getInt("balance") + amount);
 		try {
 			accountTo.save();
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		*/
 
 		return true;
 	}
