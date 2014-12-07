@@ -3,6 +3,7 @@ package com.example.honeybadgerapplication;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.honeybadgerapi.Customer;
 import com.example.honeybadgerapi.User;
 import com.example.honeybadgerapi.Account;
 
@@ -40,22 +41,23 @@ public class CloseAccount extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-		//gets customer object
+		//gets user object
 		Bundle userBundle = this.getIntent().getExtras();
-		//final User customer = null;
+		//final User user = null;
 		if(userBundle == null) {
 			//error, Bundle should not be null
 			Toast.makeText(getApplicationContext(), "Bundle does not exist",
 					Toast.LENGTH_SHORT).show();
 		}
 		else {
-		  final User customer = userBundle.getParcelable("user");
-		  
+		  final User user = userBundle.getParcelable("user");
+
 		  //sets view
 		  super.onCreate(savedInstanceState);
 	   	  setContentView(R.layout.activity_close_account);
 		
-		  final Intent intentUserHome = new Intent(CloseAccount.this, UserHomePage.class);
+		  final Intent intentCustomerHome = new Intent(CloseAccount.this, UserHomePage.class);
+		  final Intent intentTellerInfo = new Intent(CloseAccount.this, TellerCustomerInfo.class);
 		
 		  //Spinner and Button creation
 	      accountSpinner = (Spinner)findViewById(R.id.accountNumber);
@@ -63,10 +65,10 @@ public class CloseAccount extends ActionBarActivity {
 		  cancelButton = (Button) findViewById(R.id.cancelCloseAccount);
 		
 		  //collects the User's accounts
-		  userAccounts = customer.getAccountList();
+		  userAccounts = user.getAccountList();
 		  
 		  //Finds which user accounts exist (checking or saving)
-		  int aCombo = customer.getAccountCombo();
+		  int aCombo = user.getAccountCombo();
 		  switch(aCombo) {
 		    case 1: //just checking account
 		    	accStrings.add("Checking Account");
@@ -92,15 +94,8 @@ public class CloseAccount extends ActionBarActivity {
 				accountSelected = accountSpinner.getSelectedItem().toString().trim();
 				//for Checking account
 				if(accountSelected.equals("Checking Account")) {
-				    if(customer.closeAccount(1)) {
-				        //update the Account Combo
-				    /*	if(customer.getAccountCombo() == 3) {
-				    		customer.setAccountCombo(2);
-				    	}
-				    	else if(customer.getAccountCombo() == 1){
-				    		customer.setAccountCombo(0);
-				    	}
-				    	*/
+				    if(user.closeAccount(1)) { //Closes account and updates Combo
+				    	
 				        //The Account has been successfully deleted
 						Toast.makeText(
 								getApplicationContext(),
@@ -118,15 +113,8 @@ public class CloseAccount extends ActionBarActivity {
 				    }
 				//for Savings account
 				} else if(accountSelected.equals("Savings Account")) {
-				    if(customer.closeAccount(2)) {
-				      /*  //update the Account Combo
-				    	if(customer.getAccountCombo() == 3) {
-				    		customer.setAccountCombo(1);
-				    	}
-				    	else if(customer.getAccountCombo() == 2){
-				    		customer.setAccountCombo(0);
-				    	}
-				    */	
+				    if(user.closeAccount(2)) { //Closes account and updates Combo
+				    	
 				        //The Account has been successfully deleted
 						Toast.makeText(
 								getApplicationContext(),
@@ -147,11 +135,18 @@ public class CloseAccount extends ActionBarActivity {
 				
 				//closes Bundle
 				Bundle userBundle = new Bundle();
-				userBundle.putParcelable("user", customer);
-				intentUserHome.putExtra("user", customer);
+				userBundle.putParcelable("user", user);
 				
-				//Takes user back to Homepage
-				startActivity(intentUserHome);
+				if(user.getUserType() == 1) {
+					//Bundles and takes user back to Homepage
+				    intentCustomerHome.putExtra("user", user);
+				    startActivity(intentCustomerHome);
+				}
+				else {
+					//Bundles and takes teller back to ...
+					intentTellerInfo.putExtra("user", user);
+					startActivity(intentTellerInfo);
+				}
 				
 			}//end of button event
 		  });
@@ -163,10 +158,18 @@ public class CloseAccount extends ActionBarActivity {
 				//Takes user back to Homepage
 				//closes Bundle
 				Bundle userBundle = new Bundle();
-				userBundle.putParcelable("user", customer);
-				intentUserHome.putExtra("user", customer);
+				userBundle.putParcelable("user", user);
 				
-				startActivity(intentUserHome);
+		  	    if(user.getUserType() == 1) {
+			        //Bundles and takes user back to Homepage
+			        intentCustomerHome.putExtra("user", user);
+			        startActivity(intentCustomerHome);
+		  	    }
+		  	    else {
+			        //Bundles and takes teller back to ...
+		      		intentTellerInfo.putExtra("user", user);
+		      		startActivity(intentTellerInfo);
+		    	}
 			}
 		  });
 		} // end of null Bundle check
