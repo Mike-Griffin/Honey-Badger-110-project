@@ -1649,20 +1649,19 @@ containing a value of this type.
         public static final int confirmbut=0x7f02003c;
         public static final int ic_action_cancel=0x7f02003d;
         public static final int ic_action_go_to_today=0x7f02003e;
-        public static final int ic_launcher=0x7f02003f;
-        public static final int lg1=0x7f020040;
-        public static final int line=0x7f020041;
-        public static final int login=0x7f020042;
-        public static final int signup=0x7f020043;
+        public static final int ic_add_account=0x7f02003f;
+        public static final int ic_launcher=0x7f020040;
+        public static final int lg1=0x7f020041;
+        public static final int line=0x7f020042;
+        public static final int login=0x7f020043;
+        public static final int signup=0x7f020044;
     }
     public static final class id {
-        public static final int Button01=0x7f090070;
-        public static final int EditText01=0x7f090075;
         public static final int RelativeLayout1=0x7f09003f;
         public static final int accountEmailToTransfer=0x7f090044;
         public static final int accountNumber=0x7f090048;
         public static final int accountTable=0x7f090066;
-        public static final int accountTransferButton=0x7f090078;
+        public static final int accountTransferButton=0x7f090072;
         public static final int account_num=0x7f09004f;
         public static final int account_types=0x7f09004a;
         public static final int action=0x7f090051;
@@ -1674,14 +1673,14 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f09001f;
         public static final int action_bar_title=0x7f09001e;
         public static final int action_context_bar=0x7f090032;
-        public static final int action_logout=0x7f09007c;
+        public static final int action_logout=0x7f090077;
         public static final int action_menu_divider=0x7f090005;
         public static final int action_menu_presenter=0x7f090006;
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f09007b;
-        public static final int action_transactionHistory=0x7f09007d;
+        public static final int action_settings=0x7f090076;
+        public static final int action_transactionHistory=0x7f090078;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int address=0x7f09005c;
         public static final int always=0x7f090014;
@@ -1690,8 +1689,6 @@ containing a value of this type.
         public static final int amount_cred=0x7f09004e;
         public static final int beginning=0x7f09001b;
         public static final int birthday=0x7f09005d;
-        public static final int button1=0x7f090077;
-        public static final int button2=0x7f090076;
         public static final int cancelButton=0x7f090059;
         public static final int cancelButtonCreateAccountPage=0x7f09004d;
         public static final int cancelCloseAccount=0x7f090047;
@@ -1700,22 +1697,18 @@ containing a value of this type.
         public static final int checkbox=0x7f090029;
         public static final int city=0x7f090061;
         public static final int closeAccount=0x7f090046;
-        public static final int closeAccountButton=0x7f090079;
+        public static final int closeAccountButton=0x7f090073;
         public static final int collapseActionView=0x7f090015;
         public static final int conf_cred=0x7f090050;
         public static final int confirmButton=0x7f09004c;
         public static final int confirmTransfer=0x7f090041;
-        public static final int creditDebitButton=0x7f090068;
+        public static final int creditDebitButton=0x7f090074;
         public static final int decor_content_parent=0x7f09002f;
         public static final int default_activity_button=0x7f090024;
         public static final int dialog=0x7f090019;
         public static final int disableHome=0x7f09000d;
         public static final int doneButton=0x7f09005a;
         public static final int dropdown=0x7f09001a;
-        public static final int editText1=0x7f09006d;
-        public static final int editText2=0x7f090072;
-        public static final int editText3=0x7f090073;
-        public static final int editText4=0x7f090074;
         public static final int edit_query=0x7f090033;
         public static final int email=0x7f09005b;
         public static final int end=0x7f09001c;
@@ -1732,12 +1725,13 @@ containing a value of this type.
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090025;
         public static final int login=0x7f090058;
-        public static final int lookUp=0x7f09006c;
+        public static final int lookUp=0x7f090070;
         public static final int middle=0x7f09001d;
         public static final int name=0x7f090062;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
+        public static final int open_customer_account=0x7f09006e;
         public static final int password=0x7f090054;
         public static final int phone=0x7f090063;
         public static final int progress_circular=0x7f090007;
@@ -1760,22 +1754,24 @@ containing a value of this type.
         public static final int showHome=0x7f090011;
         public static final int showTitle=0x7f090012;
         public static final int signUp=0x7f090056;
-        public static final int signUpTeller=0x7f090071;
+        public static final int signUpTeller=0x7f09006f;
         public static final int split_action_bar=0x7f090004;
         public static final int state=0x7f09005f;
         public static final int submit_area=0x7f09003c;
         public static final int tabMode=0x7f09000c;
-        public static final int tellerAccountTransferButton=0x7f090069;
-        public static final int tellerCloseAccountButton=0x7f090067;
+        public static final int tellerAccountTransferButton=0x7f090068;
+        public static final int tellerCancel=0x7f090067;
+        public static final int tellerCloseAccountButton=0x7f090069;
         public static final int tellerCreditDebitButton=0x7f09006a;
+        public static final int tellerSignUp=0x7f090071;
         public static final int textView1=0x7f09006b;
         public static final int title=0x7f090027;
-        public static final int transactionHistory=0x7f09007a;
+        public static final int transactionHistory=0x7f090075;
         public static final int transferFromSpinner=0x7f090042;
         public static final int transferToSpinner=0x7f090043;
         public static final int up=0x7f090001;
-        public static final int updateInterest=0x7f09006e;
-        public static final int updatePenalty=0x7f09006f;
+        public static final int updateInterest=0x7f09006d;
+        public static final int updatePenalty=0x7f09006c;
         public static final int useLogo=0x7f090013;
         public static final int username=0x7f090053;
         public static final int verifyPassword=0x7f09005e;
@@ -1919,22 +1915,22 @@ containing a value of this type.
         /**  Content description for the Toolbar icon used to collapse an expanded action mode. [CHAR LIMIT=NONE] 
          */
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
-        public static final int account_num=0x7f0a0034;
+        public static final int account_num=0x7f0a0035;
         public static final int account_number_placeholder=0x7f0a002c;
         public static final int account_tranfer_button=0x7f0a002f;
-        public static final int account_transfer_email_placeholder=0x7f0a0032;
+        public static final int account_transfer_email_placeholder=0x7f0a0033;
         public static final int action_settings=0x7f0a0012;
         public static final int add_account=0x7f0a0027;
         public static final int address_placeholder=0x7f0a001f;
         /**  CreditDebit 
          */
-        public static final int amount_hint=0x7f0a0033;
+        public static final int amount_hint=0x7f0a0034;
         /**  Create Account 
          */
         public static final int amount_placeholder=0x7f0a0029;
         /**  AccountTransfer 
          */
-        public static final int amount_to_transfer_placeholder=0x7f0a0031;
+        public static final int amount_to_transfer_placeholder=0x7f0a0032;
         public static final int app_name=0x7f0a0010;
         public static final int balance_placeholder=0x7f0a002d;
         public static final int birthday_placeholder=0x7f0a001b;
@@ -1959,23 +1955,24 @@ containing a value of this type.
         public static final int profile_image_description=0x7f0a0026;
         public static final int sign_up_button=0x7f0a0014;
         public static final int state_placeholder=0x7f0a0021;
-        public static final int title_activity_account_info=0x7f0a0037;
-        public static final int title_activity_account_transfer=0x7f0a003c;
-        public static final int title_activity_close_account=0x7f0a003b;
-        public static final int title_activity_create_account=0x7f0a0039;
-        public static final int title_activity_credit_debit=0x7f0a003a;
-        public static final int title_activity_forgot_password=0x7f0a0038;
-        public static final int title_activity_reset_password=0x7f0a003e;
+        public static final int title_activity_account_info=0x7f0a0038;
+        public static final int title_activity_account_transfer=0x7f0a003d;
+        public static final int title_activity_close_account=0x7f0a003c;
+        public static final int title_activity_create_account=0x7f0a003a;
+        public static final int title_activity_credit_debit=0x7f0a003b;
+        public static final int title_activity_forgot_password=0x7f0a0039;
+        public static final int title_activity_reset_password=0x7f0a003f;
         /**  Android 
          */
-        public static final int title_activity_sign_up=0x7f0a0036;
-        public static final int title_activity_teller_customer_info=0x7f0a0041;
-        public static final int title_activity_teller_home_page=0x7f0a003d;
-        public static final int title_activity_transaction_history=0x7f0a0040;
-        public static final int title_activity_user_home_page=0x7f0a003f;
+        public static final int title_activity_sign_up=0x7f0a0037;
+        public static final int title_activity_teller_customer_info=0x7f0a0042;
+        public static final int title_activity_teller_home_page=0x7f0a003e;
+        public static final int title_activity_transaction_history=0x7f0a0041;
+        public static final int title_activity_user_home_page=0x7f0a0040;
         /**  CloseAccount 
          */
-        public static final int title_close_account_label=0x7f0a0035;
+        public static final int title_close_account_label=0x7f0a0036;
+        public static final int transaction_history_button=0x7f0a0031;
         /**  AccountInfo 
          */
         public static final int type_placeholder=0x7f0a002b;

@@ -57,5 +57,9 @@ public abstract class User implements Parcelable{
 	public abstract boolean credit(int code, double d);
 
 	public abstract boolean debit(int code, double d);
+	
+	public abstract void setCustomer(String username);
+	
+	public abstract Customer getCustomer();
 
 }

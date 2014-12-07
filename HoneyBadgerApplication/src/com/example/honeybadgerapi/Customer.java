@@ -24,7 +24,7 @@ public class Customer extends User {
 
 	public Customer() {
 	}
-
+	
 	Customer(Parcel in) {
 		super(in);
 		this.accountCombo = in.readInt();
@@ -212,6 +212,10 @@ public class Customer extends User {
 	}
 
 	@Override
+	public Customer getCustomer(){
+		return this;
+	}
+	@Override
 	public boolean transfer(int accFrom, double amount, String phone_email) {
 		// TODO Auto-generated method stub
 		ParseUser accountUser = null;
@@ -374,6 +378,10 @@ public class Customer extends User {
 		return 0;
 	}
 
+	@Override
+	public void setCustomer(String customer) {
+
+	}
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub

@@ -38,11 +38,19 @@ public class TellerHomePage extends ActionBarActivity {
 	
 		final Intent intentTellerCustomerInfo = new Intent (TellerHomePage.this, TellerCustomerInfo.class);
 		final Button lookUpButton = (Button) findViewById(R.id.lookUp);
-		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
 		username_edit_text = (EditText) findViewById(R.id.username);
 		
+		Bundle userBundle = this.getIntent().getExtras();
+		if (userBundle == null) {
+			Toast.makeText(getApplicationContext(), "Bundle does not exist",
+					Toast.LENGTH_SHORT).show();
+		} else {
+			final User teller = userBundle.getParcelable("user");
+
+			
 		
-		lookUpButton.setOnClickListener(new View.OnClickListener() {
+		
+			lookUpButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -54,6 +62,10 @@ public class TellerHomePage extends ActionBarActivity {
 				query.whereEqualTo("username", username);
 				try {
 					parseUser = query.getFirst();
+					teller.setCustomer(username);
+					Bundle userBundleOut = new Bundle();
+					userBundleOut.putParcelable("teller", teller);
+					intentTellerCustomerInfo.putExtra("teller", teller);
 					startActivity(intentTellerCustomerInfo);
 				} catch (com.parse.ParseException e) {
 					// TODO Auto-generated catch block
@@ -66,6 +78,7 @@ public class TellerHomePage extends ActionBarActivity {
 				
 			}
 		});
+		}
 	}
 
 	@Override
