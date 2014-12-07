@@ -2,11 +2,15 @@ package com.example.honeybadgerapi;
 
 public class UserFactory {
 	public User makeUser(int userType, String username, String password){
+		User user = null;
 		if(userType == 1)
-			return new Customer(username, password);
+			user = new Customer();
 		else if(userType == 2)
-			return new Teller(username, password);
+			user = new Teller();
 		else
 			return null;
+		
+		user.login(username, password);
+		return user;
 	}
 }

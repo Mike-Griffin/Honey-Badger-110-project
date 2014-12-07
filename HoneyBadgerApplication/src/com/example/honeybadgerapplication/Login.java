@@ -112,9 +112,16 @@ public class Login extends Activity {
 				
 				user = factory.makeUser(userType, username, password);
 				
+				if(user.getLoginStatus() == 0) {
+					Toast.makeText(
+							getApplicationContext(),
+							"Login Failed!!", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				
 				Intent nextPage = new Intent();
-				// Bundle userBundle = new Bundle();
-				// userBundle.putParcelable("user", user);
+				Bundle userBundle = new Bundle();
+				userBundle.putParcelable("user", user);
 				
 				
 				if(userType == 1)

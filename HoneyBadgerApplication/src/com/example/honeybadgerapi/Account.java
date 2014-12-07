@@ -8,7 +8,7 @@ import com.parse.ParseUser;
 
 import com.parse.ParseObject;
 
-public abstract class Account implements Parcelable{
+public abstract class Account implements Parcelable {
 
 	protected InterestCalculator calculator;
 	protected double interestRate;
@@ -18,46 +18,47 @@ public abstract class Account implements Parcelable{
 	protected int lastUpdated;
 	protected boolean active;
 	protected String accountType;
-	
 
-	public int getAccountNumber(){
+	public int getAccountNumber() {
 		return accountNumber;
 	}
-	
-	public String getAccountType(){
+
+	public String getAccountType() {
 		return accountType;
 	}
 
 	public double getBalance() {
 		return balance;
 	}
-	
+
 	public void setStatus(boolean status) {
 		ParseObject account = query();
-		if(account != null) {
+		if (account != null) {
 			account.put("active", status);
 			active = status;
 			try {
 				account.save();
-			} catch(ParseException e) {
+			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
+
 	public boolean getStatus() {
 		return active;
 	}
 
 	public void setBalance(double newBal) {
 		ParseObject account = query();
-		balance = newBal;
-		account.put("balance", newBal);
-		try {
-			account.save();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (account != null) {
+			balance = newBal;
+			account.put("balance", newBal);
+			try {
+				account.save();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -82,10 +83,10 @@ public abstract class Account implements Parcelable{
 		if (lastUpdated > 30)
 			balance -= 25;
 	}
-	
+
 	public boolean close() {
 		ParseObject account = query();
-		if(account.getInt("balance") != 0.00)
+		if (account.getInt("balance") != 0.00)
 			return false;
 		account.put("active", false);
 		active = false;
@@ -95,14 +96,14 @@ public abstract class Account implements Parcelable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return true;
 	}
-	
+
 	public boolean getActive() {
 		return active;
 	}
-	
+
 	public ParseObject query() {
 		ParseObject account = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
@@ -113,7 +114,7 @@ public abstract class Account implements Parcelable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return account;
 	}
 }

@@ -3,6 +3,8 @@ package com.example.honeybadgerapi;
 import java.util.ArrayList;
 
 import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -11,13 +13,21 @@ import com.parse.ParseUser;
 public class Teller extends User {
 
 	private Customer activeCustomer;
-	private ParseObject teller;
+	private String tellerID;
 
-	public Teller(){
-		
+	public Teller(){	
 	}
 	
-	public Teller(String username, String password) {
+	Teller(Parcel in) {
+		super(in);
+		this.activeCustomer = (Customer) in.readParcelable(Customer.class.getClassLoader());
+		this.tellerID = in.readString();
+	}
+	
+	// login
+	@Override
+	public void login(String username, String password) {
+		ParseUser teller = null;
 		try {
 			teller = ParseUser.logIn(username, password);
 		} catch (ParseException e) {
@@ -25,6 +35,23 @@ public class Teller extends User {
 
 		if (teller != null) {
 			loginStatus = 1;
+			tellerID = teller.getObjectId();
+		}
+	}
+	
+	public void signup(String username, String password, String email) {
+		signUpStatus = true;
+
+		ParseUser teller = new ParseUser();
+		teller.setUsername(username);
+		teller.setPassword(password);
+		teller.setEmail(email);
+		teller.put("userType", 2);
+
+		try {
+			teller.signUp();
+		} catch (ParseException e) {
+			signUpStatus = false;
 		}
 	}
 
@@ -52,15 +79,15 @@ public class Teller extends User {
 	}
 
 	@Override
-	public void transfer(int accFrom, double amount, int accTo) {
+	public boolean transfer(int accFrom, double amount, int accTo) {
 		// TODO Auto-generated method stub
-
+		return activeCustomer.transfer(accFrom, amount, accTo);
 	}
 
 	@Override
-	public void transfer(int accFrom, double amount, String phone_email) {
+	public boolean transfer(int accFrom, double amount, String phone_email) {
 		// TODO Auto-generated method stub
-
+		return activeCustomer.transfer(accFrom, amount, phone_email);
 	}
 	
 	@Override
@@ -87,7 +114,7 @@ public class Teller extends User {
 	}
 
 	public void updateInterest() {
-
+		
 	}
 
 	public void updatePenalty() {
@@ -111,6 +138,10 @@ public class Teller extends User {
 	public Customer getCustomer() {
 		return activeCustomer;
 	}
+	
+	public int activeCustomer() {
+		return activeCustomer.getLoginStatus();
+	}
 
 	@Override
 	public int describeContents() {
@@ -118,10 +149,27 @@ public class Teller extends User {
 		return 0;
 	}
 
+
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub
-		
+		super.writeToParcel(dest, flags);
+		dest.writeParcelable(activeCustomer, flags);
+		dest.writeString(tellerID);
 	}
 
+	public static final Parcelable.Creator<Teller> CREATOR = new Parcelable.Creator<Teller>() {
+
+		@Override
+		public Teller createFromParcel(Parcel source) {
+			// TODO Auto-generated method stub
+			return new Teller(source);
+		}
+
+		@Override
+		public Teller[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new Teller[size];
+		}
+	};
 }

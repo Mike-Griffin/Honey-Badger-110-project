@@ -44,6 +44,18 @@ public class UserHomePage extends ActionBarActivity {
 		final Button transferButton = (Button) findViewById(R.id.accountTransferButton);
 		final Button closeButton = (Button) findViewById(R.id.closeAccountButton);
 		
+		Bundle userBundle = this.getIntent().getExtras();
+		User customer = null;
+		if(userBundle != null)
+			customer = userBundle.getParcelable("user");
+		
+		Bundle userBundleOut = new Bundle();
+		userBundleOut.putParcelable("user", customer);
+		
+		intentCredDeb.putExtra("user", customer);
+		intentTransfer.putExtra("user", customer);
+		intentClose.putExtra("user", customer);
+		
 		credDebButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -70,15 +82,10 @@ public class UserHomePage extends ActionBarActivity {
 				startActivity(intentClose);
 			}
 		});
-		
-		Bundle userBundle = this.getIntent().getExtras();
-		User customer = null;
-		if(userBundle != null)
-			customer = userBundle.getParcelable("user");
-		
+
 		// customer.updateAccountList();
 		// Log.d("hi", "hi");
-		Log.d("username", Integer.toString((int) customer.getBalance(1)));
+		// Log.d("username", Integer.toString((int) customer.getBalance(1)));
 			
         accountTable = (TableLayout) findViewById(R.id.accountTable);
         row0 = new TableRow(this);

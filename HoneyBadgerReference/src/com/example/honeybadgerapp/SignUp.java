@@ -151,8 +151,8 @@ public class SignUp extends Activity implements DatePickerFragment.TheListener {
 				user.put("city", city);
 				user.put("state", state);
 				user.put("zipCode", zip);
-				user.put("primaryAccount", 0);
 				user.put("phone", phone);
+				user.put("userType", 1);
 
 				user.signUpInBackground(new SignUpCallback() {
 					public void done(ParseException e) {

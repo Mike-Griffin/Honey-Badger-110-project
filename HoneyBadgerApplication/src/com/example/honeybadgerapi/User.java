@@ -31,6 +31,8 @@ public abstract class User implements Parcelable{
 	public boolean getSignUpStatus() {
 		return signUpStatus;
 	}
+	
+	public abstract void login(String username, String password);
 
 	public abstract void setBalance(int code, double amount);
 
@@ -40,9 +42,9 @@ public abstract class User implements Parcelable{
 	
 	public abstract int getAccountCombo();
 
-	public abstract void transfer(int accFrom, double amount, int accTo);
+	public abstract boolean transfer(int accFrom, double amount, int accTo);
 
-	public abstract void transfer(int accFrom, double amount, String phone_email);
+	public abstract boolean transfer(int accFrom, double amount, String phone_email);
 
 	public abstract void updateAccountList();
 	

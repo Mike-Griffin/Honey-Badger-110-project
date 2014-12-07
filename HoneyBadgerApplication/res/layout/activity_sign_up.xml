@@ -64,7 +64,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:ems="10"
-        android:focusable="false"
         android:hint="Optional: Account Number"
         android:inputType="numberDecimal"
         android:singleLine="true" />
@@ -168,6 +167,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/name"
         android:layout_toRightOf="@+id/phone"
+        android:focusable = "false"
         android:ems="10"
         android:hint="@string/birthday_placeholder" />
 

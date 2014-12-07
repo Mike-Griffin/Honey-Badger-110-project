@@ -13,39 +13,63 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Customer extends User {
-
 	private int accountCombo;
-
-	private Account[] accounts = new Account[2];  // [0] is checking, [1] is saving
+	private Account[] accounts = new Account[2];
 	private String customerID;
 	private int checkingNumber;
 	private int savingNumber;
 
-	public Customer(){
-		
+	public Customer() {
 	}
-	
-	Customer(Parcel in){
+
+	Customer(Parcel in) {
 		super(in);
 		this.accountCombo = in.readInt();
-		Log.d("combo", Integer.toString(accountCombo));
-		// this.accounts = (Account[]) in.readParcelableArray(Account.class.getClassLoader());
-		this.accounts[0] = (Account) in.readParcelable(Account.class.getClassLoader());
-		if(accounts[0] == null)
-			Log.d("ajosdiajsd", "it is null");
-		this.accounts[1] = (Account) in.readParcelable(Account.class.getClassLoader());
+		// Log.d("combo", Integer.toString(accountCombo));
+		// this.accounts = (Account[])
+		// in.readParcelableArray(Account.class.getClassLoader());
+		this.accounts[0] = (Account) in.readParcelable(Account.class
+				.getClassLoader());
+		if (accounts[0] == null)
+		//	Log.d("ajosdiajsd", "it is null");
+		this.accounts[1] = (Account) in.readParcelable(Account.class
+				.getClassLoader());
 		this.customerID = in.readString();
-		Log.d("customerID", customerID);
+		// Log.d("customerID", customerID);
 		this.checkingNumber = in.readInt();
-		Log.d("checking", Integer.toString(checkingNumber));
+		// Log.d("checking", Integer.toString(checkingNumber));
 		this.savingNumber = in.readInt();
-		Log.d("saving", Integer.toString(savingNumber));
+		// Log.d("saving", Integer.toString(savingNumber));
 	}
-	
+
+	// teller look up
+	public Customer(String username) {
+		ParseUser customer = null;
+		ParseQuery<ParseUser> query = ParseUser.getQuery();
+		query.whereEqualTo("username", username);
+		try {
+			customer = query.getFirst();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (customer != null) {
+			loginStatus = 1;
+			customerID = customer.getObjectId();
+			accountCombo = customer.getInt("accountCombo");
+			checkingNumber = customer.getInt("checkingAccount");
+			savingNumber = customer.getInt("savingAccount");
+			updateAccountList();
+		}
+	}
+
 	// login
-	public Customer(String username, String password) {
+	@Override
+	public void login(String username, String password) {
 		ParseUser customer = null;
 		// Log.d("asdasd", password);
 		try {
@@ -67,9 +91,11 @@ public class Customer extends User {
 	}
 
 	// sign up
-	public Customer(String name, String username, String password,
+	public void signup(String name, String username, String password,
 			String email, String birthday, String address, String city,
-			String state, String phoneNumber, int zip) {
+			String state, String phoneNumber, int zip, int accountNumber) {
+		signUpStatus = true;
+
 		ParseUser customer = new ParseUser();
 		customer.setUsername(username);
 		customer.setPassword(password);
@@ -80,26 +106,14 @@ public class Customer extends User {
 		customer.put("city", city);
 		customer.put("state", state);
 		customer.put("zipCode", zip);
-		customer.put("primaryAccount", 0);
+		// customer.put("primaryAccount", 0);
 		customer.put("phone", phoneNumber);
+		customer.put("userType", 1);
 
 		try {
 			customer.signUp();
 		} catch (ParseException e) {
 			signUpStatus = false;
-		}
-	}
-
-	// teller look up
-	public Customer(String username) {
-		ParseUser customer = null;
-		ParseQuery<ParseUser> query = ParseUser.getQuery();
-		query.whereEqualTo("username", username);
-		try {
-			customer = query.getFirst();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -147,15 +161,96 @@ public class Customer extends User {
 	}
 
 	@Override
-	public void transfer(int accFrom, double amount, int accTo) {
+	public boolean transfer(int accFrom, double amount, int accTo) {
 		// TODO Auto-generated method stub
+		ParseObject accountTo = null;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
+		query.whereEqualTo("accountNumber", accTo);
+		try {
+			accountTo = query.getFirst();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
+		if (accountTo == null)
+			return false;
+
+		if (accountTo.getBoolean("active") == false)
+			return false;
+
+		if (!debit(accFrom, amount))
+			return false;
+
+		accountTo.put("balance", accountTo.getInt("balance") + amount);
+		try {
+			accountTo.save();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		return true;
 	}
 
 	@Override
-	public void transfer(int accFrom, double amount, String phone_email) {
+	public boolean transfer(int accFrom, double amount, String phone_email) {
 		// TODO Auto-generated method stub
-
+		ParseUser accountUser = null;
+		ParseObject accountTo = null;
+		int accountCombo = 0;
+		
+		ParseQuery<ParseUser> userQuery = ParseUser.getQuery();
+		ParseQuery<ParseUser> emailQuery = ParseUser.getQuery();
+		ParseQuery<ParseUser> phoneQuery = ParseUser.getQuery();
+		emailQuery.whereEqualTo("email", phone_email);
+		phoneQuery.whereEqualTo("phone", phone_email);
+		List<ParseQuery<ParseUser>> queries = new ArrayList<ParseQuery<ParseUser>>();
+		queries.add(emailQuery);
+		queries.add(phoneQuery);
+		userQuery = ParseQuery.or(queries);
+		try {
+			accountUser = userQuery.getFirst();
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
+		
+		accountCombo = accountUser.getInt("accountCombo");
+		switch(accountCombo) {
+			case 0:
+				return false;
+			case 2:
+				ParseQuery<ParseObject> saving = ParseQuery.getQuery("Account");
+				saving.whereEqualTo("accountNumber", accountUser.get("savingAccount"));
+				try {
+					accountTo = saving.getFirst();
+				} catch(ParseException e) {
+					e.printStackTrace();
+				}
+				break;
+			case 3:
+			case 1:
+				ParseQuery<ParseObject> checking = ParseQuery.getQuery("Account");
+				checking.whereEqualTo("accountNumber", accountUser.get("checkingAccount"));
+				try {
+					accountTo = checking.getFirst();
+				} catch(ParseException e) {
+					e.printStackTrace();
+				}
+				break;
+			default:
+				break;
+		}
+		
+		if(!debit(accFrom, amount))
+			return false;
+		
+		accountTo.put("balance", accountTo.getInt("balance") + amount);
+		try{
+			accountTo.save();
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return true;
 	}
 
 	@Override
@@ -189,9 +284,17 @@ public class Customer extends User {
 		// TODO Auto-generated method stub
 		switch (code) {
 		case 1:
-			return accounts[0].close();
+			if(accounts[0].close()) {
+				accountCombo--;
+				return true;
+			}
+			return false;
 		case 2:
-			return accounts[1].close();
+			if(accounts[1].close()) {
+				accountCombo -= 2;
+				return true;
+			}
+			return false;
 		default:
 			return false;
 		}
@@ -208,12 +311,12 @@ public class Customer extends User {
 		// TODO Auto-generated method stub
 		switch (code) {
 		case 1:
-			if(accounts[0].getActive() == false)
+			if (accounts[0].getActive() == false)
 				return false;
 			accounts[0].setBalance(accounts[0].getBalance() + d);
 			return true;
 		case 2:
-			if(accounts[1].getActive() == false)
+			if (accounts[1].getActive() == false)
 				return false;
 			accounts[1].setBalance(accounts[1].getBalance() + d);
 			return true;
@@ -227,16 +330,16 @@ public class Customer extends User {
 		// TODO Auto-generated method stub
 		switch (code) {
 		case 1:
-			if(accounts[0].getActive() == false)
+			if (accounts[0].getActive() == false)
 				return false;
-			if(accounts[0].getBalance() < d)
+			if (accounts[0].getBalance() < d)
 				return false;
 			accounts[0].setBalance(accounts[0].getBalance() - d);
 			return true;
 		case 2:
-			if(accounts[1].getActive() == false)
+			if (accounts[1].getActive() == false)
 				return false;
-			if(accounts[1].getBalance() < d)
+			if (accounts[1].getBalance() < d)
 				return false;
 			accounts[1].setBalance(accounts[1].getBalance() - d);
 			return true;
@@ -252,13 +355,13 @@ public class Customer extends User {
 	}
 
 	@Override
-	public void writeToParcel(Parcel dest, int flags) {		
+	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub
 		super.writeToParcel(dest, flags);
 		dest.writeInt(accountCombo);
 		dest.writeParcelable(accounts[0], flags);
 		dest.writeParcelable(accounts[1], flags);
-		//dest.writeParcelableArray(accounts, flags);
+		// dest.writeParcelableArray(accounts, flags);
 		dest.writeString(customerID);
 		dest.writeInt(checkingNumber);
 		dest.writeInt(savingNumber);
@@ -277,6 +380,6 @@ public class Customer extends User {
 			// TODO Auto-generated method stub
 			return new Customer[size];
 		}
-		
+
 	};
 }
