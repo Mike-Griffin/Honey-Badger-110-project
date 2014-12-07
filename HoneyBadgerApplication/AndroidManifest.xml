@@ -71,6 +71,10 @@
             android:name=".TransactionHistory"
             android:label="@string/title_activity_transaction_history" >
         </activity>
+        <activity
+            android:name=".TellerCustomerInfo"
+            android:label="@string/title_activity_teller_customer_info" >
+        </activity>
     </application>
 
 </manifest>
