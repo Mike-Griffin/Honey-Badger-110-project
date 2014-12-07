@@ -8,44 +8,63 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.honeybadgerapplication.TellerSignUp" >
 
-    <EditText
-        android:id="@+id/editText2"
+    <Button
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_alignRight="@+id/editText1"
-        android:layout_below="@+id/editText1"
-        android:ems="10"
-        android:hint="Email" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_background_selector"
+        android:text="Cancel"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cancelButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_background_selector"
+        android:text="Confirm"
+        android:textColor="#FFFFFF" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tellerSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
         android:text="Teller Sign Up" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/verifyPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="22dp"
+        android:layout_below="@+id/password"
         android:ems="10"
-        android:hint="Name" />
+        android:hint="Verify Password" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="Password" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/password"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:ems="10"
         android:hint="Username" >
 
@@ -53,44 +72,24 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignRight="@+id/editText3"
-        android:layout_below="@+id/editText3"
+        android:layout_above="@+id/username"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="39dp"
         android:ems="10"
-        android:hint="Password" />
+        android:hint="Email" />
 
     <EditText
-        android:id="@+id/EditText01"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText4"
-        android:layout_alignRight="@+id/editText4"
-        android:layout_below="@+id/editText4"
+        android:layout_above="@+id/email"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:ems="10"
-        android:hint="Verify Password" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="39dp"
-        android:background="@drawable/button_background_selector"
-        android:text="Cancel"
-        android:textColor="#FFFFFF" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_alignLeft="@+id/EditText01"
-        android:background="@drawable/button_background_selector"
-        android:text="Confirm"
-        android:textColor="#FFFFFF" />
+        android:hint="Name" />
 
 </RelativeLayout>

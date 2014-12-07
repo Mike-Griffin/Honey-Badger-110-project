@@ -32,47 +32,35 @@
     </EditText>
 
         <Button
-            android:id="@+id/lookUp"
+            android:id="@+id/updatePenalty"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/updateInterest"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/editText1"
-            android:layout_marginTop="60dp"
             android:background="@drawable/button_background_selector"
-            android:text="Look Up"
+            android:text="Update Penalty"
             android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/updateInterest"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/lookUp"
             android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/lookUp"
-            android:layout_marginBottom="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/button_background_selector"
             android:text="Update Interest"
             android:textColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/updatePenalty"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/updateInterest"
-            android:layout_alignLeft="@+id/updateInterest"
-            android:layout_alignRight="@+id/lookUp"
-            android:background="@drawable/button_background_selector"
-            android:text="Update Penalty"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/Button01"
+            android:id="@+id/open_customer_account"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/updatePenalty"
-            android:layout_alignLeft="@+id/updatePenalty"
-            android:layout_alignRight="@+id/updatePenalty"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:background="@drawable/button_background_selector"
             android:enabled="false"
             android:text="Open Customer Account"
@@ -82,12 +70,24 @@
             android:id="@+id/signUpTeller"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/Button01"
-            android:layout_alignRight="@+id/lookUp"
-            android:layout_centerVertical="true"
+            android:layout_above="@+id/open_customer_account"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:background="@drawable/button_background_selector"
             android:enabled="false"
             android:text="Sign Up Teller"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/lookUp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/username"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_background_selector"
+            android:text="Look Up"
             android:textColor="#FFFFFF" />
 
 </RelativeLayout>

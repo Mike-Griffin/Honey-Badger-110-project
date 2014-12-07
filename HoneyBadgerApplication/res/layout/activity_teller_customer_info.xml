@@ -29,15 +29,15 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/tellerCloseAccountButton"
+            android:id="@+id/tellerCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/creditDebitButton"
             android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/creditDebitButton"
-            android:text="@string/close_account_button"
-                   android:textColor="#FFFFFF"
-        android:background="@drawable/blank3"  />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_background_selector"
+            android:text="Cancel"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/tellerAccountTransferButton"
@@ -45,7 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/tellerCloseAccountButton"
             android:layout_alignParentLeft="true"
-            android:background="@drawable/blank3"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_background_selector"
             android:text="@string/account_tranfer_button"
             android:textColor="#FFFFFF" />
 
@@ -55,23 +56,22 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/tellerAccountTransferButton"
             android:layout_alignParentLeft="true"
-            android:background="@drawable/blank3"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_background_selector"
             android:text="@string/credit_or_debit_button"
             android:textColor="#FFFFFF" />
 
-        <EditText
-            android:id="@+id/username"
+        <Button
+            android:id="@+id/tellerCloseAccountButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/tellerCancel"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="93dp"
-            android:ems="10"
-            android:hint="Username" >
-
-            <requestFocus />
-        </EditText>
+            android:background="@drawable/button_background_selector"
+            android:text="@string/close_account_button"
+            android:textColor="#FFFFFF" />
 
 </RelativeLayout>
+
 </RelativeLayout>
