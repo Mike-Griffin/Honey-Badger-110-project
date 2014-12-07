@@ -14,6 +14,8 @@ public class TellerCustomerInfo extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_teller_customer_info);
+		
+		
 	}
 
 	@Override
@@ -44,5 +46,28 @@ public class TellerCustomerInfo extends ActionBarActivity {
                                                         INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
+    }	
+	
+	public static int accountGenerator() {
+
+        long timeSeed = System.nanoTime(); // to get the current date time value
+
+        double randSeed = Math.random() * 1000; // random number generation
+
+        long midSeed = (long) (timeSeed * randSeed); // mixing up the time and
+                                                        // rand number.
+
+                                                        // variable timeSeed
+                                                        // will be unique
+                                                       // variable rand will 
+                                                       // ensure no relation 
+                                                      // between the numbers
+
+        String s = midSeed + "";
+        String subStr = s.substring(0, 8);
+
+        int finalSeed = Integer.parseInt(subStr);    // integer value
+        return finalSeed;
     }
+
 }

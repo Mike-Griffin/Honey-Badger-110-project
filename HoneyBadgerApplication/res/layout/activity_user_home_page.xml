@@ -53,12 +53,12 @@
         android:background="@drawable/blank3"  />
 
         <Button
-            android:id="@+id/creditDebitButton"
+            android:id="@+id/transactionHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/accountTransferButton"
             android:layout_centerHorizontal="true"
-            android:text="@string/credit_or_debit_button"
+            android:text="Transaction History"
                    android:textColor="#FFFFFF"
         android:background="@drawable/blank3"  />
 

@@ -67,17 +67,27 @@
             android:textColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/signUpTeller"
+            android:id="@+id/Button01"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/updatePenalty"
             android:layout_alignLeft="@+id/updatePenalty"
             android:layout_alignRight="@+id/updatePenalty"
-            android:layout_marginBottom="23dp"
             android:background="@drawable/button_background_selector"
-            android:text="Sign Up Teller"
             android:enabled="false"
-            
+            android:text="Open Customer Account"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/signUpTeller"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/Button01"
+            android:layout_alignRight="@+id/lookUp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_background_selector"
+            android:enabled="false"
+            android:text="Sign Up Teller"
             android:textColor="#FFFFFF" />
 
 </RelativeLayout>
