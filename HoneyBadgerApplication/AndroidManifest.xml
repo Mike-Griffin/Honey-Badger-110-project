@@ -27,31 +27,49 @@
         </activity>
         <activity
             android:name=".SignUp"
-            android:label="@string/title_activity_sign_up" >
+            android:configChanges="orientation"
+            android:label="@string/title_activity_sign_up"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".UserHomePage"
-            android:label="@string/title_activity_user_home_page" >
+            android:configChanges="orientation"
+            android:label="@string/title_activity_user_home_page"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".TellerHomePage"
-            android:label="@string/title_activity_teller_home_page" >
+            android:configChanges="orientation"
+            android:label="@string/title_activity_teller_home_page"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".CreditDebit"
-            android:label="@string/title_activity_credit_debit" >
+            android:configChanges="orientation"
+            android:label="@string/title_activity_credit_debit"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AccountTransfer"
-            android:label="@string/title_activity_account_transfer" >
+            android:configChanges="orientation"
+            android:label="@string/title_activity_account_transfer"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".CloseAccount"
-            android:label="@string/title_activity_close_account" >
+            android:configChanges="orientation"
+            android:label="@string/title_activity_close_account"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ResetPassword"
-            android:label="@string/title_activity_reset_password" >
+            android:configChanges="orientation"
+            android:label="@string/title_activity_reset_password"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".TransactionHistory"
+            android:label="@string/title_activity_transaction_history" >
         </activity>
     </application>
 

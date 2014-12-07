@@ -144,6 +144,11 @@ public class UserHomePage extends ActionBarActivity {
 	}
 
 	@Override
+	public void onBackPressed() {
+	    // do nothing.
+	}
+	
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.user_home_page, menu);
@@ -167,8 +172,14 @@ public class UserHomePage extends ActionBarActivity {
 			}
 			return true;
 		}
+		else if (id == R.id.action_transactionHistory) {
+			final Intent intentTransactionHistory = new Intent(UserHomePage.this,
+															   TransactionHistory.class);
+			startActivity(intentTransactionHistory);
+		}
 		return super.onOptionsItemSelected(item);
 	}
+	
 	
 	@Override
 	public boolean onMenuOpened(int featureId, Menu menu){

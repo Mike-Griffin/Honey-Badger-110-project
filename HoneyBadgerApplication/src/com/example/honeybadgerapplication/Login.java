@@ -141,6 +141,11 @@ public class Login extends Activity {
 
 
     @Override
+    public void onBackPressed() {
+        // do nothing.
+    }
+    
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.
                                                         INPUT_METHOD_SERVICE);

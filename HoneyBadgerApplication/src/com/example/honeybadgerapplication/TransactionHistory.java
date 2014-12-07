@@ -5,18 +5,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class TellerHomePage extends ActionBarActivity {
+public class TransactionHistory extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_teller_home_page);
+		setContentView(R.layout.activity_transaction_history);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.teller_home_page, menu);
+		getMenuInflater().inflate(R.menu.transaction_history, menu);
 		return true;
 	}
 
