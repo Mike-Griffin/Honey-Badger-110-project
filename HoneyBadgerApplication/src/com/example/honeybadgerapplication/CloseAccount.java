@@ -45,7 +45,8 @@ public class CloseAccount extends ActionBarActivity {
 		//final User customer = null;
 		if(userBundle == null) {
 			//error, Bundle should not be null
-			System.out.println("Bundle does not exist");
+			Toast.makeText(getApplicationContext(), "Bundle does not exist",
+					Toast.LENGTH_SHORT).show();
 		}
 		else {
 		  final User customer = userBundle.getParcelable("user");

@@ -35,32 +35,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/closeAccountButton"
-            android:layout_alignLeft="@+id/closeAccountButton"
-            android:layout_alignRight="@+id/closeAccountButton"
-            android:text="@string/account_tranfer_button" 
-                   android:textColor="#FFFFFF"
-        android:background="@drawable/blank3" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_background_selector"
+            android:text="@string/account_tranfer_button"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/closeAccountButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/creditDebitButton"
             android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/creditDebitButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_background_selector"
             android:text="@string/close_account_button"
-                   android:textColor="#FFFFFF"
-        android:background="@drawable/blank3"  />
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/transactionHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/accountTransferButton"
-            android:layout_centerHorizontal="true"
-            android:text="Transaction History"
-                   android:textColor="#FFFFFF"
-        android:background="@drawable/blank3"  />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_background_selector"
+            android:text="@string/transaction_history_button"
+            android:textColor="#FFFFFF" />
 
     </RelativeLayout>
 

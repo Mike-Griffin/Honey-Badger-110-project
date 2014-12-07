@@ -181,7 +181,11 @@ public class Customer extends User {
 		// TODO Auto-generated method stub
 		ParseObject accountTo = null;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
-		query.whereEqualTo("accountNumber", accTo);
+		if(accTo == 1) {
+		query.whereEqualTo("accountNumber", checkingNumber);
+		} else {
+			query.whereEqualTo("accountNumber", savingNumber);
+		}
 		try {
 			accountTo = query.getFirst();
 		} catch (ParseException e) {

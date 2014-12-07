@@ -98,6 +98,7 @@
     <string name="credit_or_debit_button">Credit Or Debit</string>
     <string name="account_tranfer_button">Transfer</string>
     <string name="close_account_button">Close Account</string>
+    <string name="transaction_history_button">Transaction History</string>
 
     <!-- AccountTransfer -->
     <string name="amount_to_transfer_placeholder">Amount To Transfer</string>
