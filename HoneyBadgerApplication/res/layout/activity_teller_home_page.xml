@@ -76,6 +76,8 @@
             android:layout_marginBottom="23dp"
             android:background="@drawable/button_background_selector"
             android:text="Sign Up Teller"
+            android:enabled="false"
+            
             android:textColor="#FFFFFF" />
 
 </RelativeLayout>

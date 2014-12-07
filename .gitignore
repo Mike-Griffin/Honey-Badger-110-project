@@ -1,2 +1,10 @@
 *.class
 *.apk
+*.jar
+*.class
+*.txt
+appcompat_v7/bin/android-support-v7-appcompat.jar
+
+appcompat_v7/bin/android-support-v7-appcompat.jar
+
+*.class

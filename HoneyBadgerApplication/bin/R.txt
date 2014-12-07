@@ -356,8 +356,8 @@ int drawable signup 0x7f020043
 int id RelativeLayout1 0x7f09003f
 int id accountEmailToTransfer 0x7f090044
 int id accountNumber 0x7f090048
-int id accountTable 0x7f090066
-int id accountTransferButton 0x7f090067
+int id accountTable 0x7f09006c
+int id accountTransferButton 0x7f09006d
 int id account_num 0x7f09004f
 int id account_types 0x7f09004a
 int id action 0x7f090051
@@ -370,17 +370,21 @@ int id action_bar_subtitle 0x7f09001f
 int id action_bar_title 0x7f09001e
 int id action_context_bar 0x7f090032
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 int id action_logout 0x7f09006c
 =======
 int id action_logout 0x7f09006b
+>>>>>>> Stashed changes
+=======
+int id action_logout 0x7f090072
 >>>>>>> Stashed changes
 int id action_menu_divider 0x7f090005
 int id action_menu_presenter 0x7f090006
 int id action_mode_bar 0x7f09002e
 int id action_mode_bar_stub 0x7f09002d
 int id action_mode_close_button 0x7f090020
-int id action_settings 0x7f09006a
-int id action_transactionHistory 0x7f09006b
+int id action_settings 0x7f090070
+int id action_transactionHistory 0x7f090071
 int id activity_chooser_view_content 0x7f090021
 int id address 0x7f09005c
 int id always 0x7f090014
@@ -397,18 +401,19 @@ int id cancel_cred 0x7f090052
 int id checkbox 0x7f090029
 int id city 0x7f090061
 int id closeAccount 0x7f090046
-int id closeAccountButton 0x7f090068
+int id closeAccountButton 0x7f09006e
 int id collapseActionView 0x7f090015
 int id conf_cred 0x7f090050
 int id confirmButton 0x7f09004c
 int id confirmTransfer 0x7f090041
-int id creditDebitButton 0x7f090069
+int id creditDebitButton 0x7f09006f
 int id decor_content_parent 0x7f09002f
 int id default_activity_button 0x7f090024
 int id dialog 0x7f090019
 int id disableHome 0x7f09000d
 int id doneButton 0x7f09005a
 int id dropdown 0x7f09001a
+int id editText1 0x7f090065
 int id edit_query 0x7f090033
 int id email 0x7f09005b
 int id end 0x7f09001c
@@ -425,6 +430,7 @@ int id labelCloseAccount 0x7f090049
 int id listMode 0x7f09000a
 int id list_item 0x7f090025
 int id login 0x7f090058
+int id lookUp 0x7f090066
 int id middle 0x7f09001d
 int id name 0x7f090062
 int id never 0x7f090017
@@ -435,8 +441,8 @@ int id phone 0x7f090063
 int id progress_circular 0x7f090007
 int id progress_horizontal 0x7f090008
 int id radio 0x7f09002b
-int id relativeLayout 0x7f090064
-int id scrollView1 0x7f090065
+int id relativeLayout 0x7f09006a
+int id scrollView1 0x7f09006b
 int id search_badge 0x7f090035
 int id search_bar 0x7f090034
 int id search_button 0x7f090036
@@ -452,14 +458,18 @@ int id showCustom 0x7f090010
 int id showHome 0x7f090011
 int id showTitle 0x7f090012
 int id signUp 0x7f090056
+int id signUpTeller 0x7f090069
 int id split_action_bar 0x7f090004
 int id state 0x7f09005f
 int id submit_area 0x7f09003c
 int id tabMode 0x7f09000c
+int id textView1 0x7f090064
 int id title 0x7f090027
 int id transferFromSpinner 0x7f090042
 int id transferToSpinner 0x7f090043
 int id up 0x7f090001
+int id updateInterest 0x7f090067
+int id updatePenalty 0x7f090068
 int id useLogo 0x7f090013
 int id username 0x7f090053
 int id verifyPassword 0x7f09005e
