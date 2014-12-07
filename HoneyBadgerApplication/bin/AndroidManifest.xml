@@ -52,12 +52,6 @@
         <activity
             android:name=".ResetPassword"
             android:label="@string/title_activity_reset_password" >
-            android:name=".CreateAccount"
-            android:label="@string/title_activity_create_account" >
-        </activity>
-        <activity
-            android:name=".ForgotPassword"
-            android:label="@string/title_activity_forgot_password" >
         </activity>
     </application>
 

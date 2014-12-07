@@ -46,11 +46,10 @@ public class Login extends Activity {
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 
 		final Intent intentSignUp = new Intent(Login.this, SignUp.class);
-		final Intent intentForgotPassword = new Intent(Login.this,
-				ForgotPassword.class);
+		final Intent intentForgotPassword = new Intent(Login.this, ResetPassword.class);
 		final Button signUpButton = (Button) findViewById(R.id.signUp);
 		final Button loginButton = (Button) findViewById(R.id.login);
-		final Button forgotPasswordButton = (Button) findViewById(R.id.forgotPassword);
+		final Button forgotPasswordButton = (Button)findViewById(R.id.forgotPassword);
         
 		username_edit_text = (EditText) findViewById(R.id.username);
 		password_edit_text = (EditText) findViewById(R.id.password);
@@ -62,6 +61,15 @@ public class Login extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				startActivity(intentSignUp);
+			}
+		});
+		
+		forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(intentForgotPassword);
+				
 			}
 		});
 		
