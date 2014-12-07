@@ -57,10 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/accountTransferButton"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_background_selector"
             android:text="Transaction History"
-                   android:textColor="#FFFFFF"
-        android:background="@drawable/button_background_selector"  />
+            android:textColor="#FFFFFF" />
 
     </RelativeLayout>
 

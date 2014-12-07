@@ -1,9 +1,12 @@
 package com.example.honeybadgerapplication;
 
+import com.example.honeybadgerapi.User;
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class TransactionHistory extends ActionBarActivity {
 
@@ -11,6 +14,21 @@ public class TransactionHistory extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_transaction_history);
+		
+		//gets customer object
+		Bundle userBundle = this.getIntent().getExtras();
+		//final User customer = null;
+		if(userBundle == null) {
+			//error, Bundle should not be null
+			Toast.makeText(getApplicationContext(), "Bundle does not exist",
+					Toast.LENGTH_SHORT).show();
+		}
+		else {
+		  final User customer = userBundle.getParcelable("user");
+		  
+		  
+		}  
+		
 	}
 
 	@Override
