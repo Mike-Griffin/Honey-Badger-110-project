@@ -37,7 +37,9 @@ public class TellerHomePage extends ActionBarActivity {
 		
 	
 		final Intent intentTellerCustomerInfo = new Intent (TellerHomePage.this, TellerCustomerInfo.class);
+		final Intent intentSignUpTeller = new Intent (TellerHomePage.this, SignUp.class);
 		final Button lookUpButton = (Button) findViewById(R.id.lookUp);
+		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
 		username_edit_text = (EditText) findViewById(R.id.username);
 		
 		Bundle userBundle = this.getIntent().getExtras();
@@ -48,7 +50,18 @@ public class TellerHomePage extends ActionBarActivity {
 			final User teller = userBundle.getParcelable("user");
 
 			
-		
+			signUpTellerButton.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					//Bundle userBundleOut = new Bundle();
+					//userBundleOut.putParcelable("teller", teller);
+					//intentSignUpTeller.putExtra("teller", teller);
+					//startActivity(intentSignUpTeller);
+					
+				}
+			});
 		
 			lookUpButton.setOnClickListener(new View.OnClickListener() {
 			

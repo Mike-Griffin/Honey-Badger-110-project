@@ -1,9 +1,12 @@
 package com.example.honeybadgerapplication;
 
+import com.example.honeybadgerapi.User;
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class TellerSignUp extends ActionBarActivity {
 
@@ -11,6 +14,14 @@ public class TellerSignUp extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_teller_sign_up);
+		
+		Bundle userBundle = this.getIntent().getExtras();
+		if (userBundle == null) {
+			Toast.makeText(getApplicationContext(), "Bundle does not exist",
+					Toast.LENGTH_SHORT).show();
+		} else {
+			final User teller = userBundle.getParcelable("user");
+		}
 	}
 
 	@Override

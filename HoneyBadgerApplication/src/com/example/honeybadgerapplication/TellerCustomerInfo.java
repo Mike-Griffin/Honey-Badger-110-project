@@ -21,18 +21,21 @@ public class TellerCustomerInfo extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_teller_customer_info);
 		
+		
 		final Intent intentClose = new Intent(TellerCustomerInfo.this,
 				CloseAccount.class);
+		final Intent intentTellerHomePage = new Intent (TellerCustomerInfo.this, TellerHomePage.class);
 		
 		final Button closeButton = (Button) findViewById(R.id.tellerCloseAccountButton);
+		final Button cancelButton = (Button) findViewById(R.id.tellerCancel);
 		
 		Bundle userBundle = this.getIntent().getExtras();
 		if (userBundle == null) {
 			Toast.makeText(getApplicationContext(), "Bundle does not exist",
 					Toast.LENGTH_SHORT).show();
 		} else {
-			final User user = userBundle.getParcelable("teller");
-			final User customer = user.getCustomer();
+			final User teller = userBundle.getParcelable("teller");
+			final User customer = teller.getCustomer();
 			
 			
 		
@@ -46,10 +49,30 @@ public class TellerCustomerInfo extends ActionBarActivity {
 						Toast.makeText(getApplicationContext(), "No Active Accounts!",
 								Toast.LENGTH_SHORT).show();
 					} else {
-						startActivity(intentClose);
+						Toast.makeText(getApplicationContext(), "Has Accounts!",
+								Toast.LENGTH_SHORT).show();
+						//Bundle userBundleOut = new Bundle();
+						//userBundleOut.putParcelable("user", teller);
+						//intentClose.putExtra("user", teller);
+						//startActivity(intentClose);
 					}
 				}
 			});
+			
+			cancelButton.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Bundle userBundle = new Bundle();
+					userBundle.putParcelable("teller", customer);
+					intentTellerHomePage.putExtra("teller", customer);
+					startActivity(intentTellerHomePage);
+					
+				}
+			});
+			
+			
 		}
 	}
 
@@ -75,13 +98,6 @@ public class TellerCustomerInfo extends ActionBarActivity {
 	public void onBackPressed() {
 	    // do nothing.
 	}
-	@Override
-    public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
-                                                        INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        return true;
-    }	
 	
 	public static int accountGenerator() {
 
