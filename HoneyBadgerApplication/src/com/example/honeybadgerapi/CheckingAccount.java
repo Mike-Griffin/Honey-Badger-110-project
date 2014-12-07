@@ -40,10 +40,20 @@ public class CheckingAccount extends Account {
 	}
 
 	@Override
-	public void updateInterestRate() {
+	public void updateInterestRate(double time) {
 		// TODO Auto-generated method stub
 		interestRate = calculator.calculate(balance);
-		setBalance(interestRate);
+		if(balance != interestRate) {
+			setBalance(interestRate);
+			ParseObject account = query();
+			account.put("lastInterestPenalty", time);
+			try {
+				account.save();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override

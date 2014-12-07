@@ -17,15 +17,16 @@ public class Teller extends User {
 	private Customer activeCustomer;
 	private String tellerID;
 
-	public Teller(){	
+	public Teller() {
 	}
-	
+
 	Teller(Parcel in) {
 		super(in);
-		this.activeCustomer = (Customer) in.readParcelable(Customer.class.getClassLoader());
+		this.activeCustomer = (Customer) in.readParcelable(Customer.class
+				.getClassLoader());
 		this.tellerID = in.readString();
 	}
-	
+
 	// login
 	@Override
 	public void login(String username, String password) {
@@ -41,7 +42,7 @@ public class Teller extends User {
 			userType = 2;
 		}
 	}
-	
+
 	public void signup(String username, String password, String email) {
 		signUpStatus = true;
 
@@ -74,7 +75,7 @@ public class Teller extends User {
 	public void setAccountCombo(int code) {
 		activeCustomer.setNumOfAccounts(code);
 	}
-	
+
 	@Override
 	public int getAccountCombo() {
 		// TODO Auto-generated method stub
@@ -92,7 +93,7 @@ public class Teller extends User {
 		// TODO Auto-generated method stub
 		return activeCustomer.transfer(accFrom, amount, phone_email);
 	}
-	
+
 	@Override
 	public void updateAccountList() {
 		activeCustomer.updateAccountList();
@@ -121,15 +122,29 @@ public class Teller extends User {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		try {
 			accountList = query.find();
-		} catch(ParseException e) {
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 		double currentTime = System.currentTimeMillis();
-		for(int i = 0; i < accountList.size(); ++i) {
-			double time = accountList.get(i).getInt("lastInterestPenalty");
-			if(currentTime - time > 60000) {
-				
+		for (int i = 0; i < accountList.size(); ++i) {
+			double lastUpdate = accountList.get(i)
+					.getInt("lastInterestPenalty");
+			if (currentTime - lastUpdate > 60000) {
+				String type = accountList.get(i).getString("type");
+				int accountNumber = accountList.get(i).getInt("accountNumber");
+				Account account;
+				if (type.equals("Checking Account")) {
+					account = new CheckingAccount(accountNumber);
+				} else if (type.equals("Saving Account")) {
+					account = new SavingsAccount(accountNumber);
+				} else {
+					account = null;
+				}
+
+				if (account != null) {
+					account.updateInterestRate(currentTime);
+				}
 			}
 		}
 	}
@@ -139,15 +154,28 @@ public class Teller extends User {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		try {
 			accountList = query.find();
-		} catch(ParseException e) {
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 		double currentTime = System.currentTimeMillis();
-		for(int i = 0; i < accountList.size(); ++i) {
-			int time = accountList.get(i).getInt("lastInterestPenalty");
-			if(currentTime - time > 60000) {
-				
+		for (int i = 0; i < accountList.size(); ++i) {
+			int lastUpdate = accountList.get(i).getInt("lastInterestPenalty");
+			if (currentTime - lastUpdate > 60000) {
+				String type = accountList.get(i).getString("type");
+				int accountNumber = accountList.get(i).getInt("accountNumber");
+				Account account;
+				if (type.equals("Checking Account")) {
+					account = new CheckingAccount(accountNumber);
+				} else if (type.equals("Saving Account")) {
+					account = new SavingsAccount(accountNumber);
+				} else {
+					account = null;
+				}
+
+				if (account != null) {
+					account.updatePenalty(currentTime);
+				}
 			}
 		}
 	}
@@ -169,7 +197,7 @@ public class Teller extends User {
 	public Customer getCustomer() {
 		return activeCustomer;
 	}
-	
+
 	public int activeCustomer() {
 		return activeCustomer.getLoginStatus();
 	}
@@ -179,7 +207,6 @@ public class Teller extends User {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {

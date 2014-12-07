@@ -70,7 +70,7 @@ public abstract class Account implements Parcelable {
 		return lastUpdated;
 	}
 
-	public abstract void updateInterestRate();
+	public abstract void updateInterestRate(double time);
 
 	// Condition is incorrect, need date for Last Updated
 	public void applyInterestRate() {
@@ -79,9 +79,17 @@ public abstract class Account implements Parcelable {
 	}
 
 	// Condition is incorrect, need date for Last Updated
-	public void updatePenalty() {
+	public void updatePenalty(double time) {
 		if(balance < 100.00 && balance >= 25.00) {
 			setBalance((balance -= 25.00));
+			ParseObject account = query();
+			account.put("lastInterestPenalty", time);
+			try {
+				account.save();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
