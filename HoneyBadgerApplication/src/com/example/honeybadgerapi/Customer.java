@@ -87,6 +87,7 @@ public class Customer extends User {
 			accountCombo = customer.getInt("accountCombo");
 			checkingNumber = customer.getInt("checkingAccount");
 			savingNumber = customer.getInt("savingAccount");
+			userType = 1;
 			updateAccountList();
 		}
 	}

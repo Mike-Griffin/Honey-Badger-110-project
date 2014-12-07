@@ -38,6 +38,7 @@ public class Teller extends User {
 		if (teller != null) {
 			loginStatus = 1;
 			tellerID = teller.getObjectId();
+			userType = 2;
 		}
 	}
 	

@@ -10,17 +10,20 @@ public abstract class User implements Parcelable{
 	
 	protected int loginStatus = 0; // 0 fails, 1 success
 	protected boolean signUpStatus = true;
+	protected int userType = 0;
  
 	public User() {}
 	
     public void writeToParcel(Parcel dest, int flags) {
 		dest.writeInt(loginStatus);
 		dest.writeValue(signUpStatus);;
+		dest.writeInt(userType);
     } 
  
     protected User(Parcel in) {
 		this.loginStatus = in.readInt();
 		this.signUpStatus = (Boolean) in.readValue(null);
+		this.userType = in.readInt();
     } 
 	
 	
@@ -30,6 +33,10 @@ public abstract class User implements Parcelable{
 
 	public boolean getSignUpStatus() {
 		return signUpStatus;
+	}
+	
+	public int getUserType(){
+		return userType;
 	}
 	
 	public abstract void login(String username, String password);
