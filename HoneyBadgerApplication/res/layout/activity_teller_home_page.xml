@@ -54,16 +54,17 @@
             android:text="Update Interest"
             android:textColor="#FFFFFF" />
 
+  
         <Button
             android:id="@+id/open_customer_account"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/updatePenalty"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
+            android:layout_below="@+id/username"
+            android:layout_marginTop="150dp"
             android:background="@drawable/button_background_selector"
-            android:enabled="false"
-            android:text="Open Customer Account"
+            android:text="Add Customer Account"
             android:textColor="#FFFFFF" />
 
         <Button

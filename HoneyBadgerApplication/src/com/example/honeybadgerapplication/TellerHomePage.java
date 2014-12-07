@@ -38,10 +38,10 @@ public class TellerHomePage extends ActionBarActivity {
 	
 		final Intent intentTellerCustomerInfo = new Intent (TellerHomePage.this, TellerCustomerInfo.class);
 		final Intent intentSignUpTeller = new Intent (TellerHomePage.this, TellerSignUp.class);
-		final Intent intentSignUpCustomer = new Intent (TellerHomePage.this, SignUp.class);
+		final Intent intentAddCustomerAccount = new Intent (TellerHomePage.this, TellerAddAccounts.class);
 		final Button lookUpButton = (Button) findViewById(R.id.lookUp);
 		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
-		final Button signUpCustomerButton = (Button) findViewById(R.id.open_customer_account);
+		final Button addCustomerAccountButton = (Button) findViewById(R.id.open_customer_account);
 		username_edit_text = (EditText) findViewById(R.id.username);
 		
 		Bundle userBundle = this.getIntent().getExtras();
@@ -50,12 +50,37 @@ public class TellerHomePage extends ActionBarActivity {
 					Toast.LENGTH_SHORT).show();
 		} else {
 			final User teller = userBundle.getParcelable("user");
+			
+			
+			
+			intentSignUpTeller.putExtra("teller", teller);
+			intentTellerCustomerInfo.putExtra("teller", teller);
 
-			signUpCustomerButton.setOnClickListener(new View.OnClickListener() {
+			addCustomerAccountButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
+					username = username_edit_text.getText().toString().trim();
+					ParseObject parseUser = null;
+					User user = null;
+					ParseQuery<ParseUser> query = ParseUser.getQuery();
+					query.whereEqualTo("username", username);
+					try {
+						parseUser = query.getFirst();
+						teller.setCustomer(username);
+						Bundle userBundleOut = new Bundle();
+						userBundleOut.putParcelable("teller", teller);
+						intentAddCustomerAccount.putExtra("teller", teller);
+						startActivity(intentAddCustomerAccount);
+					} catch (com.parse.ParseException e) {
+						// TODO Auto-generated catch block
+						Toast.makeText(
+							getApplicationContext(),
+							"No such user exist, please signup"
+							+ e, Toast.LENGTH_SHORT)
+							.show();
+					}
 					
 				}
 			});
@@ -64,10 +89,10 @@ public class TellerHomePage extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					Bundle userBundleOut = new Bundle();
-					userBundleOut.putParcelable("teller", teller);
-					intentSignUpTeller.putExtra("teller", teller);
-					startActivity(intentSignUpTeller);
+					//Bundle userBundleOut = new Bundle();
+					//userBundleOut.putParcelable("teller", teller);
+					startActivity(intentAddCustomerAccount);
+					//startActivity(intentSignUpTeller);
 				}
 			});
 		
@@ -86,7 +111,7 @@ public class TellerHomePage extends ActionBarActivity {
 					teller.setCustomer(username);
 					Bundle userBundleOut = new Bundle();
 					userBundleOut.putParcelable("teller", teller);
-					intentTellerCustomerInfo.putExtra("teller", teller);
+				
 					startActivity(intentTellerCustomerInfo);
 				} catch (com.parse.ParseException e) {
 					// TODO Auto-generated catch block

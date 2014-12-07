@@ -20,7 +20,7 @@ public class TellerSignUp extends ActionBarActivity {
 			Toast.makeText(getApplicationContext(), "Bundle does not exist",
 					Toast.LENGTH_SHORT).show();
 		} else {
-			final User teller = userBundle.getParcelable("user");
+			final User teller = userBundle.getParcelable("teller");
 		}
 	}
 

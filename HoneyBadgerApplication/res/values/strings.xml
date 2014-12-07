@@ -129,5 +129,6 @@
     <string name="title_activity_user_home_page">User Home Page</string>
     <string name="title_activity_transaction_history">TransactionHistory</string>
     <string name="title_activity_teller_customer_info">TellerCustomerInfo</string>
+    <string name="title_activity_teller_add_accounts">TellerAddAccounts</string>
 
 </resources>
