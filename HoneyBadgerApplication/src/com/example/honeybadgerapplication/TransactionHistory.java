@@ -31,8 +31,4 @@ public class TransactionHistory extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	@Override
-	public void onBackPressed() {
-	    // do nothing.
-	}
 }

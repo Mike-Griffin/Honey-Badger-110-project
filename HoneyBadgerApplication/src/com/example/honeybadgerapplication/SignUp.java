@@ -68,8 +68,7 @@ public class SignUp extends ActionBarActivity implements
 		defaultACL.setPublicReadAccess(true);
 		// ParseACL.setDefaultACL(defaultACL, this);
 
-		final Intent intentUserHomePage = new Intent(SignUp.this,
-				UserHomePage.class);
+		
 		final Intent intentLogin = new Intent(SignUp.this, Login.class);
 		final Button doneButton = (Button) findViewById(R.id.doneButton);
 		final Button cancelButton = (Button) findViewById(R.id.cancelButton);
@@ -229,7 +228,7 @@ public class SignUp extends ActionBarActivity implements
 						user.save();
 					} catch (ParseException e) {
 					}
-					startActivity(intentUserHomePage);
+					startActivity(intentLogin);
 				} else {
 					Toast.makeText(getApplicationContext(), "Sign Up Failed!!",
 							Toast.LENGTH_SHORT).show();
