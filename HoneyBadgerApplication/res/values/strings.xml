@@ -126,10 +126,7 @@
     <string name="title_activity_teller_home_page">Teller Home Page</string>
     <string name="title_activity_reset_password">ResetPassword</string>
     <string name="title_activity_user_home_page">User Home Page</string>
-<<<<<<< Updated upstream
     <string name="title_activity_transaction_history">TransactionHistory</string>
-=======
     <string name="title_activity_teller_customer_info">TellerCustomerInfo</string>
->>>>>>> Stashed changes
 
 </resources>

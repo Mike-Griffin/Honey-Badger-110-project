@@ -1,5 +1,6 @@
 *.class
 *.apk
+<<<<<<< Updated upstream
 *.jar
 *.class
 *.txt
@@ -8,3 +9,8 @@ appcompat_v7/bin/android-support-v7-appcompat.jar
 appcompat_v7/bin/android-support-v7-appcompat.jar
 
 *.class
+=======
+*.txt
+*.dex
+>>>>>>> Stashed changes
+*.cache

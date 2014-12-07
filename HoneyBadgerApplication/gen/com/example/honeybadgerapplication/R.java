@@ -1659,8 +1659,8 @@ containing a value of this type.
         public static final int RelativeLayout1=0x7f09003f;
         public static final int accountEmailToTransfer=0x7f090044;
         public static final int accountNumber=0x7f090048;
-        public static final int accountTable=0x7f090066;
-        public static final int accountTransferButton=0x7f090067;
+        public static final int accountTable=0x7f09006c;
+        public static final int accountTransferButton=0x7f09006d;
         public static final int account_num=0x7f09004f;
         public static final int account_types=0x7f09004a;
         public static final int action=0x7f090051;
@@ -1672,14 +1672,14 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f09001f;
         public static final int action_bar_title=0x7f09001e;
         public static final int action_context_bar=0x7f090032;
-        public static final int action_logout=0x7f09006c;
+        public static final int action_logout=0x7f090072;
         public static final int action_menu_divider=0x7f090005;
         public static final int action_menu_presenter=0x7f090006;
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f09006a;
-        public static final int action_transactionHistory=0x7f09006b;
+        public static final int action_settings=0x7f090070;
+        public static final int action_transactionHistory=0x7f090071;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int address=0x7f09005c;
         public static final int always=0x7f090014;
@@ -1696,18 +1696,19 @@ containing a value of this type.
         public static final int checkbox=0x7f090029;
         public static final int city=0x7f090061;
         public static final int closeAccount=0x7f090046;
-        public static final int closeAccountButton=0x7f090068;
+        public static final int closeAccountButton=0x7f09006e;
         public static final int collapseActionView=0x7f090015;
         public static final int conf_cred=0x7f090050;
         public static final int confirmButton=0x7f09004c;
         public static final int confirmTransfer=0x7f090041;
-        public static final int creditDebitButton=0x7f090069;
+        public static final int creditDebitButton=0x7f09006f;
         public static final int decor_content_parent=0x7f09002f;
         public static final int default_activity_button=0x7f090024;
         public static final int dialog=0x7f090019;
         public static final int disableHome=0x7f09000d;
         public static final int doneButton=0x7f09005a;
         public static final int dropdown=0x7f09001a;
+        public static final int editText1=0x7f090065;
         public static final int edit_query=0x7f090033;
         public static final int email=0x7f09005b;
         public static final int end=0x7f09001c;
@@ -1724,6 +1725,7 @@ containing a value of this type.
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090025;
         public static final int login=0x7f090058;
+        public static final int lookUp=0x7f090066;
         public static final int middle=0x7f09001d;
         public static final int name=0x7f090062;
         public static final int never=0x7f090017;
@@ -1734,8 +1736,8 @@ containing a value of this type.
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09002b;
-        public static final int relativeLayout=0x7f090064;
-        public static final int scrollView1=0x7f090065;
+        public static final int relativeLayout=0x7f09006a;
+        public static final int scrollView1=0x7f09006b;
         public static final int search_badge=0x7f090035;
         public static final int search_bar=0x7f090034;
         public static final int search_button=0x7f090036;
@@ -1751,14 +1753,18 @@ containing a value of this type.
         public static final int showHome=0x7f090011;
         public static final int showTitle=0x7f090012;
         public static final int signUp=0x7f090056;
+        public static final int signUpTeller=0x7f090069;
         public static final int split_action_bar=0x7f090004;
         public static final int state=0x7f09005f;
         public static final int submit_area=0x7f09003c;
         public static final int tabMode=0x7f09000c;
+        public static final int textView1=0x7f090064;
         public static final int title=0x7f090027;
         public static final int transferFromSpinner=0x7f090042;
         public static final int transferToSpinner=0x7f090043;
         public static final int up=0x7f090001;
+        public static final int updateInterest=0x7f090067;
+        public static final int updatePenalty=0x7f090068;
         public static final int useLogo=0x7f090013;
         public static final int username=0x7f090053;
         public static final int verifyPassword=0x7f09005e;
@@ -1822,11 +1828,12 @@ containing a value of this type.
         public static final int activity_main=0x7f03001b;
         public static final int activity_reset_password=0x7f03001c;
         public static final int activity_sign_up=0x7f03001d;
-        public static final int activity_teller_home_page=0x7f03001e;
-        public static final int activity_transaction_history=0x7f03001f;
-        public static final int activity_user_home_page=0x7f030020;
-        public static final int login=0x7f030021;
-        public static final int support_simple_spinner_dropdown_item=0x7f030022;
+        public static final int activity_teller_customer_info=0x7f03001e;
+        public static final int activity_teller_home_page=0x7f03001f;
+        public static final int activity_transaction_history=0x7f030020;
+        public static final int activity_user_home_page=0x7f030021;
+        public static final int login=0x7f030022;
+        public static final int support_simple_spinner_dropdown_item=0x7f030023;
     }
     public static final class menu {
         public static final int account_transfer=0x7f0d0000;
@@ -1836,9 +1843,10 @@ containing a value of this type.
         public static final int main=0x7f0d0004;
         public static final int reset_password=0x7f0d0005;
         public static final int sign_up=0x7f0d0006;
-        public static final int teller_home_page=0x7f0d0007;
-        public static final int transaction_history=0x7f0d0008;
-        public static final int user_home_page=0x7f0d0009;
+        public static final int teller_customer_info=0x7f0d0007;
+        public static final int teller_home_page=0x7f0d0008;
+        public static final int transaction_history=0x7f0d0009;
+        public static final int user_home_page=0x7f0d000a;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1947,6 +1955,7 @@ containing a value of this type.
         /**  Android 
          */
         public static final int title_activity_sign_up=0x7f0a0036;
+        public static final int title_activity_teller_customer_info=0x7f0a0041;
         public static final int title_activity_teller_home_page=0x7f0a003d;
         public static final int title_activity_transaction_history=0x7f0a0040;
         public static final int title_activity_user_home_page=0x7f0a003f;
