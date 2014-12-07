@@ -8,7 +8,6 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 public class SavingsAccount extends Account {
-
 	
 	SavingsAccount(Parcel in){
 		this.calculator = (InterestCalculator) in.readValue
@@ -43,7 +42,8 @@ public class SavingsAccount extends Account {
 	@Override
 	public void updateInterestRate() {
 		// TODO Auto-generated method stub
-		interestRate = calculator.calculate(dailyAverageBalance);
+		interestRate = calculator.calculate(balance);
+		setBalance(interestRate);
 	}
 	
 	

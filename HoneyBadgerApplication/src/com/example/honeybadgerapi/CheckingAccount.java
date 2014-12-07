@@ -42,7 +42,8 @@ public class CheckingAccount extends Account {
 	@Override
 	public void updateInterestRate() {
 		// TODO Auto-generated method stub
-		interestRate = calculator.calculate(dailyAverageBalance);
+		interestRate = calculator.calculate(balance);
+		setBalance(interestRate);
 	}
 
 	@Override

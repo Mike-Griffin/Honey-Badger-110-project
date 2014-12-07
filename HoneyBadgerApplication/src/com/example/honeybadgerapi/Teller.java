@@ -1,6 +1,7 @@
 package com.example.honeybadgerapi;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,6 +9,7 @@ import android.util.Log;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class Teller extends User {
@@ -114,11 +116,39 @@ public class Teller extends User {
 	}
 
 	public void updateInterest() {
+		List<ParseObject> accountList = new ArrayList<ParseObject>();
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
+		try {
+			accountList = query.find();
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
 		
+		double currentTime = System.currentTimeMillis();
+		for(int i = 0; i < accountList.size(); ++i) {
+			double time = accountList.get(i).getInt("lastInterestPenalty");
+			if(currentTime - time > 60000) {
+				
+			}
+		}
 	}
 
 	public void updatePenalty() {
-
+		List<ParseObject> accountList = new ArrayList<ParseObject>();
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
+		try {
+			accountList = query.find();
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
+		
+		double currentTime = System.currentTimeMillis();
+		for(int i = 0; i < accountList.size(); ++i) {
+			int time = accountList.get(i).getInt("lastInterestPenalty");
+			if(currentTime - time > 60000) {
+				
+			}
+		}
 	}
 
 	@Override

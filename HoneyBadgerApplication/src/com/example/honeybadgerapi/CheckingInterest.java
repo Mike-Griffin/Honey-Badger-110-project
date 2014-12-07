@@ -25,7 +25,7 @@ public class CheckingInterest implements InterestCalculator, Parcelable {
 				&& dailyAverageBalance >= LOWER) {
 			return (dailyAverageBalance * CHECKING_LOWER_INTEREST);
 		} else
-			return 0.0;
+			return dailyAverageBalance;
 	}
 
 	@Override

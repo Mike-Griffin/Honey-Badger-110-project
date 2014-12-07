@@ -80,8 +80,9 @@ public abstract class Account implements Parcelable {
 
 	// Condition is incorrect, need date for Last Updated
 	public void updatePenalty() {
-		if (lastUpdated > 30)
-			balance -= 25;
+		if(balance < 100.00 && balance >= 25.00) {
+			setBalance((balance -= 25.00));
+		}
 	}
 
 	public boolean close() {
