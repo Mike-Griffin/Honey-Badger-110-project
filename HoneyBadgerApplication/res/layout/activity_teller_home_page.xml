@@ -54,18 +54,6 @@
             android:text="Update Interest"
             android:textColor="#FFFFFF" />
 
-         <Button
-             android:id="@+id/signUpTeller"
-             android:layout_width="150dp"
-             android:layout_height="wrap_content"
-             android:layout_above="@+id/open_customer_account"
-             android:layout_alignLeft="@+id/open_customer_account"
-             android:layout_alignParentRight="true"
-             android:layout_marginBottom="20dp"
-             android:background="@drawable/button_background_selector"
-             android:text="Sign Up Teller"
-             android:textColor="#FFFFFF" />
-
          <EditText
              android:id="@+id/pass"
              android:layout_width="wrap_content"
@@ -78,26 +66,27 @@
              android:hint="Password" />
 
          <Button
-             android:id="@+id/open_customer_account"
-             android:layout_width="150dp"
-             android:layout_height="wrap_content"
-             android:layout_above="@+id/updatePenalty"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentRight="true"
-             android:layout_marginBottom="51dp"
-             android:background="@drawable/button_background_selector"
-             android:text="Add Customer Account"
-             android:textColor="#FFFFFF" />
-
-         <Button
              android:id="@+id/lookUp"
              android:layout_width="150dp"
              android:layout_height="wrap_content"
-             android:layout_above="@+id/signUpTeller"
-             android:layout_alignLeft="@+id/signUpTeller"
+             android:layout_alignParentLeft="true"
              android:layout_alignParentRight="true"
+             android:layout_below="@+id/pass"
+             android:layout_marginTop="20dp"
              android:background="@drawable/button_background_selector"
              android:text="Look Up"
+             android:textColor="#FFFFFF" />
+
+         <Button
+             android:id="@+id/signUpTeller"
+             android:layout_width="150dp"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:layout_alignParentRight="true"
+             android:layout_below="@+id/lookUp"
+             android:layout_marginTop="64dp"
+             android:background="@drawable/button_background_selector"
+             android:text="Sign Up Teller"
              android:textColor="#FFFFFF" />
 
 </RelativeLayout>

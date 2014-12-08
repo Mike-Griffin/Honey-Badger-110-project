@@ -72,6 +72,17 @@
             android:text="@string/close_account_button"
             android:textColor="#FFFFFF" />
 
+        <Button
+            android:id="@+id/open_customer_account"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tellerCreditDebitButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_background_selector"
+            android:text="Add Customer Account"
+            android:textColor="#FFFFFF" />
+
 </RelativeLayout>
 
 </RelativeLayout>

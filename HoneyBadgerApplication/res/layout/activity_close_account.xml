@@ -11,33 +11,23 @@
     tools:context="com.example.honeybadgerapp.CloseAccount" >
 
     <Button
-        android:id="@+id/closeAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/cancelCloseAccount"
-        android:layout_marginBottom="82dp"
-        android:background="@drawable/button_background_selector"
-        android:text="@string/title_close_account_label"
-        android:textColor="#FFFFFF" />
-
-    <Button
         android:id="@+id/cancelCloseAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="30dp"
-        android:text="@string/cancel_button" 
-               android:textColor="#FFFFFF"
         android:background="@drawable/button_background_selector"
-        />
+        android:text="@string/cancel_button"
+        android:textColor="#FFFFFF" />
 
     <Spinner
         android:id="@+id/accountNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/closeAccount"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="98dp"
         android:layout_marginRight="30dp" />
@@ -51,5 +41,16 @@
         android:layout_marginBottom="54dp"
         android:text="@string/title_close_account_label"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/closeAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cancelCloseAccount"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_background_selector"
+        android:text="@string/title_close_account_label"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
