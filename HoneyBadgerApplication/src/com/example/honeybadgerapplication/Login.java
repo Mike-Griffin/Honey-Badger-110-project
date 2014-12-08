@@ -8,6 +8,7 @@ import com.example.honeybadgerapi.User;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,8 +19,10 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.LogInCallback;
 import com.parse.ParseObject;
+import com.parse.PushService;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,6 +43,10 @@ public class Login extends Activity {
 	private String password;
 	private EditText username_edit_text;
 	private EditText password_edit_text;
+	ProgressDialog progressBar;
+	private int progressBarStatus = 0;
+	private Handler progressBarHandler = new Handler();
+	private long loginStatus = 0;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,7 @@ public class Login extends Activity {
         
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
+		
 
 		final Intent intentSignUp = new Intent(Login.this, SignUp.class);
 		final Intent intentForgotPassword = new Intent(Login.this, ResetPassword.class);
@@ -127,10 +135,9 @@ public class Login extends Activity {
 					return;
 				}
 				
-				Intent nextPage = new Intent();
+				final Intent nextPage = new Intent();
 				Bundle userBundle = new Bundle();
 				userBundle.putParcelable("user", user);
-				
 				
 				if(userType == 1)
 					nextPage.setClass(Login.this, UserHomePage.class);
@@ -138,15 +145,96 @@ public class Login extends Activity {
 					nextPage.setClass(Login.this, TellerHomePage.class);
 				
 				nextPage.putExtra("user", user);
-				startActivity(nextPage);
+			
+				
+				progressBar = new ProgressDialog(v.getContext());
+				progressBar.setCancelable(true);
+				progressBar.setMessage("Securing Log in...");
+				progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+				progressBar.setProgress(0);
+				progressBar.setMax(100);
+				progressBar.show();
+				
+				progressBarStatus = 0;
+				loginStatus = 0;
+				
+				new Thread(new Runnable() {
+					public void run() {
+						while(progressBarStatus < 100 ){
+							progressBarStatus = progressBar();
+							
+							if(progressBarStatus < 100) {
+								try {
+									Thread.sleep(3000);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+							try {
+								Thread.sleep(3000);
+							} catch (InterruptedException e){
+								e.printStackTrace();
+							}
+							
+							progressBarHandler.post(new Runnable() {
+								public void run() {
+									progressBar.setProgress(progressBarStatus);
+								}
+							});
+						}
+						
+						if(progressBarStatus >= 100) {
+							try {
+								Thread.sleep(2000);
+								startActivity(nextPage);
+							} catch(InterruptedException e){
+								e.printStackTrace();
+							}
+							progressBar.dismiss();
+						}
+					}
+					
+				}).start();
+				
 				}
-				//}
 				
 			}
 			
 		});
     }
-
+    
+    public int progressBar() {
+    	while (loginStatus <= 1000000) {
+    		 
+    		loginStatus++;
+    		
+ 
+			if (loginStatus == 100000) {
+				return 10;
+			} else if (loginStatus == 200000) {
+				return 20;
+			} else if (loginStatus == 300000) {
+				return 30;
+			} else if (loginStatus == 400000) {
+				return 40;
+			} else if (loginStatus == 500000) {
+				return 50;
+			} else if (loginStatus == 600000) {
+				return 60;
+			} else if (loginStatus == 700000) {
+				return 70;
+			} else if (loginStatus == 800000) {
+				return 80;
+			} else if (loginStatus == 900000) {
+				return 90;
+			} else {
+				return 100;
+			}
+		}
+		return 100;
+	}
+    
 
     @Override
     public void onBackPressed() {
