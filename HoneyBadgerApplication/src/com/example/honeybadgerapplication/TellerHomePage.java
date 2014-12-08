@@ -87,17 +87,17 @@ public class TellerHomePage extends ActionBarActivity {
 					teller.setCustomer(username, password);
 					Bundle userBundleOut = new Bundle();
 					userBundleOut.putParcelable("user", teller);
-				
-					startActivity(intentTellerCustomerInfo);
 				} catch (com.parse.ParseException e) {
 					// TODO Auto-generated catch block
 					Toast.makeText(
 						getApplicationContext(),
-						"No such user exist, please signup"
-						+ e, Toast.LENGTH_SHORT)
+						"Username or Password is incorrect!",
+						Toast.LENGTH_SHORT)
 						.show();
 				}
 				
+				if(parseUser != null)
+					startActivity(intentTellerCustomerInfo);
 			}
 		});
 		}
