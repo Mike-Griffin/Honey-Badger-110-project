@@ -93,7 +93,15 @@ public class TellerAddAccounts extends ActionBarActivity {
 							.toString().trim());
 					if(user.openAccount("Saving Account", amount)){
 						Toast.makeText(getApplicationContext(), "Account successfully opened",
-								Toast.LENGTH_SHORT).show();		  
+								Toast.LENGTH_SHORT).show();
+						if(user.getAccountCombo() == 2){
+							Toast.makeText(getApplicationContext(), "Account combo is 1", 
+									Toast.LENGTH_SHORT).show();
+						}
+						else {
+							Toast.makeText(getApplicationContext(), "Account combo is 0",
+									Toast.LENGTH_SHORT).show();
+						}
 					}
 					else{
 						Toast.makeText(getApplicationContext(), "Account opening failed", 

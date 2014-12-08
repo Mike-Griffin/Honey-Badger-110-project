@@ -96,7 +96,7 @@ public class TellerHomePage extends ActionBarActivity {
 						.show();
 				}
 				
-				if(parseUser != null)
+				if(parseUser.getString("password").equals(password))
 					startActivity(intentTellerCustomerInfo);
 			}
 		});
