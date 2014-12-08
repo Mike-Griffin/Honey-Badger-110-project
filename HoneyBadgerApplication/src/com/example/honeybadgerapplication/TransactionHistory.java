@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class TransactionHistory extends ActionBarActivity {
 	
-	private List<Account> account = new ArrayList<Account>();
+	private List<Account> accountHistory = new ArrayList<Account>();
 	private TableLayout accountTable;
 	private TableRow row0;
 	private TextView type;
@@ -48,12 +48,14 @@ public class TransactionHistory extends ActionBarActivity {
 			type = new TextView(this);
 			aNum = new TextView(this);
 			bal = new TextView(this);
+			date.setText("Date");
+			date.setPadding(10, 0, 0, 0);
 			type.setText("Type");
 			type.setPadding(10, 0, 0, 0);
 			aNum.setText("Account Number");
 			aNum.setPadding(10, 0, 0, 0);
 			bal.setText("Balance");
-			bal.setPadding(30, 0, 0, 0);
+			bal.setPadding(10, 0, 0, 0);
 			row0.addView(date);
 			row0.addView(type);
 			row0.addView(aNum);
@@ -62,51 +64,37 @@ public class TransactionHistory extends ActionBarActivity {
 
 			if (customer != null) {
 				Account[] list = customer.getAccountList();
-				switch (customer.getAccountCombo()) {
-				case 1:
-					account.add(list[0]);
-					break;
-				case 2:
-					account.add(list[1]);
-					break;
-				case 3:
-					account.add(list[0]);
-					account.add(list[1]);
-					break;
-				default:
-					break;
+				
+				for (int i = 0; i < accountHistory.size(); i++) {
+					if (accountHistory.get(i).getStatus() == true) {
+
+						TableRow row = new TableRow(this);
+						TextView transactionDate = new TextView(this);
+						TextView accountType = new TextView(this);
+						TextView accountNumber = new TextView(this);
+						TextView balance = new TextView(this);
+
+						accountNumber.setPadding(60, 50, 0, 0);
+						balance.setPadding(60, 50, 0, 0);
+						
+						transactionDate.setText(accountHistory.get(i).getLastUpdated());
+						accountType.setText(accountHistory.get(i).getAccountType());
+						accountNumber.setText(Integer.toString(accountHistory.get(i)
+								.getAccountNumber()));
+						balance.setText("$" + String.format( "%.2f", accountHistory.get(i).getBalance()));
+						
+
+						row.addView(transactionDate);
+						row.addView(accountType);
+						row.addView(accountNumber);
+						row.addView(balance);
+						accountTable.addView(row);
+					}
 				}
+				
 			}
-
-			for (int i = 0; i < account.size(); i++) {
-				if (account.get(i).getStatus() == true) {
-
-					TableRow row = new TableRow(this);
-					TextView accountType = new TextView(this);
-					TextView accountNumber = new TextView(this);
-					TextView balance = new TextView(this);
-
-					accountNumber.setPadding(60, 50, 0, 0);
-					balance.setPadding(60, 50, 0, 0);
-
-					accountType.setText(account.get(i).getAccountType());
-					accountNumber.setText(Integer.toString(account.get(i)
-							.getAccountNumber()));
-					balance.setText("$" + String.format( "%.2f", account.get(i).getBalance()));
-					//Double.toString(account.get(i).getBalance()));aa
-
-					row.addView(accountType);
-					row.addView(accountNumber);
-					row.addView(balance);
-					accountTable.addView(row);
-				}
-			}
-		  
-		  
-		}  
-		
+		}  	
 	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
