@@ -45,7 +45,7 @@ public class TellerHomePage extends ActionBarActivity {
 		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
 
 		username_edit_text = (EditText) findViewById(R.id.username);
-		password_edit_text = (EditText) findViewById(R.id.pass);
+		// password_edit_text = (EditText) findViewById(R.id.pass);
 		
 		Bundle userBundle = this.getIntent().getExtras();
 		if (userBundle == null) {
@@ -77,27 +77,26 @@ public class TellerHomePage extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				username = username_edit_text.getText().toString().trim();
-				password = password_edit_text.getText().toString().trim();
+				// password = password_edit_text.getText().toString().trim();
 				ParseObject parseUser = null;
 				User user = null;
 				ParseQuery<ParseUser> query = ParseUser.getQuery();
 				query.whereEqualTo("username", username);
 				try {
 					parseUser = query.getFirst();
-					teller.setCustomer(username, password);
+					teller.setCustomer(username, "");
 					Bundle userBundleOut = new Bundle();
 					userBundleOut.putParcelable("user", teller);
 				} catch (com.parse.ParseException e) {
 					// TODO Auto-generated catch block
 					Toast.makeText(
 						getApplicationContext(),
-						"Username or Password is incorrect!",
+						"User does not exist!",
 						Toast.LENGTH_SHORT)
 						.show();
 				}
 				
-				if(parseUser.getString("password").equals(password))
-					startActivity(intentTellerCustomerInfo);
+				startActivity(intentTellerCustomerInfo);
 			}
 		});
 		}

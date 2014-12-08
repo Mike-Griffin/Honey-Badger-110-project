@@ -59,8 +59,15 @@ public class TellerAddAccounts extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
+					try {
 					amount = Double.parseDouble(amount_edit_text.getText()
 							.toString().trim());
+					} catch (NumberFormatException e) {
+						Toast.makeText(getApplicationContext(), "Please enter a valid amount!", 
+								Toast.LENGTH_SHORT).show();
+						return;
+					}
+					
 					if(user.openAccount("Checking Account", amount)){
 						Toast.makeText(getApplicationContext(), "Account successfully opened",
 								Toast.LENGTH_SHORT).show();		  
@@ -89,8 +96,15 @@ public class TellerAddAccounts extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
+					try {
 					amount = Double.parseDouble(amount_edit_text.getText()
 							.toString().trim());
+					} catch (NumberFormatException e) {
+						Toast.makeText(getApplicationContext(), "Please enter a valid amount!", 
+								Toast.LENGTH_SHORT).show();
+						return;
+					}
+					
 					if(user.openAccount("Saving Account", amount)){
 						Toast.makeText(getApplicationContext(), "Account successfully opened",
 								Toast.LENGTH_SHORT).show();
