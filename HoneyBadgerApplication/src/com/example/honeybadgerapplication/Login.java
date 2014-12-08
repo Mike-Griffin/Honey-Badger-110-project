@@ -139,8 +139,18 @@ public class Login extends Activity {
 				Bundle userBundle = new Bundle();
 				userBundle.putParcelable("user", user);
 				
-				if(userType == 1)
-					nextPage.setClass(Login.this, UserHomePage.class);
+				if(userType == 1){
+					int aCombo = user.getAccountCombo();
+					if(aCombo == 1 || aCombo == 2 || aCombo == 3){
+						nextPage.setClass(Login.this, UserHomePage.class);
+					}
+					else {
+						Toast.makeText(
+								getApplication(),
+								"User has no accounts", Toast.LENGTH_SHORT).show();
+						return;
+					}
+				}
 				else if(userType == 2)
 					nextPage.setClass(Login.this, TellerHomePage.class);
 				
