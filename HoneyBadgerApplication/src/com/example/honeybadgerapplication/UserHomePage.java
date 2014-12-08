@@ -146,8 +146,7 @@ public class UserHomePage extends ActionBarActivity {
 					accountType.setText(account.get(i).getAccountType());
 					accountNumber.setText(Integer.toString(account.get(i)
 							.getAccountNumber()));
-					balance.setText(Double
-							.toString(account.get(i).getBalance()));
+					balance.setText("$" + String.format( "%.2f", account.get(i).getBalance()));
 
 					row.addView(accountType);
 					row.addView(accountNumber);
