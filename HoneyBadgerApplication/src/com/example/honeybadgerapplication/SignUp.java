@@ -113,17 +113,6 @@ public class SignUp extends ActionBarActivity implements
 				password = password_edit_text.getText().toString().trim();
 				passwordLength = password.length();
 				
-				// Save new user data into Parse.com Data Storage
-				if (name.equals("") || username.equals("")
-						|| password.equals("") || email.equals("")
-						|| birthday.equals("") || address.equals("")
-						|| city.equals("") || state.equals("")) {
-					Toast.makeText(getApplicationContext(),
-							"Please Fill Up All Information!",
-							Toast.LENGTH_SHORT).show();
-
-					return;
-				}
 				
 				if (!password.equals(verify_password_edit_text.getText()
 						.toString().trim())) {
@@ -206,6 +195,18 @@ public class SignUp extends ActionBarActivity implements
 
 						return;
 					}
+				}
+				
+				// Save new user data into Parse.com Data Storage
+				if (name.equals("") || username.equals("")
+						|| password.equals("") || email.equals("")
+						|| birthday.equals("") || address.equals("")
+						|| city.equals("") || state.equals("")) {
+					Toast.makeText(getApplicationContext(),
+							"Please Fill Up All Information!",
+							Toast.LENGTH_SHORT).show();
+
+					return;
 				}
 
 				Customer customer = new Customer();

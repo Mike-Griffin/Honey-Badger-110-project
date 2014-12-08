@@ -69,6 +69,7 @@
         android:layout_alignTop="@+id/amountToTransfer"
         android:layout_marginTop="38dp"
         android:ems="10"
+        android:focusable="true"
         android:hint="@string/account_transfer_email_placeholder"
         android:inputType="textEmailAddress" />
 

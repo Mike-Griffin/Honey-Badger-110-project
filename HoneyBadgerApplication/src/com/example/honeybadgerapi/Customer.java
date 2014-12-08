@@ -435,11 +435,18 @@ public class Customer extends User {
 	@Override
 	public boolean openAccount(String accType, double balance) {
 		// TODO Auto-generated method stub
+		int rand = rand();
 		if(this.accountCombo == 3)
 			return false;
 		
 		ParseUser customer = ParseUser.getCurrentUser();
 		ParseObject account = new ParseObject("Account");
+		try {
+			account.save();
+		} catch(ParseException e) {
+			e.printStackTrace();
+		}
+		
 		int accountNum = 0;
 		
 		if(accType.equals("Checking Account")){
@@ -453,7 +460,7 @@ public class Customer extends User {
 				account.put("balance", balance);
 				account.put("parent", customer);
 				account.put("active", true);
-				
+				account.put("accountNumber", rand);
 				try {
 					account.save();
 				} catch (ParseException e) {
@@ -463,7 +470,7 @@ public class Customer extends User {
 				}
 				
 				customer.put("accountCombo", accountCombo+1);
-				customer.put("checkingAccount", account.getObjectId().hashCode());
+				customer.put("checkingAccount", rand);
 				
 				try {
 					customer.save();
@@ -474,7 +481,7 @@ public class Customer extends User {
 				}
 				
 				accountCombo += 1;
-				checkingNumber = accountNum;
+				checkingNumber = rand;
 				
 				updateAccountList();
 				
@@ -482,7 +489,7 @@ public class Customer extends User {
 			}
 			else{
 				ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
-				query.whereEqualTo("accountNumber", accountNum);
+				query.whereEqualTo("accountNumber", checkingNumber);
 				
 				try {
 					account = query.getFirst();
@@ -494,6 +501,7 @@ public class Customer extends User {
 				
 				account.put("active", true);
 				customer.put("accountCombo", accountCombo+1);
+				account.put("balance", balance);
 				
 				try {
 					account.save();
@@ -503,6 +511,7 @@ public class Customer extends User {
 					return false;
 				}
 				
+				accountCombo += 1;
 				try {
 					customer.save();
 				} catch (ParseException e) {
@@ -510,9 +519,7 @@ public class Customer extends User {
 					e.printStackTrace();
 					return false;
 				}
-				
-				accountCombo += 1;
-				
+
 				updateAccountList();
 				
 				return true;
@@ -530,7 +537,7 @@ public class Customer extends User {
 				account.put("balance", balance);
 				account.put("parent", customer);
 				account.put("active", true);
-				account.put("accountNumber", account.getObjectId().hashCode());
+				account.put("accountNumber", rand);
 				
 				try {
 					account.save();
@@ -541,8 +548,9 @@ public class Customer extends User {
 				}
 				
 				customer.put("accountCombo", accountCombo+2);
-				customer.put("savingAccount", account.getObjectId().hashCode());
-				
+				customer.put("savingAccount", rand);
+				accountCombo += 2;
+
 				try {
 					customer.save();
 				} catch (ParseException e) {
@@ -551,8 +559,7 @@ public class Customer extends User {
 					return false;
 				}
 				
-				accountCombo += 2;
-				savingNumber = accountNum;
+				savingNumber = rand;
 				
 				updateAccountList();
 				
@@ -560,36 +567,41 @@ public class Customer extends User {
 			}
 			else{
 				ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
-				query.whereEqualTo("accountNumber", accountNum);
+				query.whereEqualTo("accountNumber", savingNumber);
 				
 				try {
 					account = query.getFirst();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					Log.d("saving error", "1");
 					return false;
 				}
 				
 				account.put("active", true);
 				customer.put("accountCombo", accountCombo+2);
-				
+				account.put("balance", balance);
 				try {
 					account.save();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					Log.d("saving error", "2");
 					return false;
 				}
 				
+				accountCombo += 2;
+
 				try {
 					customer.save();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					Log.d("saving error", "3");
 					return false;
 				}
 				
-				accountCombo += 2;
+				
 				
 				updateAccountList();
 				
@@ -597,9 +609,10 @@ public class Customer extends User {
 			}
 			
 		}
-		else
-		  return false;
-		
+		else {
+			Log.d("saving error", "4");
+			return false;
+		}
 	}
 	
 	public int getChecking(){
@@ -609,4 +622,18 @@ public class Customer extends User {
 	public int getSaving(){
 		return savingNumber;
 	}
+	
+    public static int rand() {
+
+        long timeSeed = System.nanoTime(); // to get the current date time value
+
+        double randSeed = Math.random() * 1000; // random number generation
+
+        long midSeed = (long) (timeSeed * randSeed);                                
+        String s = midSeed + "";
+        String subStr = s.substring(0, 8);
+
+        return Integer.parseInt(subStr);    // integer value
+
+    }
 }

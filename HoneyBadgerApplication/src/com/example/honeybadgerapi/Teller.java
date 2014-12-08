@@ -41,6 +41,7 @@ public class Teller extends User {
 		}
 
 		if (teller != null) {
+			Log.d("login", "login");
 			loginStatus = 1;
 			tellerID = teller.getObjectId();
 			userType = 2;
@@ -131,7 +132,7 @@ public class Teller extends User {
 
 	}
 
-	public void updateInterest() {
+	public static void updateInterest() {
 		List<ParseObject> accountList = new ArrayList<ParseObject>();
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		try {
@@ -163,7 +164,7 @@ public class Teller extends User {
 		}
 	}
 
-	public void updatePenalty() {
+	public static void updatePenalty() {
 		List<ParseObject> accountList = new ArrayList<ParseObject>();
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		try {

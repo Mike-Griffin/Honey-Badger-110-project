@@ -2,6 +2,7 @@ package com.example.honeybadgerapplication;
 
 import org.apache.http.ParseException;
 
+import com.example.honeybadgerapi.Teller;
 import com.example.honeybadgerapi.User;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -43,9 +44,11 @@ public class TellerHomePage extends ActionBarActivity {
 		
 		final Button lookUpButton = (Button) findViewById(R.id.lookUp);
 		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
+		final Button interestButton = (Button) findViewById(R.id.updateInterest);
+		final Button penaltyButton = (Button) findViewById(R.id.updatePenalty);
 
 		username_edit_text = (EditText) findViewById(R.id.username);
-		// password_edit_text = (EditText) findViewById(R.id.pass);
+		password_edit_text = (EditText) findViewById(R.id.pass);
 		
 		Bundle userBundle = this.getIntent().getExtras();
 		if (userBundle == null) {
@@ -57,7 +60,7 @@ public class TellerHomePage extends ActionBarActivity {
 			
 			
 			intentSignUpTeller.putExtra("user", teller);
-			intentTellerCustomerInfo.putExtra("user", teller);
+			//intentTellerCustomerInfo.putExtra("user", teller);
 
 			
 			signUpTellerButton.setOnClickListener(new View.OnClickListener() {
@@ -77,16 +80,17 @@ public class TellerHomePage extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				username = username_edit_text.getText().toString().trim();
-				// password = password_edit_text.getText().toString().trim();
+				password = password_edit_text.getText().toString().trim();
 				ParseObject parseUser = null;
 				User user = null;
 				ParseQuery<ParseUser> query = ParseUser.getQuery();
 				query.whereEqualTo("username", username);
 				try {
 					parseUser = query.getFirst();
-					teller.setCustomer(username, "");
+					teller.setCustomer(username, password);
 					Bundle userBundleOut = new Bundle();
 					userBundleOut.putParcelable("user", teller);
+					intentTellerCustomerInfo.putExtra("user", teller);
 				} catch (com.parse.ParseException e) {
 					// TODO Auto-generated catch block
 					Toast.makeText(
@@ -99,6 +103,32 @@ public class TellerHomePage extends ActionBarActivity {
 				startActivity(intentTellerCustomerInfo);
 			}
 		});
+			
+			
+			
+			
+			interestButton.setOnClickListener(new View.OnClickListener() {			
+				@Override
+				public void onClick(View v) {	
+					Teller.updateInterest();
+				Toast.makeText(getApplicationContext(), "Updated Interest!",
+						Toast.LENGTH_SHORT).show();	
+				}
+			});
+			
+			penaltyButton.setOnClickListener(new View.OnClickListener() {			
+				@Override
+				public void onClick(View v) {
+					Teller.updatePenalty();
+					Toast.makeText(getApplicationContext(), "Updated Penalty!",
+						Toast.LENGTH_SHORT).show();					
+				}
+			});
+			
+			
+			
+			
+			
 		}
 	}
 

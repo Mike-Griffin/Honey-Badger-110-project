@@ -43,8 +43,8 @@ public class CheckingAccount extends Account {
 	public void updateInterestRate(double time) {
 		// TODO Auto-generated method stub
 		interestRate = calculator.calculate(balance);
-		if(balance != interestRate) {
-			setBalance(interestRate);
+		if(interestRate != 0) {
+			setBalance(balance + interestRate);
 			ParseObject account = query();
 			account.put("lastInterestPenalty", time);
 			try {

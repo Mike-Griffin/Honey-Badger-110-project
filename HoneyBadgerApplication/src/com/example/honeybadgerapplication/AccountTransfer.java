@@ -137,12 +137,20 @@ public class AccountTransfer extends ActionBarActivity {
 				 //Getting Value of Selected Item
 				String val = accountToSpinner.getSelectedItem()
 						.toString();
-				if (val.equals(accStrings.get(accStrings.size() - 1)))
+				if (val.equals(accStrings.get(accStrings.size() - 1))) {
 					otherAccount = true;
-				else
+					Log.d("fired", val);
+					Log.d("fired", accStrings.get(accStrings.size() - 1));
+					Log.d("fired", "1");
+				}
+				else {
 					otherAccount = false;
+					Log.d("fired", val);
+					Log.d("fired", accStrings.get(accStrings.size() - 1));
+					Log.d("f ired", "2");
+				}
 
-				email_edit_text.setEnabled(otherAccount);
+				//email_edit_text.setEnabled(otherAccount);
 			}
 
 			public void onNothingSelected(AdapterView<?> parent) {

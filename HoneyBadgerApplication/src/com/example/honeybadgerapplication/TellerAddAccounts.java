@@ -8,6 +8,7 @@ import com.parse.ParseUser;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +43,8 @@ public class TellerAddAccounts extends ActionBarActivity {
 					Toast.LENGTH_SHORT).show();
 		} else {
 			final User user = userBundle.getParcelable("user");
+			
+			Log.d("teller", user.getUser());
 			
 			if(user.getUserType() >= 2){
 				ParseUser.logOut();
@@ -124,6 +127,9 @@ public class TellerAddAccounts extends ActionBarActivity {
 					
 					ParseUser.logOut();
 					  try {
+						  if(user == null) {
+Log.d("null", "usernull");
+}
 						ParseUser.logIn(user.getUser(), user.getPass());
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
