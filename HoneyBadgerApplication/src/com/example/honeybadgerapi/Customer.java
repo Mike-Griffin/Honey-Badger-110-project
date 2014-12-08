@@ -431,4 +431,173 @@ public class Customer extends User {
 		}
 
 	};
+
+	@Override
+	public boolean openAccount(String accType, double balance) {
+		// TODO Auto-generated method stub
+		if(this.accountCombo == 3)
+			return false;
+		
+		ParseUser customer = ParseUser.getCurrentUser();
+		ParseObject account = new ParseObject("Account");
+		int accountNum = 0;
+		
+		if(accType.equals("Checking Account")){
+			if(this.accountCombo == 1)
+				return false;
+			
+			accountNum = customer.getInt("checkingAccount");
+			
+			if(accountNum == 0){
+				account.put("type", "Checking Account");
+				account.put("balance", balance);
+				account.put("parent", user);
+				account.put("active", true);
+				
+				try {
+					account.save();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				customer.put("accountCombo", accountCombo+1);
+				customer.put("checkingAccount", accountNum);
+				
+				try {
+					customer.save();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				accountCombo += 1;
+				checkingNumber = accountNum;
+				
+				updateAccountList();
+				
+				return true;
+			}
+			else{
+				ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
+				query.whereEqualTo("accountNumber", accountNum);
+				
+				try {
+					account = query.getFirst();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				account.put("active", true);
+				customer.put("accountCombo", accountCombo+1);
+				
+				try {
+					account.save();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				try {
+					customer.save();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				accountCombo += 1;
+				
+				updateAccountList();
+				
+				return true;
+			}
+			
+		}
+		else if(accType.equals("Saving Account")){
+			if(this.accountCombo == 2)
+				return false;
+			
+			accountNum = customer.getInt("savingAccount");
+			
+			if(accountNum == 0){
+				account.put("type", "Saving Account");
+				account.put("balance", balance);
+				account.put("parent", user);
+				account.put("active", true);
+				
+				try {
+					account.save();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				customer.put("accountCombo", accountCombo+2);
+				customer.put("savingAccount", accountNum);
+				
+				try {
+					customer.save();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				accountCombo += 2;
+				savingNumber = accountNum;
+				
+				updateAccountList();
+				
+				return true;
+			}
+			else{
+				ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
+				query.whereEqualTo("accountNumber", accountNum);
+				
+				try {
+					account = query.getFirst();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				account.put("active", true);
+				customer.put("accountCombo", accountCombo+2);
+				
+				try {
+					account.save();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				try {
+					customer.save();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+				
+				accountCombo += 2;
+				
+				updateAccountList();
+				
+				return true;
+			}
+			
+		}
+		else
+		  return false;
+		
+	}
 }

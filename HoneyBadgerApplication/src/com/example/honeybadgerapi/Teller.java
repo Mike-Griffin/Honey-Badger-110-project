@@ -246,4 +246,11 @@ public class Teller extends User {
 			return new Teller[size];
 		}
 	};
+
+	@Override
+	public boolean openAccount(String accType, double balance) {
+		// TODO Auto-generated method stub
+		
+		return activeCustomer.openAccount(accType, balance);
+	}
 }
