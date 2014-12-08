@@ -112,6 +112,19 @@ public class SignUp extends ActionBarActivity implements
 				username = username_edit_text.getText().toString().trim();
 				password = password_edit_text.getText().toString().trim();
 				passwordLength = password.length();
+				
+				// Save new user data into Parse.com Data Storage
+				if (name.equals("") || username.equals("")
+						|| password.equals("") || email.equals("")
+						|| birthday.equals("") || address.equals("")
+						|| city.equals("") || state.equals("")) {
+					Toast.makeText(getApplicationContext(),
+							"Please Fill Up All Information!",
+							Toast.LENGTH_SHORT).show();
+
+					return;
+				}
+				
 				if (!password.equals(verify_password_edit_text.getText()
 						.toString().trim())) {
 					Toast.makeText(getApplicationContext(),
@@ -168,17 +181,7 @@ public class SignUp extends ActionBarActivity implements
 					accountNumber = 0;
 				}
 
-				// Save new user data into Parse.com Data Storage
-				if (name.equals("") || username.equals("")
-						|| password.equals("") || email.equals("")
-						|| birthday.equals("") || address.equals("")
-						|| city.equals("") || state.equals("")) {
-					Toast.makeText(getApplicationContext(),
-							"Please Fill Up All Information!",
-							Toast.LENGTH_SHORT).show();
-
-					return;
-				}
+				
 
 				ParseObject account = null;
 				if (accountNumber != 0) {
@@ -313,9 +316,6 @@ public class SignUp extends ActionBarActivity implements
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
 		return super.onOptionsItemSelected(item);
 	}
 

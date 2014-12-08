@@ -58,12 +58,6 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".TellerSignUp"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_teller_sign_up"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name=".CreditDebit"
             android:configChanges="orientation"
             android:label="@string/title_activity_credit_debit"
@@ -137,7 +131,7 @@
 		  </intent-filter>
 		</receiver>
 		<receiver
-            android:name="your.package.name.utils.Receiver"
+            android:name="com.example.honeybadgerapplication.Receiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
