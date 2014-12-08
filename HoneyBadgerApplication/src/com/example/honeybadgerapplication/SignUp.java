@@ -238,6 +238,8 @@ public class SignUp extends ActionBarActivity implements
 						user.save();
 					} catch (ParseException e) {
 					}
+					Toast.makeText(getApplicationContext(), "FUCKKK!!",
+							Toast.LENGTH_SHORT).show();
 					startActivity(intentLogin);
 				} else {
 					Toast.makeText(getApplicationContext(), "Sign Up Failed!!",
