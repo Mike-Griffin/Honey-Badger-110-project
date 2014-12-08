@@ -253,4 +253,16 @@ public class Teller extends User {
 		
 		return activeCustomer.openAccount(accType, balance);
 	}
+
+	@Override
+	public int getSaving() {
+		// TODO Auto-generated method stub
+		return activeCustomer.getSaving();
+	}
+
+	@Override
+	public int getChecking() {
+		// TODO Auto-generated method stub
+		return activeCustomer.getChecking();
+	}
 }

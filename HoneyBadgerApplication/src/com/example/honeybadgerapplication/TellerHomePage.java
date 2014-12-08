@@ -40,11 +40,10 @@ public class TellerHomePage extends ActionBarActivity {
 	
 		final Intent intentTellerCustomerInfo = new Intent (TellerHomePage.this, TellerCustomerInfo.class);
 		final Intent intentSignUpTeller = new Intent (TellerHomePage.this, TellerSignUp.class);
-		final Intent intentAddCustomerAccount = new Intent (TellerHomePage.this, TellerAddAccounts.class);
 		
 		final Button lookUpButton = (Button) findViewById(R.id.lookUp);
 		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
-		final Button addCustomerAccountButton = (Button) findViewById(R.id.open_customer_account);
+
 		username_edit_text = (EditText) findViewById(R.id.username);
 		password_edit_text = (EditText) findViewById(R.id.pass);
 		
@@ -60,35 +59,7 @@ public class TellerHomePage extends ActionBarActivity {
 			intentSignUpTeller.putExtra("user", teller);
 			intentTellerCustomerInfo.putExtra("user", teller);
 
-			addCustomerAccountButton.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					username = username_edit_text.getText().toString().trim();
-					password = password_edit_text.getText().toString().trim();
-					ParseObject parseUser = null;
-					User user = null;
-					ParseQuery<ParseUser> query = ParseUser.getQuery();
-					query.whereEqualTo("username", username);
-					try {
-						parseUser = query.getFirst();
-						teller.setCustomer(username, password);
-						Bundle userBundleOut = new Bundle();
-						userBundleOut.putParcelable("teller", teller);
-						intentAddCustomerAccount.putExtra("teller", teller);
-						startActivity(intentAddCustomerAccount);
-					} catch (com.parse.ParseException e) {
-						// TODO Auto-generated catch block
-						Toast.makeText(
-							getApplicationContext(),
-							"No such user exist, please signup"
-							+ e, Toast.LENGTH_SHORT)
-							.show();
-					}
-					
-				}
-			});
+			
 			signUpTellerButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override

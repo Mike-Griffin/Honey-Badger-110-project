@@ -5,6 +5,9 @@ import java.util.List;
 
 import com.example.honeybadgerapi.Account;
 import com.example.honeybadgerapi.User;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
@@ -38,11 +41,14 @@ public class TellerCustomerInfo extends ActionBarActivity {
 		final Intent intentTellerHomePage = new Intent (TellerCustomerInfo.this, TellerHomePage.class);
 		final Intent intentTransfer = new Intent ( TellerCustomerInfo.this, AccountTransfer.class);
 		final Intent intentCreditDebit = new Intent ( TellerCustomerInfo.this, CreditDebit.class );
+		final Intent intentAddCustomerAccount = new Intent (TellerCustomerInfo.this, TellerAddAccounts.class);
 		
 		final Button closeButton = (Button) findViewById(R.id.tellerCloseAccountButton);
 		final Button cancelButton = (Button) findViewById(R.id.tellerCancel);
 		final Button transferButton = (Button) findViewById(R.id.tellerAccountTransferButton);
 		final Button creditDebitButton = (Button) findViewById(R.id.tellerCreditDebitButton);
+		final Button addCustomerAccountButton = (Button) findViewById(R.id.open_customer_account);
+		
 		
 		Bundle userBundle = this.getIntent().getExtras();
 		if (userBundle == null) {
@@ -110,6 +116,23 @@ public class TellerCustomerInfo extends ActionBarActivity {
 				}
 			}
 		
+			addCustomerAccountButton.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+		//			String username = teller.getCustomer().getUser();
+			//		String password = teller.getCustomer().getPass();
+
+					Bundle userBundleOut = new Bundle();
+					userBundleOut.putParcelable("user", teller);
+					intentAddCustomerAccount.putExtra("user", teller);
+					startActivity(intentAddCustomerAccount);
+	
+					
+				}
+			});
+			
 			closeButton.setOnClickListener(new View.OnClickListener() {
 	
 				@Override

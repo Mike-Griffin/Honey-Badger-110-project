@@ -2,6 +2,7 @@ package com.example.honeybadgerapplication;
 
 import com.example.honeybadgerapi.User;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import android.support.v7.app.ActionBarActivity;
@@ -28,9 +29,10 @@ public class TellerAddAccounts extends ActionBarActivity {
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
 		
-		final Intent intentTellerHomePage = new Intent (TellerAddAccounts.this, TellerHomePage.class);
+		final Intent intentTellerHomePage = new Intent (TellerAddAccounts.this, TellerCustomerInfo.class);
 		final Button cancelButton = (Button) findViewById(R.id.cancel);
 		final Button addCheckingButton = (Button) findViewById(R.id.addChecking);
+		final Button addSavingButton = (Button) findViewById(R.id.savingAccount);
 		amount_edit_text = (EditText) findViewById(R.id.amount_cred);
 	
 		
@@ -39,8 +41,18 @@ public class TellerAddAccounts extends ActionBarActivity {
 			Toast.makeText(getApplicationContext(), "Bundle does not exist",
 					Toast.LENGTH_SHORT).show();
 		} else {
-			final User teller = userBundle.getParcelable("teller");
-			final User customer = teller.getCustomer();
+			final User user = userBundle.getParcelable("user");
+			
+			if(user.getUserType() >= 2){
+				ParseUser.logOut();
+				try {
+					ParseUser.logIn(user.getCustomer().getUser(), user.getCustomer().getPass());
+
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}		    
 			
 			addCheckingButton.setOnClickListener(new View.OnClickListener() {
 				
@@ -48,17 +60,70 @@ public class TellerAddAccounts extends ActionBarActivity {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					amount = Double.parseDouble(amount_edit_text.getText()
-							.toString().trim());			
+							.toString().trim());
+					if(user.openAccount("Checking Account", amount)){
+						Toast.makeText(getApplicationContext(), "Account successfully opened",
+								Toast.LENGTH_SHORT).show();		  
+					}
+					else{
+						Toast.makeText(getApplicationContext(), "Account opening failed", 
+								Toast.LENGTH_SHORT).show();
+					}
+					
+					ParseUser.logOut();
+					  try {
+						ParseUser.logIn(user.getUser(), user.getPass());
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Bundle userBundle = new Bundle();
+					userBundle.putParcelable("user", user);
+					intentTellerHomePage.putExtra("user", user);
+					startActivity(intentTellerHomePage);	
 				}
 			});
+			
+			addSavingButton.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					amount = Double.parseDouble(amount_edit_text.getText()
+							.toString().trim());
+					if(user.openAccount("Saving Account", amount)){
+						Toast.makeText(getApplicationContext(), "Account successfully opened",
+								Toast.LENGTH_SHORT).show();		  
+					}
+					else{
+						Toast.makeText(getApplicationContext(), "Account opening failed", 
+								Toast.LENGTH_SHORT).show();
+					}
+					
+					ParseUser.logOut();
+					  try {
+						ParseUser.logIn(user.getUser(), user.getPass());
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Bundle userBundle = new Bundle();
+					userBundle.putParcelable("user", user);
+					intentTellerHomePage.putExtra("user", user);
+					startActivity(intentTellerHomePage);	
+				}
+			});
+			
+			
+			
 			cancelButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					Bundle userBundle = new Bundle();
-					userBundle.putParcelable("teller", customer);
-					intentTellerHomePage.putExtra("teller", customer);
+					userBundle.putParcelable("user", user);
+					intentTellerHomePage.putExtra("user", user);
 					startActivity(intentTellerHomePage);
 					
 				}

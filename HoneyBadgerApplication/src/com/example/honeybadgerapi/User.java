@@ -74,5 +74,10 @@ public abstract class User implements Parcelable{
 	public abstract String getPass();
 	
 	public abstract boolean openAccount(String accType, double balance);
+	
+	public abstract int getSaving();
+	
+	public abstract int getChecking();
+	
 
 }
