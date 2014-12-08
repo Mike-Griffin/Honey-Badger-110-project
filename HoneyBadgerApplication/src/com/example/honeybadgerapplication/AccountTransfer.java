@@ -49,6 +49,7 @@ public class AccountTransfer extends ActionBarActivity {
 	private int accToInt;
 	private double amount = 0;
 	private int userType = 0;
+	private int accountNumber;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -172,11 +173,13 @@ public class AccountTransfer extends ActionBarActivity {
 				
 				if(accountFromSelected.equals("Checking Account")) {
 					accFromInt = 1;
+					accountNumber = customer.getChecking();
 					Log.d("FROM INT: ", "" + accFromInt);
 				}
 				
 				else if(accountFromSelected.equals("Savings Account")) {
 					accFromInt = 2;
+					accountNumber = customer.getSaving();
 					Log.d("FROM INT: ", "" + accFromInt);
 				}
 				
@@ -207,6 +210,18 @@ public class AccountTransfer extends ActionBarActivity {
 					if(!emailOrPhoneString.equals("")) {
 						if(amount > 0) {
 							if(customer.transfer(accFromInt,amount,emailOrPhoneString)) {
+								ParseObject transaction = new ParseObject("Transaction");
+								transaction.put("accNum", accountNumber);
+								transaction.put("log", "transfer");
+								transaction.put("amount",amount);
+								transaction.put("accType", "Checking Account");
+								transaction.put("parent", ParseUser.getCurrentUser());
+								try {				
+									transaction.save();
+								} catch (ParseException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
 								Toast.makeText(
 										getApplicationContext(),
 										"Successful Transfer to other user account", 
@@ -237,6 +252,18 @@ public class AccountTransfer extends ActionBarActivity {
 					if(accToInt == 1 || accToInt == 2) {
 						if(accToInt != accFromInt) {
 							if(customer.transfer(accFromInt, amount, accToInt)) {
+								ParseObject transaction = new ParseObject("Transaction");
+								transaction.put("accNum", accountNumber);
+								transaction.put("log", "transfer");
+								transaction.put("amount",amount);
+								transaction.put("accType", "Checking Account");
+								transaction.put("parent", ParseUser.getCurrentUser());
+								try {
+									transaction.save();
+								} catch (ParseException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
 								Toast.makeText(
 									getApplicationContext(),
 									"Successful Transfer to same user", 

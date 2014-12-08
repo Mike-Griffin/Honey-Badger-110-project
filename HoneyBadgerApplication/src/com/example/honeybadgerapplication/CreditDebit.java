@@ -134,7 +134,7 @@ public class CreditDebit extends ActionBarActivity {
 							transaction.put("log", "debit");
 							transaction.put("amount",amountRequested);
 							transaction.put("accType", "Checking Account");
-							transaction.put("parent", customer);
+							transaction.put("parent", ParseUser.getCurrentUser());
 							try {
 								Toast.makeText(getApplicationContext(),
 								"Debit to savings account", Toast.LENGTH_SHORT)
@@ -166,7 +166,7 @@ public class CreditDebit extends ActionBarActivity {
 							transaction.put("log", "debit");
 							transaction.put("amount",amountRequested);
 							transaction.put("accType", "Savings Account");
-							transaction.put("parent", customer);
+							transaction.put("parent", ParseUser.getCurrentUser());
 							try {
 								Toast.makeText(getApplicationContext(),
 								"Debit to savings account", Toast.LENGTH_SHORT)
@@ -213,7 +213,7 @@ public class CreditDebit extends ActionBarActivity {
 						transaction.put("log", "credit");
 						transaction.put("amount",amountRequested);
 						transaction.put("accType", "Savings Account");
-						transaction.put("parent", customer);
+						transaction.put("parent", ParseUser.getCurrentUser());
 						try {
 							Toast.makeText(getApplicationContext(),
 							"Credit to savings account", Toast.LENGTH_SHORT)
