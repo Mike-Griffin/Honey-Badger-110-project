@@ -22,16 +22,4 @@
             </TableLayout>
         </ScrollView>
 
-   		<Button
-   		    android:id="@+id/backButton"
-   		    android:layout_width="wrap_content"
-   		    android:layout_height="wrap_content"
-   		    android:layout_alignParentBottom="true"
-   		    android:layout_alignParentLeft="true"
-   		    android:layout_alignParentRight="true"
-   		    android:layout_marginBottom="15dp"
-   		    android:background="@drawable/button_background_selector"
-   		    android:text="Back"
-   		    android:textColor="#FFFFFF" />
-
 </RelativeLayout>

@@ -2,7 +2,6 @@ package com.example.honeybadgerapplication;
 
 import org.apache.http.ParseException;
 
-import com.example.honeybadgerapi.Teller;
 import com.example.honeybadgerapi.User;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -44,8 +43,6 @@ public class TellerHomePage extends ActionBarActivity {
 		
 		final Button lookUpButton = (Button) findViewById(R.id.lookUp);
 		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
-		final Button interestButton = (Button) findViewById(R.id.updateInterest);
-		final Button penaltyButton = (Button) findViewById(R.id.updatePenalty);
 
 		username_edit_text = (EditText) findViewById(R.id.username);
 		password_edit_text = (EditText) findViewById(R.id.pass);
@@ -103,23 +100,6 @@ public class TellerHomePage extends ActionBarActivity {
 				
 			}
 		});
-			interestButton.setOnClickListener(new View.OnClickListener() {			
-				@Override
-				public void onClick(View v) {	
-					Teller.updateInterest();
-				Toast.makeText(getApplicationContext(), "Updated Interest!",
-						Toast.LENGTH_SHORT).show();	
-				}
-			});
-			
-			penaltyButton.setOnClickListener(new View.OnClickListener() {			
-				@Override
-				public void onClick(View v) {
-					Teller.updatePenalty();
-					Toast.makeText(getApplicationContext(), "Updated Penalty!",
-						Toast.LENGTH_SHORT).show();					
-				}
-			});	
 		}
 	}
 

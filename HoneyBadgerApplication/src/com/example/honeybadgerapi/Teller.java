@@ -131,7 +131,7 @@ public class Teller extends User {
 
 	}
 
-	public static void updateInterest() {
+	public void updateInterest() {
 		List<ParseObject> accountList = new ArrayList<ParseObject>();
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		try {
@@ -144,7 +144,7 @@ public class Teller extends User {
 		for (int i = 0; i < accountList.size(); ++i) {
 			double lastUpdate = accountList.get(i)
 					.getInt("lastInterestPenalty");
-			if (currentTime - lastUpdate > 60000 ) {
+			if (currentTime - lastUpdate > 60000) {
 				String type = accountList.get(i).getString("type");
 				int accountNumber = accountList.get(i).getInt("accountNumber");
 				Account account;
@@ -163,7 +163,7 @@ public class Teller extends User {
 		}
 	}
 
-	public static void updatePenalty() {
+	public void updatePenalty() {
 		List<ParseObject> accountList = new ArrayList<ParseObject>();
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		try {
@@ -264,17 +264,5 @@ public class Teller extends User {
 	public int getChecking() {
 		// TODO Auto-generated method stub
 		return activeCustomer.getChecking();
-	}
-
-	@Override
-	public int getNumOfAttempts() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setNumOfAttempts(int numOfAttempts) {
-		// TODO Auto-generated method stub
-		
 	}
 }

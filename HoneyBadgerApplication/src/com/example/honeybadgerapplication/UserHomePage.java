@@ -1,4 +1,4 @@
- package com.example.honeybadgerapplication;
+package com.example.honeybadgerapplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import org.apache.http.ParseException;
 
 import com.example.honeybadgerapi.Account;
 import com.example.honeybadgerapi.User;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import android.support.v7.app.ActionBarActivity;

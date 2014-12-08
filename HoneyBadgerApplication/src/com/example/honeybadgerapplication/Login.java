@@ -218,6 +218,7 @@ public class Login extends Activity {
     		 
     		loginStatus++;
     		
+ 
 			if (loginStatus == 100000) {
 				return 10;
 			} else if (loginStatus == 200000) {
@@ -269,6 +270,7 @@ public class Login extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
         return super.onOptionsItemSelected(item);
     }
 }

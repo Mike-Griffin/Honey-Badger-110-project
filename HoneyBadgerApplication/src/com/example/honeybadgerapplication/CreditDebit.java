@@ -5,10 +5,6 @@ import java.util.List;
 
 import com.example.honeybadgerapi.Teller;
 import com.example.honeybadgerapi.User;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
@@ -35,7 +31,6 @@ public class CreditDebit extends ActionBarActivity {
 	private double amountRequested = 0.0;
 	private User customer;
 	private Teller teller;
-	private int accountNumber;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,21 +51,6 @@ public class CreditDebit extends ActionBarActivity {
 			startActivity( intentCustomerInfo );
 		}
 		customer = teller.getCustomer();
-		
-
-		/*
-		ParseObject transaction = null;
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("Transaction");
-		query.whereEqualTo("accountNumber", accountNumber);
-			try {
-				account = query.getFirst();
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-*/
-
-
 		
 		//Finds which user accounts exist (checking or saving)
 		int aCombo = customer.getAccountCombo();
@@ -125,27 +105,6 @@ public class CreditDebit extends ActionBarActivity {
 							.show();
 							startActivity( intentCreditDebit );	
 						}
-						
-						else {
-							ParseObject transaction = new ParseObject("Transaction");
-							accountNumber = customer.getChecking();
-							
-							transaction.put("accNum", accountNumber);
-							transaction.put("log", "debit");
-							transaction.put("amount",amountRequested);
-							transaction.put("accType", "Checking Account");
-							transaction.put("parent", ParseUser.getCurrentUser());
-							try {
-								Toast.makeText(getApplicationContext(),
-								"Debit to savings account", Toast.LENGTH_SHORT)
-								.show();					
-								transaction.save();
-							} catch (ParseException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-						
 					}
 					else if( accountSelected.equals("Savings Account")){
 						if( customer.debit( 2, amountRequested) == false ){
@@ -156,74 +115,16 @@ public class CreditDebit extends ActionBarActivity {
 							Toast.makeText(getApplicationContext(),
 							"Insufficient funds to debit", Toast.LENGTH_SHORT)
 							.show();
+							startActivity( intentCreditDebit );	
 						}
-						
-						else {
-							ParseObject transaction = new ParseObject("Transaction");
-							accountNumber = customer.getSaving();
-							
-							transaction.put("accNum", accountNumber);
-							transaction.put("log", "debit");
-							transaction.put("amount",amountRequested);
-							transaction.put("accType", "Savings Account");
-							transaction.put("parent", ParseUser.getCurrentUser());
-							try {
-								Toast.makeText(getApplicationContext(),
-								"Debit to savings account", Toast.LENGTH_SHORT)
-								.show();					
-								transaction.save();
-							} catch (ParseException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-						
 					}
 				}
 				else if( action.equals("Credit")){
 					if(accountSelected.equals("Checking Account")) {
 						customer.credit( 1, amountRequested );
-						accountNumber = customer.getChecking();
-						
-						ParseObject transaction = new ParseObject("Transaction");
-						transaction.put("accNum", accountNumber);
-						transaction.put("log", "credit");
-						transaction.put("amount",amountRequested);
-						transaction.put("accType", "Checking Account");
-						transaction.put("parent", ParseUser.getCurrentUser());
-						try {
-							Toast.makeText(getApplicationContext(),
-							"Credit to checking account", Toast.LENGTH_SHORT)
-							.show();
-							startActivity( intentCreditDebit );							
-							transaction.save();
-						} catch (ParseException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						
-						
 					}
 					else if( accountSelected.equals("Savings Account")){
 						customer.credit( 2, amountRequested);
-						ParseObject transaction = new ParseObject("Transaction");
-						accountNumber = customer.getSaving();
-						
-						transaction.put("accNum", accountNumber);
-						transaction.put("log", "credit");
-						transaction.put("amount",amountRequested);
-						transaction.put("accType", "Savings Account");
-						transaction.put("parent", ParseUser.getCurrentUser());
-						try {
-							Toast.makeText(getApplicationContext(),
-							"Credit to savings account", Toast.LENGTH_SHORT)
-							.show();
-							startActivity( intentCreditDebit );							
-							transaction.save();
-						} catch (ParseException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
 					}
 				}
 				Bundle nextBundle = new Bundle();
@@ -264,6 +165,5 @@ public class CreditDebit extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 }
-
 
 
