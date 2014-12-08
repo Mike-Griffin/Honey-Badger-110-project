@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 public class CheckingAccount extends Account {
 
@@ -50,24 +49,6 @@ public class CheckingAccount extends Account {
 			account.put("lastInterestPenalty", time);
 			try {
 				account.save();
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			ParseObject transaction = new ParseObject("Transaction");
-			transaction.put("accNum", accountNumber);
-			transaction.put("log", "credit");
-			transaction.put("amount", interestRate);
-			transaction.put("accType", "Checking Account");
-			
-			
-			
-			transaction.put("parent", account.getParseUser("parent"));
-			
-			try {
-				transaction.save();
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
