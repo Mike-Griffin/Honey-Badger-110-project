@@ -618,4 +618,10 @@ public class Customer extends User {
 		// TODO Auto-generated method stub
 		return numberOfAttempts;
 	}
+
+	@Override
+	public void setNumOfAttempts(int numOfAttempts) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,10 +1,16 @@
 package com.example.honeybadgerapplication;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.example.honeybadgerapi.Account;
 import com.example.honeybadgerapi.User;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -61,9 +67,20 @@ public class TransactionHistory extends ActionBarActivity {
 			row0.addView(aNum);
 			row0.addView(bal);
 			accountTable.addView(row0);
+			List<ParseObject> transaction = new ArrayList<ParseObject>();
+			ParseQuery<ParseObject> query = ParseQuery.getQuery("Transaction");
+			query.whereEqualTo("parent", ParseUser.getCurrentUser());
+			try {
+				transaction = query.find();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			if (customer != null) {
 				Account[] list = customer.getAccountList();
+				int checkingNumber = customer.getChecking();				
+				}
 				
 				for (int i = 0; i < accountHistory.size(); i++) {
 					if (accountHistory.get(i).getStatus() == true) {
@@ -72,27 +89,27 @@ public class TransactionHistory extends ActionBarActivity {
 						TextView transactionDate = new TextView(this);
 						TextView accountType = new TextView(this);
 						TextView accountNumber = new TextView(this);
-						TextView balance = new TextView(this);
+						//TextView balance = new TextView(this);
 
 						accountNumber.setPadding(60, 50, 0, 0);
-						balance.setPadding(60, 50, 0, 0);
+						//balance.setPadding(60, 50, 0, 0);
 						
 						transactionDate.setText(accountHistory.get(i).getLastUpdated());
 						accountType.setText(accountHistory.get(i).getAccountType());
 						accountNumber.setText(Integer.toString(accountHistory.get(i)
 								.getAccountNumber()));
-						balance.setText("$" + String.format( "%.2f", accountHistory.get(i).getBalance()));
+						//balance.setText("$" + String.format( "%.2f", accountHistory.get(i).getBalance()));
 						
 						row.addView(transactionDate);
 						row.addView(accountType);
 						row.addView(accountNumber);
-						row.addView(balance);
+						//row.addView(balance);
 						accountTable.addView(row);
 					}
 				}
 				
 			}
-		}  	
+		 	
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
