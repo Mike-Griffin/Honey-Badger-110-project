@@ -19,7 +19,7 @@
         android:layout_marginTop="62dp"
         android:ems="10"
         android:hint="@string/amount_hint"
-        android:inputType="numberDecimal" />
+        android:inputType="number" />
 
     <Spinner
         android:id="@+id/account_num"

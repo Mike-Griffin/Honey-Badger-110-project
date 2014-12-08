@@ -16,7 +16,7 @@ public abstract class User implements Parcelable{
 	
     public void writeToParcel(Parcel dest, int flags) {
 		dest.writeInt(loginStatus);
-		dest.writeValue(signUpStatus);
+		dest.writeValue(signUpStatus);;
 		dest.writeInt(userType);
     } 
  
@@ -78,10 +78,6 @@ public abstract class User implements Parcelable{
 	public abstract int getSaving();
 	
 	public abstract int getChecking();
-	
-	public abstract int getNumOfAttempts();
-	
-	public abstract void setNumOfAttempts(int numOfAttempts);
 	
 
 }
