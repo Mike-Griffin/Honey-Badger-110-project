@@ -29,7 +29,7 @@
          android:layout_below="@+id/amount_cred"
          android:layout_marginTop="47dp"
          android:background="@drawable/button_background_selector"
-         android:text="Add Checking Accpount"
+         android:text="Add Checking Account"
          android:textColor="#FFFFFF" />
 
      <Button

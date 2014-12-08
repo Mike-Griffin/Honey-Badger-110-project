@@ -451,7 +451,7 @@ public class Customer extends User {
 			if(accountNum == 0){
 				account.put("type", "Checking Account");
 				account.put("balance", balance);
-				account.put("parent", user);
+				account.put("parent", customer);
 				account.put("active", true);
 				
 				try {
@@ -463,7 +463,7 @@ public class Customer extends User {
 				}
 				
 				customer.put("accountCombo", accountCombo+1);
-				customer.put("checkingAccount", accountNum);
+				customer.put("checkingAccount", account.getObjectId().hashCode());
 				
 				try {
 					customer.save();
@@ -482,7 +482,7 @@ public class Customer extends User {
 			}
 			else{
 				ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
-				query.whereEqualTo("accountNumber", account.getObjectId().hashCode());
+				query.whereEqualTo("accountNumber", accountNum);
 				
 				try {
 					account = query.getFirst();
@@ -528,8 +528,9 @@ public class Customer extends User {
 			if(accountNum == 0){
 				account.put("type", "Saving Account");
 				account.put("balance", balance);
-				account.put("parent", user);
+				account.put("parent", customer);
 				account.put("active", true);
+				account.put("accountNumber", account.getObjectId().hashCode());
 				
 				try {
 					account.save();
