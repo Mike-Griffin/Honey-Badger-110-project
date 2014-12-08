@@ -138,6 +138,13 @@ public class SignUp extends ActionBarActivity implements
 					return;
 				}
 				email = email_edit_text.getText().toString().trim();
+				if ( !email.contains("@") ) {
+				Toast.makeText(getApplicationContext(),
+						"Invalid Email!",
+						Toast.LENGTH_SHORT).show();
+				return;
+				}
+				
 				birthday = birthday_text_view.getText().toString().trim();
 				address = address_edit_text.getText().toString().trim();
 				city = city_edit_text.getText().toString().trim();
@@ -280,7 +287,7 @@ public class SignUp extends ActionBarActivity implements
 		 * stub startActivity(intentTemp); } });
 		 */
 	}
-
+	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

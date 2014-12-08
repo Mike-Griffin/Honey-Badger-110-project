@@ -84,7 +84,7 @@ public class TellerSignUp extends ActionBarActivity {
 						return;
 					}	
 					email = email_edit_text.getText().toString().trim();
-					if (email.matches("@")) {
+					if ( !email.contains("@") ) {
 					Toast.makeText(getApplicationContext(),
 							"Invalid Email!",
 							Toast.LENGTH_SHORT).show();
