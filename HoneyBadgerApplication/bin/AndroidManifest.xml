@@ -17,9 +17,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Login"
+            android:name=".Splash"
             android:configChanges="orientation"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_splash"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -71,15 +71,28 @@
         </activity>
         <activity
             android:name=".TransactionHistory"
-            android:label="@string/title_activity_transaction_history" >
+            android:label="@string/title_activity_transaction_history"
+            android:configChanges="orientation" 
+            android:screenOrientation="portrait">
+            
         </activity>
         <activity
             android:name=".TellerCustomerInfo"
-            android:label="@string/title_activity_teller_customer_info" >
+            android:label="@string/title_activity_teller_customer_info"
+            android:configChanges="orientation" 
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".TellerAddAccounts"
-            android:label="@string/title_activity_teller_add_accounts" >
+            android:label="@string/title_activity_teller_add_accounts"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/app_name"
+            android:configChanges="orientation" 
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
