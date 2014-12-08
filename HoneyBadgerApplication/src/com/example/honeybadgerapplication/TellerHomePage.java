@@ -41,6 +41,7 @@ public class TellerHomePage extends ActionBarActivity {
 		final Intent intentTellerCustomerInfo = new Intent (TellerHomePage.this, TellerCustomerInfo.class);
 		final Intent intentSignUpTeller = new Intent (TellerHomePage.this, TellerSignUp.class);
 		final Intent intentAddCustomerAccount = new Intent (TellerHomePage.this, TellerAddAccounts.class);
+		
 		final Button lookUpButton = (Button) findViewById(R.id.lookUp);
 		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
 		final Button addCustomerAccountButton = (Button) findViewById(R.id.open_customer_account);
@@ -93,10 +94,9 @@ public class TellerHomePage extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					//Bundle userBundleOut = new Bundle();
-					//userBundleOut.putParcelable("teller", teller);
-					startActivity(intentAddCustomerAccount);
-					//startActivity(intentSignUpTeller);
+					Bundle userBundleOut = new Bundle();
+					userBundleOut.putParcelable("user", teller);
+					startActivity(intentSignUpTeller);
 				}
 			});
 		
