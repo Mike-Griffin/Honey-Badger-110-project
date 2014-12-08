@@ -37,9 +37,9 @@
         android:id="@+id/amountToTransfer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/confirmTransfer"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/confirmTransfer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="190dp"
         android:ems="10"
         android:hint="@string/amount_to_transfer_placeholder"
@@ -52,12 +52,13 @@
         android:id="@+id/confirmTransfer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/accountEmailToTransfer"
         android:layout_marginTop="5dp"
-        android:textColor="#FFFFFF"
         android:background="@drawable/button_background_selector"
-        android:text="@string/confirm_button" />
-        
+        android:text="@string/confirm_button"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/accountEmailToTransfer"
@@ -75,13 +76,12 @@
         android:id="@+id/cancelTransfer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/confirmTransfer"
-        android:layout_alignRight="@+id/confirmTransfer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/confirmTransfer"
         android:layout_marginTop="5dp"
-       android:textColor="#FFFFFF"
-        android:background="@drawable/button_background_selector"        
+        android:background="@drawable/button_background_selector"
         android:text="@string/cancel_button"
-        />
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

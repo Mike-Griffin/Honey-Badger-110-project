@@ -24,22 +24,35 @@
          android:id="@+id/addChecking"
          android:layout_width="150dp"
          android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentRight="true"
          android:layout_below="@+id/amount_cred"
-         android:layout_centerHorizontal="true"
          android:layout_marginTop="47dp"
          android:background="@drawable/button_background_selector"
-         android:text="Add Checking"
+         android:text="Add Checking Accpount"
          android:textColor="#FFFFFF" />
 
      <Button
          android:id="@+id/cancel"
          android:layout_width="150dp"
          android:layout_height="wrap_content"
-         android:layout_alignLeft="@+id/addChecking"
-         android:layout_alignParentBottom="true"
-         android:layout_marginBottom="32dp"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentRight="true"
+         android:layout_below="@+id/savingAccount"
+         android:layout_marginTop="59dp"
          android:background="@drawable/button_background_selector"
          android:text="Cancel"
+         android:textColor="#FFFFFF" />
+
+     <Button
+         android:id="@+id/savingAccount"
+         android:layout_width="150dp"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentRight="true"
+         android:layout_centerVertical="true"
+         android:background="@drawable/button_background_selector"
+         android:text="Add Savings Account"
          android:textColor="#FFFFFF" />
 
 </RelativeLayout>
