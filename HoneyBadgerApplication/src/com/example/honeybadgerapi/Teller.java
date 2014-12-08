@@ -265,4 +265,16 @@ public class Teller extends User {
 		// TODO Auto-generated method stub
 		return activeCustomer.getChecking();
 	}
+
+	@Override
+	public int getNumOfAttempts() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setNumOfAttempts(int numOfAttempts) {
+		// TODO Auto-generated method stub
+		
+	}
 }

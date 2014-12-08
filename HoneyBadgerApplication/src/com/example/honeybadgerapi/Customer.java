@@ -23,6 +23,7 @@ public class Customer extends User {
 	private int savingNumber;
 	private String user;
 	private String pass;
+	private int numberOfAttempts;
 
 	public Customer() {
 	}
@@ -47,6 +48,7 @@ public class Customer extends User {
 		// Log.d("saving", Integer.toString(savingNumber));
 		this.user = in.readString();
 		this.pass = in.readString();
+		this.numberOfAttempts = in.readInt();
 	}
 
 	// teller look up
@@ -69,6 +71,7 @@ public class Customer extends User {
 			savingNumber = customer.getInt("savingAccount");
 			pass = password;
 			user = username;
+			numberOfAttempts = customer.getInt("attempts");
 			updateAccountList();
 		}
 	}
@@ -453,6 +456,9 @@ public class Customer extends User {
 				account.put("balance", balance);
 				account.put("parent", customer);
 				account.put("active", true);
+				int random = rand();
+				
+				account.put("accountNumber" , random);
 				
 				try {
 					account.save();
@@ -463,7 +469,8 @@ public class Customer extends User {
 				}
 				
 				customer.put("accountCombo", accountCombo+1);
-				customer.put("checkingAccount", account.getObjectId().hashCode());
+				//customer.put("checkingAccount", account.getObjectId().hashCode());
+				customer.put("checkingAccount", random);
 				
 				try {
 					customer.save();
@@ -530,7 +537,9 @@ public class Customer extends User {
 				account.put("balance", balance);
 				account.put("parent", customer);
 				account.put("active", true);
-				account.put("accountNumber", account.getObjectId().hashCode());
+				int random = rand();
+				
+				account.put("accountNumber", random);
 				
 				try {
 					account.save();
@@ -541,7 +550,7 @@ public class Customer extends User {
 				}
 				
 				customer.put("accountCombo", accountCombo+2);
-				customer.put("savingAccount", account.getObjectId().hashCode());
+				customer.put("savingAccount", random);
 				
 				try {
 					customer.save();
@@ -609,4 +618,29 @@ public class Customer extends User {
 	public int getSaving(){
 		return savingNumber;
 	}
+
+	@Override
+	public int getNumOfAttempts() {
+		// TODO Auto-generated method stub
+		return numberOfAttempts;
+	}
+
+	@Override
+	public void setNumOfAttempts(int numOfAttempts) {
+		// TODO Auto-generated method stub
+		
+	}
+    public static int rand() {
+
+        long timeSeed = System.nanoTime(); // to get the current date time value
+
+        double randSeed = Math.random() * 1000; // random number generation
+
+        long midSeed = (long) (timeSeed * randSeed);                                
+        String s = midSeed + "";
+        String subStr = s.substring(0, 8);
+
+        return Integer.parseInt(subStr);    // integer value
+
+    }
 }
