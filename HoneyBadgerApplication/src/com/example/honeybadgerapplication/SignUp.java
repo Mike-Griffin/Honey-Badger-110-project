@@ -235,11 +235,10 @@ public class SignUp extends ActionBarActivity implements
 						user.put("accountCombo", 0);
 					}
 					try {
+						
 						user.save();
 					} catch (ParseException e) {
 					}
-					Toast.makeText(getApplicationContext(), "FUCKKK!!",
-							Toast.LENGTH_SHORT).show();
 					startActivity(intentLogin);
 				} else {
 					Toast.makeText(getApplicationContext(), "Sign Up Failed!!",

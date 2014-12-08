@@ -23,6 +23,7 @@ public class Customer extends User {
 	private int savingNumber;
 	private String user;
 	private String pass;
+	private int numberOfAttempts;
 
 	public Customer() {
 	}
@@ -47,6 +48,7 @@ public class Customer extends User {
 		// Log.d("saving", Integer.toString(savingNumber));
 		this.user = in.readString();
 		this.pass = in.readString();
+		this.numberOfAttempts = in.readInt();
 	}
 
 	// teller look up
@@ -69,6 +71,7 @@ public class Customer extends User {
 			savingNumber = customer.getInt("savingAccount");
 			pass = password;
 			user = username;
+			numberOfAttempts = customer.getInt("attempts");
 			updateAccountList();
 		}
 	}
@@ -608,5 +611,11 @@ public class Customer extends User {
 	
 	public int getSaving(){
 		return savingNumber;
+	}
+
+	@Override
+	public int getNumOfAttempts() {
+		// TODO Auto-generated method stub
+		return numberOfAttempts;
 	}
 }
