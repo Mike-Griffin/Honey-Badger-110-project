@@ -48,6 +48,8 @@ public class AccountTransfer extends ActionBarActivity {
 	private int accFromInt;
 	private int accToInt;
 	private double amount = 0;
+	private int userType = 0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -63,6 +65,7 @@ public class AccountTransfer extends ActionBarActivity {
 
 		
 		final Intent intentUserHome = new Intent(AccountTransfer.this, UserHomePage.class);
+		final Intent intentCustomerInfo = new Intent(AccountTransfer.this, TellerCustomerInfo.class);
 		
 
 
@@ -77,6 +80,7 @@ public class AccountTransfer extends ActionBarActivity {
 		//accountToSpinner = (Spinner) findViewById(R.id.transferToSpinner);
 		
 		userAccounts = customer.getAccountList();
+		userType = customer.getUserType();
 		
 		int aCombo = customer.getAccountCombo();
 
@@ -235,7 +239,7 @@ public class AccountTransfer extends ActionBarActivity {
 							if(customer.transfer(accFromInt, amount, accToInt)) {
 								Toast.makeText(
 									getApplicationContext(),
-									"Successful Transfer to your other account", 
+									"Successful Transfer to same user", 
 									Toast.LENGTH_SHORT)
 									.show();
 							}
@@ -269,10 +273,17 @@ public class AccountTransfer extends ActionBarActivity {
 				//closes Bundle
 				Bundle userBundle = new Bundle();
 				userBundle.putParcelable("user", customer);
-				intentUserHome.putExtra("user", customer);
+				//intentUserHome.putExtra("user", customer);
 				
 				// TODO Auto-generated method stub
-				startActivity(intentUserHome);
+				if(userType < 2) {
+				    intentUserHome.putExtra("user", customer);
+					startActivity(intentUserHome);
+				}
+				else {
+					intentCustomerInfo.putExtra("user", customer);
+					startActivity(intentCustomerInfo);
+				}
 			}
 		});
 		
@@ -283,8 +294,16 @@ public class AccountTransfer extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				Bundle userBundle = new Bundle();
 				userBundle.putParcelable("user", customer);
-				intentUserHome.putExtra("user", customer);
-				startActivity(intentUserHome);
+				//intentUserHome.putExtra("user", customer);
+				
+				if(userType < 2) {
+				    intentUserHome.putExtra("user", customer);
+					startActivity(intentUserHome);
+				}
+				else {
+					intentCustomerInfo.putExtra("user", customer);
+					startActivity(intentCustomerInfo);
+				}
 			}
 		});
 		}
