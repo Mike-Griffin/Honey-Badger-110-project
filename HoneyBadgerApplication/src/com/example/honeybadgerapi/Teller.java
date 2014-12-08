@@ -131,7 +131,7 @@ public class Teller extends User {
 
 	}
 
-	public void updateInterest() {
+	public static void updateInterest() {
 		List<ParseObject> accountList = new ArrayList<ParseObject>();
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		try {
@@ -144,7 +144,7 @@ public class Teller extends User {
 		for (int i = 0; i < accountList.size(); ++i) {
 			double lastUpdate = accountList.get(i)
 					.getInt("lastInterestPenalty");
-			if (currentTime - lastUpdate > 60000) {
+			if (currentTime - lastUpdate > 60000 ) {
 				String type = accountList.get(i).getString("type");
 				int accountNumber = accountList.get(i).getInt("accountNumber");
 				Account account;
@@ -163,7 +163,7 @@ public class Teller extends User {
 		}
 	}
 
-	public void updatePenalty() {
+	public static void updatePenalty() {
 		List<ParseObject> accountList = new ArrayList<ParseObject>();
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Account");
 		try {

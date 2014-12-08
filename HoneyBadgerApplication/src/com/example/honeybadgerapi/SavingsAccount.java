@@ -44,7 +44,7 @@ public class SavingsAccount extends Account {
 		// TODO Auto-generated method stub
 		interestRate = calculator.calculate(balance);
 		if(balance != interestRate) {
-			setBalance(interestRate);
+			setBalance(interestRate + balance );
 			ParseObject account = query();
 			account.put("lastInterestPenalty", time);
 			try {
