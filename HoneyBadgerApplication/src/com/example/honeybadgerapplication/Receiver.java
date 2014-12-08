@@ -9,7 +9,7 @@ public class Receiver extends ParsePushBroadcastReceiver {
 
     @Override
     public void onPushOpen(Context context, Intent intent) {
-        Intent i = new Intent(context, Login.class);
+        Intent i = new Intent(context, Receiver.class);
         i.putExtras(intent.getExtras());
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);

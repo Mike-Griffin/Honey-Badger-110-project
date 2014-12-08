@@ -43,10 +43,13 @@ public class UserHomePage extends ActionBarActivity {
 				AccountTransfer.class);
 		final Intent intentClose = new Intent(UserHomePage.this,
 				CloseAccount.class);
+		final Intent intentTransaction = new Intent(UserHomePage.this, TransactionHistory.class);
+	
 
 		final Button transactionButton = (Button) findViewById(R.id.transactionHistory);
 		final Button transferButton = (Button) findViewById(R.id.accountTransferButton);
 		final Button closeButton = (Button) findViewById(R.id.closeAccountButton);
+		//final Button transactionHistoryButton = (Button)findViewById(R.id.transactionHistory);
 
 		Bundle userBundle = this.getIntent().getExtras();
 		if (userBundle == null) {
@@ -61,15 +64,29 @@ public class UserHomePage extends ActionBarActivity {
 			intentCredDeb.putExtra("user", customer);
 			intentTransfer.putExtra("user", customer);
 			intentClose.putExtra("user", customer);
+			intentTransaction.putExtra("user", customer);
 
 			transactionButton.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					startActivity(intentCredDeb);
+					startActivity(intentTransaction);
 				}
 			});
+			
+			/*transactionHistoryButton.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Bundle userBundleOut = new Bundle();
+					userBundleOut.putParcelable("customer", customer);
+					
+					startActivity(intentTransaction);
+					
+				}
+			});*/
 
 			transferButton.setOnClickListener(new View.OnClickListener() {
 
@@ -191,11 +208,7 @@ public class UserHomePage extends ActionBarActivity {
 						Login.class);
 				startActivity(intentLogin);
 			}
-			return true;
-		} else if (id == R.id.action_transactionHistory) {
-			final Intent intentTransactionHistory = new Intent(
-					UserHomePage.this, TransactionHistory.class);
-			startActivity(intentTransactionHistory);
+			return true;		
 		}
 		return super.onOptionsItemSelected(item);
 	}

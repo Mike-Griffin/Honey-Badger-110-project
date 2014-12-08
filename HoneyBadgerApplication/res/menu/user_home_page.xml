@@ -4,11 +4,7 @@
     tools:context="com.example.honeybadgerapplication.UserHomePage" >
 
  
-    <item android:id="@+id/action_transactionHistory"
-          android:icon="@drawable/ic_action_go_to_today"
-          android:title="TransactionHistory"
-          app:showAsAction="always"  />
-    
+   
  	<item android:id="@+id/action_logout"
           android:icon="@drawable/ic_action_cancel"
           android:title="Logout"
