@@ -50,7 +50,7 @@ public class TellerCustomerInfo extends ActionBarActivity {
 					Toast.LENGTH_SHORT).show();
 		} 
 		else {
-			final User teller = userBundle.getParcelable("teller");
+			final User teller = userBundle.getParcelable("user");
 			final User customer = teller.getCustomer();
 			
 			accountTable = (TableLayout) findViewById(R.id.accountTable);
@@ -142,7 +142,7 @@ public class TellerCustomerInfo extends ActionBarActivity {
 								Toast.LENGTH_SHORT).show();
 						Bundle userBundleOut = new Bundle();
 						userBundleOut.putParcelable("user", teller);
-						intentClose.putExtra("user", teller);
+						intentTransfer.putExtra("user", teller);
 						startActivity(intentTransfer);
 					}
 				}
@@ -160,7 +160,7 @@ public class TellerCustomerInfo extends ActionBarActivity {
 								Toast.LENGTH_SHORT).show();
 						Bundle userBundleOut = new Bundle();
 						userBundleOut.putParcelable("user", teller);
-						intentClose.putExtra("user", teller);
+						intentCreditDebit.putExtra("user", teller);
 						startActivity( intentCreditDebit );
 					}		
 				}

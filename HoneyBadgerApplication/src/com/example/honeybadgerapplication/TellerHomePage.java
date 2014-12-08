@@ -53,8 +53,8 @@ public class TellerHomePage extends ActionBarActivity {
 			
 			
 			
-			intentSignUpTeller.putExtra("teller", teller);
-			intentTellerCustomerInfo.putExtra("teller", teller);
+			intentSignUpTeller.putExtra("user", teller);
+			intentTellerCustomerInfo.putExtra("user", teller);
 
 			addCustomerAccountButton.setOnClickListener(new View.OnClickListener() {
 				
@@ -110,7 +110,7 @@ public class TellerHomePage extends ActionBarActivity {
 					parseUser = query.getFirst();
 					teller.setCustomer(username);
 					Bundle userBundleOut = new Bundle();
-					userBundleOut.putParcelable("teller", teller);
+					userBundleOut.putParcelable("user", teller);
 				
 					startActivity(intentTellerCustomerInfo);
 				} catch (com.parse.ParseException e) {
