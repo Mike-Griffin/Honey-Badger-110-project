@@ -16,6 +16,8 @@ public class Teller extends User {
 
 	private Customer activeCustomer;
 	private String tellerID;
+	private String user;
+	private String pass;
 
 	public Teller() {
 	}
@@ -25,6 +27,8 @@ public class Teller extends User {
 		this.activeCustomer = (Customer) in.readParcelable(Customer.class
 				.getClassLoader());
 		this.tellerID = in.readString();
+		this.user = in.readString();
+		this.pass = in.readString();
 	}
 
 	// login
@@ -40,6 +44,8 @@ public class Teller extends User {
 			loginStatus = 1;
 			tellerID = teller.getObjectId();
 			userType = 2;
+			user = username;
+			pass = password;
 		}
 	}
 
@@ -57,6 +63,14 @@ public class Teller extends User {
 		} catch (ParseException e) {
 			signUpStatus = false;
 		}
+	}
+	
+	public String getUser(){
+		return user;
+	}
+	
+	public String getPass(){
+		return pass;
 	}
 
 	@Override
@@ -190,8 +204,8 @@ public class Teller extends User {
 		return activeCustomer.debit(code, d);
 	}
 
-	public void setCustomer(String username) {
-		activeCustomer = new Customer(username);
+	public void setCustomer(String username, String password) {
+		activeCustomer = new Customer(username, password);
 	}
 
 	public Customer getCustomer() {
@@ -214,6 +228,8 @@ public class Teller extends User {
 		super.writeToParcel(dest, flags);
 		dest.writeParcelable(activeCustomer, flags);
 		dest.writeString(tellerID);
+		dest.writeString(user);
+		dest.writeString(pass);
 	}
 
 	public static final Parcelable.Creator<Teller> CREATOR = new Parcelable.Creator<Teller>() {

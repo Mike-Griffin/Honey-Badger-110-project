@@ -6,11 +6,14 @@ import java.util.List;
 import com.example.honeybadgerapi.Customer;
 import com.example.honeybadgerapi.User;
 import com.example.honeybadgerapi.Account;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -51,7 +54,18 @@ public class CloseAccount extends ActionBarActivity {
 		}
 		else {
 		  final User user = userBundle.getParcelable("user");
-
+		  
+		  if(user.getUserType() >= 2){
+			  ParseUser.logOut();
+			  try {
+				ParseUser.logIn(user.getCustomer().getUser(), user.getCustomer().getPass());
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		  }
+		  
 		  //sets view
 		  super.onCreate(savedInstanceState);
 	   	  setContentView(R.layout.activity_close_account);
@@ -88,7 +102,7 @@ public class CloseAccount extends ActionBarActivity {
 		  accountSpinner.setAdapter(accStringsAdapt);
 		  
 		  closeAccountButton.setOnClickListener(new View.OnClickListener() {
-
+  
 			@Override
 			public void onClick(View v) {
 				accountSelected = accountSpinner.getSelectedItem().toString().trim();
@@ -144,6 +158,15 @@ public class CloseAccount extends ActionBarActivity {
 				}
 				else {
 					//Bundles and takes teller back to ...
+					  if(user.getUserType() >= 2){
+						  ParseUser.logOut();
+						  try {
+							ParseUser.logIn(user.getUser(), user.getPass());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					  }
 					intentTellerInfo.putExtra("user", user);
 					startActivity(intentTellerInfo);
 				}
@@ -166,6 +189,15 @@ public class CloseAccount extends ActionBarActivity {
 			        startActivity(intentCustomerHome);
 		  	    }
 		  	    else {
+		  	    	
+					ParseUser.logOut();
+					  try {
+						ParseUser.logIn(user.getUser(), user.getPass());
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		  	    	
 			        //Bundles and takes teller back to ...
 		      		intentTellerInfo.putExtra("user", user);
 		      		startActivity(intentTellerInfo);
@@ -179,13 +211,6 @@ public class CloseAccount extends ActionBarActivity {
 	public void onBackPressed() {
 	    // do nothing.
 	}
-	@Override
-    public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
-                                                        INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        return true;
-    }
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

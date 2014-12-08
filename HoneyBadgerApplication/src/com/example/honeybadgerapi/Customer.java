@@ -21,6 +21,8 @@ public class Customer extends User {
 	private String customerID;
 	private int checkingNumber;
 	private int savingNumber;
+	private String user;
+	private String pass;
 
 	public Customer() {
 	}
@@ -43,10 +45,12 @@ public class Customer extends User {
 		// Log.d("checking", Integer.toString(checkingNumber));
 		this.savingNumber = in.readInt();
 		// Log.d("saving", Integer.toString(savingNumber));
+		this.user = in.readString();
+		this.pass = in.readString();
 	}
 
 	// teller look up
-	public Customer(String username) {
+	public Customer(String username, String password) {
 		ParseUser customer = null;
 		ParseQuery<ParseUser> query = ParseUser.getQuery();
 		query.whereEqualTo("username", username);
@@ -63,8 +67,18 @@ public class Customer extends User {
 			accountCombo = customer.getInt("accountCombo");
 			checkingNumber = customer.getInt("checkingAccount");
 			savingNumber = customer.getInt("savingAccount");
+			pass = password;
+			user = username;
 			updateAccountList();
 		}
+	}
+	
+	public String getUser(){
+		return user;
+	}
+	
+	public String getPass(){
+		return pass;
 	}
 
 	// login
@@ -384,7 +398,7 @@ public class Customer extends User {
 	}
 
 	@Override
-	public void setCustomer(String customer) {
+	public void setCustomer(String customer, String password) {
 
 	}
 	@Override
@@ -398,6 +412,8 @@ public class Customer extends User {
 		dest.writeString(customerID);
 		dest.writeInt(checkingNumber);
 		dest.writeInt(savingNumber);
+		dest.writeString(user);
+		dest.writeString(pass);
 	}
 
 	public static final Parcelable.Creator<Customer> CREATOR = new Parcelable.Creator<Customer>() {

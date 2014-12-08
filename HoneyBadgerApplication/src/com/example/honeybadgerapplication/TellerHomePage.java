@@ -25,7 +25,9 @@ import android.widget.Toast;
 public class TellerHomePage extends ActionBarActivity {
 	
 	private EditText username_edit_text;
+	private EditText password_edit_text;
 	private String username;
+	private String password;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class TellerHomePage extends ActionBarActivity {
 		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
 		final Button addCustomerAccountButton = (Button) findViewById(R.id.open_customer_account);
 		username_edit_text = (EditText) findViewById(R.id.username);
+		password_edit_text = (EditText) findViewById(R.id.pass);
 		
 		Bundle userBundle = this.getIntent().getExtras();
 		if (userBundle == null) {
@@ -62,13 +65,14 @@ public class TellerHomePage extends ActionBarActivity {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					username = username_edit_text.getText().toString().trim();
+					password = password_edit_text.getText().toString().trim();
 					ParseObject parseUser = null;
 					User user = null;
 					ParseQuery<ParseUser> query = ParseUser.getQuery();
 					query.whereEqualTo("username", username);
 					try {
 						parseUser = query.getFirst();
-						teller.setCustomer(username);
+						teller.setCustomer(username, password);
 						Bundle userBundleOut = new Bundle();
 						userBundleOut.putParcelable("teller", teller);
 						intentAddCustomerAccount.putExtra("teller", teller);
@@ -102,13 +106,14 @@ public class TellerHomePage extends ActionBarActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				username = username_edit_text.getText().toString().trim();
+				password = password_edit_text.getText().toString().trim();
 				ParseObject parseUser = null;
 				User user = null;
 				ParseQuery<ParseUser> query = ParseUser.getQuery();
 				query.whereEqualTo("username", username);
 				try {
 					parseUser = query.getFirst();
-					teller.setCustomer(username);
+					teller.setCustomer(username, password);
 					Bundle userBundleOut = new Bundle();
 					userBundleOut.putParcelable("user", teller);
 				

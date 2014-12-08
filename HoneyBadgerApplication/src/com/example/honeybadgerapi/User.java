@@ -65,8 +65,12 @@ public abstract class User implements Parcelable{
 
 	public abstract boolean debit(int code, double d);
 	
-	public abstract void setCustomer(String username);
+	public abstract void setCustomer(String username, String password);
 	
 	public abstract Customer getCustomer();
+
+	public abstract String getUser();
+	
+	public abstract String getPass();
 
 }

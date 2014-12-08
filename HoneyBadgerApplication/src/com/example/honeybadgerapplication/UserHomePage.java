@@ -185,7 +185,7 @@ public class UserHomePage extends ActionBarActivity {
 				e.printStackTrace();
 			}
 			// Log.d("user", ParseUser.getCurrentUser().getObjectId());
-			if (ParseUser.getCurrentUser().getUsername() == null) {
+			if (ParseUser.getCurrentUser() == null) {
 				Toast.makeText(getApplicationContext(), "Successful Logout!",
 						Toast.LENGTH_SHORT).show();
 				final Intent intentLogin = new Intent(UserHomePage.this,

@@ -123,8 +123,8 @@ public class TellerCustomerInfo extends ActionBarActivity {
 						Toast.makeText(getApplicationContext(), "Has Accounts!",
 								Toast.LENGTH_SHORT).show();
 						Bundle userBundleOut = new Bundle();
-						userBundleOut.putParcelable("user", customer);
-						intentClose.putExtra("user", customer);
+						userBundleOut.putParcelable("user", teller);
+						intentClose.putExtra("user", teller);
 						startActivity(intentClose);
 					}
 				}
