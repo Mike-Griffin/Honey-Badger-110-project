@@ -18,18 +18,22 @@ import android.widget.Toast;
 
 public class TellerAddAccounts extends ActionBarActivity {
 	
+	//local variables
 	private EditText amount_edit_text;
 	private double amount = 0.0;
 
+	//user bundle
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_teller_add_accounts);
 		
+		//parse communication
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
 		
+		//buttons for telleraddaccount
 		final Intent intentTellerHomePage = new Intent (TellerAddAccounts.this, TellerCustomerInfo.class);
 		final Button cancelButton = (Button) findViewById(R.id.cancel);
 		final Button addCheckingButton = (Button) findViewById(R.id.addChecking);

@@ -28,8 +28,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+// Sign Up class used for a new User to create an account
 public class SignUp extends ActionBarActivity implements
 		DatePickerFragment.TheListener {
+	// Declare all local variables used
 	private Spinner stateSpinner;
 	private EditText name_edit_text;
 	private EditText username_edit_text;
@@ -55,6 +57,7 @@ public class SignUp extends ActionBarActivity implements
 	private int accountNumber;
 	private int passwordLength;
 
+	// Creates Customer Bundle for Parse (our server)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,13 +69,13 @@ public class SignUp extends ActionBarActivity implements
 		ParseUser.enableAutomaticUser();
 		ParseACL defaultACL = new ParseACL();
 		defaultACL.setPublicReadAccess(true);
-		// ParseACL.setDefaultACL(defaultACL, this);
 
-		
+		// Instantiate buttons on sign up page
 		final Intent intentLogin = new Intent(SignUp.this, Login.class);
 		final Button doneButton = (Button) findViewById(R.id.doneButton);
 		final Button cancelButton = (Button) findViewById(R.id.cancelButton);
 
+		// Create text fields for user input
 		name_edit_text = (EditText) findViewById(R.id.name);
 		username_edit_text = (EditText) findViewById(R.id.username);
 		password_edit_text = (EditText) findViewById(R.id.password);
@@ -85,6 +88,7 @@ public class SignUp extends ActionBarActivity implements
 		phone_edit_text = (EditText) findViewById(R.id.phone);
 		account_number_text = (EditText) findViewById(R.id.accountNumber);
 
+		// Create drop-down menu for State of user
 		stateSpinner = (Spinner) findViewById(R.id.state);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter
 				.createFromResource(this, R.array.state_names,
@@ -92,19 +96,24 @@ public class SignUp extends ActionBarActivity implements
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		stateSpinner.setAdapter(adapter);
 
+		// Create click listener for birthday entry
 		birthday_text_view.setOnClickListener(new View.OnClickListener() {
 
+			// Allows user to pick date from calandar
 			@SuppressLint("NewApi")
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// Auto-generated method stub
 				DialogFragment picker = new DatePickerFragment();
 				picker.show(getFragmentManager(), "datePicker");
 			}
 		});
 
+		// create listener for the done button on the Sign Up Page
 		doneButton.setOnClickListener(new View.OnClickListener() {
 
+			// Moves the inputs to the checkers to verify valid input and
+			// sets valid entries to user profile variables
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -113,7 +122,7 @@ public class SignUp extends ActionBarActivity implements
 				password = password_edit_text.getText().toString().trim();
 				passwordLength = password.length();
 				
-				
+				// If the password and password verify entries do not match
 				if (!password.equals(verify_password_edit_text.getText()
 						.toString().trim())) {
 					Toast.makeText(getApplicationContext(),
@@ -121,18 +130,21 @@ public class SignUp extends ActionBarActivity implements
 							.show();
 					return;
 				}
+				// The password needs to be at least 6 characters, check this here
 				if (passwordLength < 6) {
 					Toast.makeText(getApplicationContext(),
 							"Password must be at least 6 characters!",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
+				// The password must contain at least 1 letter, check this here
 				if (password.matches("[0-9]+")) {
 					Toast.makeText(getApplicationContext(),
 							"Password must contain at least 1 letter!",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
+				// The password must contain at least 1 number, check this here
 				if (password.matches("[a-zA-Z]+")) {
 					Toast.makeText(getApplicationContext(),
 							"Password must contain at least 1 number!",
@@ -140,19 +152,22 @@ public class SignUp extends ActionBarActivity implements
 					return;
 				}
 				email = email_edit_text.getText().toString().trim();
-				if ( !email.contains("@") ) {
+				if ( !email.contains("@") ) { // valid emails always have @
+				// if entry does not contain @, give error for invalid email entry
 				Toast.makeText(getApplicationContext(),
 						"Invalid Email!",
 						Toast.LENGTH_SHORT).show();
 				return;
 				}
-				
+				// Get input values and store then into corresponding local variables
+				// from the text fields
 				birthday = birthday_text_view.getText().toString().trim();
 				address = address_edit_text.getText().toString().trim();
 				city = city_edit_text.getText().toString().trim();
 				state = stateSpinner.getSelectedItem().toString().trim();
 				phone = phone_edit_text.getText().toString().trim();
 
+				// Send to the server to create new User
 				try {
 					zip = Integer.parseInt(zip_edit_text.getText().toString()
 							.trim());
@@ -162,7 +177,7 @@ public class SignUp extends ActionBarActivity implements
 
 					return;
 				}
-
+				// Send the new account number to the server
 				try {
 					accountNumber = Integer.parseInt(account_number_text
 							.getText().toString().trim());
@@ -170,8 +185,7 @@ public class SignUp extends ActionBarActivity implements
 					accountNumber = 0;
 				}
 
-				
-
+				// Get the account query from the server
 				ParseObject account = null;
 				if (accountNumber != 0) {
 					ParseQuery<ParseObject> query = ParseQuery
@@ -187,7 +201,7 @@ public class SignUp extends ActionBarActivity implements
 
 							return;
 						}
-					} catch (ParseException e) {
+					} catch (ParseException e) { // Error in finding new account
 						e.printStackTrace();
 						Toast.makeText(getApplicationContext(),
 								"Cannot find matched account!!",
@@ -208,7 +222,8 @@ public class SignUp extends ActionBarActivity implements
 
 					return;
 				}
-
+ 
+				// Create the new customer using all verified valid entreis
 				Customer customer = new Customer();
 				customer.signup(name, username, password, email, birthday,
 						address, city, state, phone, zip, accountNumber);
@@ -238,62 +253,28 @@ public class SignUp extends ActionBarActivity implements
 					try {
 						user.save();
 					} catch (ParseException e) {
-					}
+					} // Oh man I hope it doesn't fail this bad
 					Toast.makeText(getApplicationContext(), "FUCKKK!!",
 							Toast.LENGTH_SHORT).show();
 					startActivity(intentLogin);
-				} else {
+				} else { // Display Error message if sign up failed
 					Toast.makeText(getApplicationContext(), "Sign Up Failed!!",
 							Toast.LENGTH_SHORT).show();
 				}
-				/*
-				 * ParseUser user = new ParseUser(); user.setUsername(username);
-				 * user.setPassword(password); user.setEmail(email);
-				 * user.put("name", name); user.put("birthday", birthday);
-				 * user.put("address", address); user.put("city", city);
-				 * user.put("state", state); user.put("zipCode", zip);
-				 * user.put("primaryAccount", 0); user.put("phone", phone);
-				 * 
-				 * user.signUpInBackground(new SignUpCallback() { public void
-				 * done(ParseException e) { if (e == null) { // Show a simple
-				 * Toast message upon successful // registration
-				 * Toast.makeText(getApplicationContext(),
-				 * "Successfully Signed up.", Toast.LENGTH_SHORT).show(); } else
-				 * { Toast.makeText(getApplicationContext(), "Sign up Error" +
-				 * e, Toast.LENGTH_SHORT) .show(); } } });
-				 */
 			}
 		});
-
+		// Creates listener for cancel button if the User decides they do not want to sign up
 		cancelButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// Auto-generated method stub
 				startActivity(intentLogin);
 			}
 		});
-
-		/*
-		 * // Temporary Intent for going back to login, both done and cancel go
-		 * back to login final Intent intentTemp = new Intent(SignUp.this,
-		 * Login.class);
-		 * 
-		 * final Button doneButton = (Button) findViewById(R.id.doneButton);
-		 * final Button cancelButton = (Button) findViewById(R.id.cancelButton);
-		 * 
-		 * doneButton.setOnClickListener(new View.OnClickListener() {
-		 * 
-		 * @Override public void onClick(View v) { // TODO Auto-generated method
-		 * stub startActivity(intentTemp); } });
-		 * 
-		 * cancelButton.setOnClickListener(new View.OnClickListener() {
-		 * 
-		 * @Override public void onClick(View v) { // TODO Auto-generated method
-		 * stub startActivity(intentTemp); } });
-		 */
 	}
 	
+	// Creates method manager for managing the inputs of the user
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -301,30 +282,31 @@ public class SignUp extends ActionBarActivity implements
 		return true;
 	}
 
+	// Disables the back button
 	@Override
 	public void onBackPressed() {
 		// do nothing.
 	}
 
+	// Inflate the menu; this adds items to the action bar if it is present.
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.sign_up, menu);
 		return true;
 	}
 
+	// Handle action bar item clicks here. The action bar will
+	// automatically handle clicks on the Home/Up button, so long
+	// as you specify a parent activity in AndroidManifest.xml
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		return super.onOptionsItemSelected(item);
 	}
 
+	// Auto-generated method stub to set text
 	@Override
 	public void returnDate(String date) {
-		// TODO Auto-generated method stub
 		birthday_text_view.setText(date);
 	}
 }

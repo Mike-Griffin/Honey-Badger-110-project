@@ -38,6 +38,7 @@ import android.widget.Toast;
 
 public class Login extends Activity {
 
+	// Declare local variables
 	private int numberOfAttempts = 0;
 	private String username;
 	private String password;
@@ -48,6 +49,7 @@ public class Login extends Activity {
 	private Handler progressBarHandler = new Handler();
 	private long loginStatus = 0;
 	
+	// Customer Bundle called to push everything to Parse (our server)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,18 +59,21 @@ public class Login extends Activity {
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
 
+		// Declare and instantiate login page buttons
 		final Intent intentSignUp = new Intent(Login.this, SignUp.class);
 		final Intent intentForgotPassword = new Intent(Login.this, ResetPassword.class);
 		final Button signUpButton = (Button) findViewById(R.id.signUp);
 		final Button loginButton = (Button) findViewById(R.id.login);
 		final Button forgotPasswordButton = (Button)findViewById(R.id.forgotPassword);
         
+		// Instantiates the text fields
 		username_edit_text = (EditText) findViewById(R.id.username);
 		password_edit_text = (EditText) findViewById(R.id.password);
 		
-		
+		// Creates Sign Up button listener
 		signUpButton.setOnClickListener(new View.OnClickListener() {
 
+			// When clicks, goes to Sign Up page
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -76,8 +81,10 @@ public class Login extends Activity {
 			}
 		});
 		
+		// Creates Forgot Password button listener
 		forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
 			
+			// When clicks, goes to Forgot Password page
 			@Override
 			public void onClick(View v) {
 				startActivity(intentForgotPassword);
@@ -85,23 +92,27 @@ public class Login extends Activity {
 			}
 		});
 		
+		// Creates Login button listener
 		loginButton.setOnClickListener(new View.OnClickListener(){		
 			public void onClick(View v){
+				// Reads in user input from text fields
 				username = username_edit_text.getText().toString().trim();
 				password = password_edit_text.getText().toString().trim();
 				
+				// Instantiate local variables
 				int userType = 0;
 				ParseObject parseUser = null;
 				User user = null;
 				
+				// Queries the user name 
 				ParseQuery<ParseUser> query = ParseUser.getQuery();
 				query.whereEqualTo("username", username);
-				// query.whereEqualTo("password", password);
 				UserFactory factory = new UserFactory();
 				
+				// Check that Login is valid User
 				try {
 					parseUser = query.getFirst();
-				} catch (ParseException e) {
+				} catch (ParseException e) { // if not found, ask user to Sign Up
 				
 					// TODO Auto-generated catch block
 					Toast.makeText(
@@ -110,34 +121,29 @@ public class Login extends Activity {
 						.show();
 				}
 				
-				//Log.d("parse user address", parseUser.getString("address"));
-				
-				/*if(parseUser == null)
-					Toast.makeText(
-							getApplicationContext(),
-							"No such user exist, please signup", Toast.LENGTH_SHORT).show();
-				}
-				else
-				{*/
+				// Check User has been found!
 				if(parseUser != null) {
+				// Check User type
 				userType = parseUser.getInt("userType");
 				
 				user = factory.makeUser(userType, username, password);
 				
+				// Increment the number of attempts to lock out after too many
 				if(user.getLoginStatus() == 0) {
 					numberOfAttempts++;
-					
+					// Error message for incorrect login credentials
 					Toast.makeText(
 							getApplicationContext(),
 							"Login Failed!!", Toast.LENGTH_SHORT).show();
 					
 					return;
 				}
-				
+				// Instantiate next pages and user bundle
 				final Intent nextPage = new Intent();
 				Bundle userBundle = new Bundle();
 				userBundle.putParcelable("user", user);
 				
+				// Check if the user is a regular account holder
 				if(userType == 1){
 					int aCombo = user.getAccountCombo();
 					if(aCombo == 1 || aCombo == 2 || aCombo == 3){
@@ -149,13 +155,13 @@ public class Login extends Activity {
 								"User has no accounts", Toast.LENGTH_SHORT).show();
 						return;
 					}
-				}
+				} // Check that user is a Teller
 				else if(userType == 2)
 					nextPage.setClass(Login.this, TellerHomePage.class);
 				
 				nextPage.putExtra("user", user);
 			
-				
+				// Secure Login Verification
 				progressBar = new ProgressDialog(v.getContext());
 				progressBar.setCancelable(true);
 				progressBar.setMessage("Securing Log in...");
@@ -167,6 +173,7 @@ public class Login extends Activity {
 				progressBarStatus = 0;
 				loginStatus = 0;
 				
+				// Login Status Bar to show Login Progress to User
 				new Thread(new Runnable() {
 					public void run() {
 						while(progressBarStatus < 100 ){
@@ -213,6 +220,7 @@ public class Login extends Activity {
 		});
     }
     
+    // Get the login status
     public int progressBar() {
     	while (loginStatus <= 1000000) {
     		 
@@ -244,12 +252,13 @@ public class Login extends Activity {
 		return 100;
 	}
     
-
+    // Disables back button
     @Override
     public void onBackPressed() {
         // do nothing.
     }
     
+    // Creates Method Manager to handle the inputs from the user
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.
@@ -258,18 +267,18 @@ public class Login extends Activity {
         return true;
     }
     
+    // Inflate the menu; this adds items to the action bar if it is present
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         return super.onOptionsItemSelected(item);
     }
