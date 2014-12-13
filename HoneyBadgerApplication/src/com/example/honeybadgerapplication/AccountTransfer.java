@@ -55,20 +55,15 @@ public class AccountTransfer extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_account_transfer);
 		
+		// perform the unbundling
 		Bundle userBundle = this.getIntent().getExtras();
-		Log.d("does this even happen"," ");
-		if(userBundle == null) {
-			Log.d("user bunndle is null", " ");
-		}
-		else {
 		final User customer = userBundle.getParcelable("user");
 
 		
 		final Intent intentUserHome = new Intent(AccountTransfer.this, UserHomePage.class);
 		final Intent intentCustomerInfo = new Intent(AccountTransfer.this, TellerCustomerInfo.class);
 		
-
-
+		// set all the variables for the layout objects
 		confirmButton = (Button) findViewById(R.id.confirmTransfer);
 		cancelButton = (Button) findViewById(R.id.cancelTransfer);
 		amount_edit_text = (EditText) findViewById(R.id.amountToTransfer);
@@ -79,11 +74,13 @@ public class AccountTransfer extends ActionBarActivity {
 		
 		//accountToSpinner = (Spinner) findViewById(R.id.transferToSpinner);
 		
+		// get the variables from the customer object
 		userAccounts = customer.getAccountList();
 		userType = customer.getUserType();
-		
 		int aCombo = customer.getAccountCombo();
 
+		// depending on the user's account combo add the names of the accounts the user has to
+		// the string list
 		switch(aCombo) {
 			case 1: //just checking account
 				accStrings.add("Checking Account");
@@ -104,9 +101,10 @@ public class AccountTransfer extends ActionBarActivity {
 		    	accToStrings.add("Error: No Accounts");
 		    	break;
 		}
-		
+		// the two strings also has a to someone else option
 		accToStrings.add("To Someone Else");
 		
+		// set up the from spinner
 		accountNumberFromAdapt = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, accStrings);
 		accountNumberFromAdapt
@@ -119,8 +117,7 @@ public class AccountTransfer extends ActionBarActivity {
 		accountToList.add("To Someone Else");
 		*/
 		
-
-		
+		// set up the to spinner
 		accountNumberToAdapt = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, accToStrings);
 		accountNumberToAdapt
@@ -133,7 +130,7 @@ public class AccountTransfer extends ActionBarActivity {
 
 			public void onItemSelected(AdapterView<?> parent,
 					View view, int position, long id) {
-				Log.d("this happens", " ");
+
 				 //Getting Value of Selected Item
 				String val = accountToSpinner.getSelectedItem()
 						.toString();
@@ -165,6 +162,8 @@ public class AccountTransfer extends ActionBarActivity {
 
 			@Override
 			public void onClick(View v) {
+				// when confirm is clicked go through all the fields and set the values and store them
+				// read in the amount string and if it exists convert it to double
 				String amountString = amount_edit_text.getText()
 						.toString().trim();
 				if(!amountString.equals("")) {
@@ -175,6 +174,9 @@ public class AccountTransfer extends ActionBarActivity {
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
+				
+				// select the from account and set the variable accFromInt to be used by customer's 
+				// transfer method
 				accountFromSelected = accountFromSpinner.getSelectedItem()
 						.toString().trim();
 				
@@ -195,15 +197,15 @@ public class AccountTransfer extends ActionBarActivity {
 							Toast.LENGTH_SHORT)
 							.show();
 				}
-
+				// read in the email or phone number string
 				emailOrPhoneString = email_edit_text.getText().toString().trim();
 
+				// read in the to account from the spinner
 				accountToSelected = accountToSpinner.getSelectedItem()
 						.toString().trim();
 
 				if(accountToSelected.equals("Checking Account")) {
 					accToInt = 1;
-
 				}
 				
 				else if(accountToSelected.equals("Savings Account")) {
@@ -212,8 +214,11 @@ public class AccountTransfer extends ActionBarActivity {
 				}
 				
 				else {
+					// neither account was selected so to other user's account was selected
+					// email or phone must have been selected
 					if(!emailOrPhoneString.equals("")) {
 						if(amount > 0) {
+							// call the customer object's transfer method
 							if(customer.transfer(accFromInt,amount,emailOrPhoneString)) {
 								Toast.makeText(
 										getApplicationContext(),
@@ -241,6 +246,7 @@ public class AccountTransfer extends ActionBarActivity {
 					}
 				}
 				
+				// two accounts were selected so perform necessary checks and call customer's transfer method
 				if(emailOrPhoneString.equals("")&&amount > 0) {
 					if(accToInt == 1 || accToInt == 2) {
 						if(accToInt != accFromInt) {
@@ -299,7 +305,7 @@ public class AccountTransfer extends ActionBarActivity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// when cancel is clicked close the bundle and load the appropriate user's page
 				Bundle userBundle = new Bundle();
 				userBundle.putParcelable("user", customer);
 				//intentUserHome.putExtra("user", customer);
