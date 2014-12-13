@@ -23,41 +23,45 @@ public class TellerSignUp extends ActionBarActivity {
 	private String username;
 	private String password;
 	private String email;
-	private int passwordLength;
+	private int passwordLength;		// for checking if length of pw is valid
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_teller_sign_up);
-		
+		setContentView(R.layout.activity_teller_sign_up); // load signup view
+		// Confirm and Cancel buttons after finishing sign up
 		final Button confirmButton = (Button) findViewById(R.id.confirmButton);
 		final Button cancelButton = (Button) findViewById(R.id.cancelButton);
-		
+		// Intent to load next view -> Teller Home Page after signing up
 		final Intent intentTellerHomePage = new Intent( TellerSignUp.this,
 				TellerHomePage.class);
-	
+		// text views to capture user input
 		name_edit_text = (EditText) findViewById(R.id.name);
 		username_edit_text = (EditText) findViewById(R.id.username);
 		password_edit_text = (EditText) findViewById(R.id.password);
 		verify_password_edit_text = (EditText) findViewById(R.id.verifyPassword);
 		email_edit_text = (EditText) findViewById(R.id.email);		
-		
+		// Check if bundle with Teller from prev. view exists - error if not
 		Bundle userBundle = this.getIntent().getExtras();
 		if (userBundle == null) {
 			Toast.makeText(getApplicationContext(), "Bundle does not exist",
 					Toast.LENGTH_SHORT).show();
 		}
+		// Bundle is valid
 		else {
+			// Grab Teller object from bundle
 			final User teller = userBundle.getParcelable("teller");
+			// Set click listener on the confirm button -> check all inputs
 			confirmButton.setOnClickListener(new View.OnClickListener() {
 	
 				@Override
 				public void onClick(View v) {
+					// Grab teller sign up info
 					name = name_edit_text.getText().toString().trim();
 					username = username_edit_text.getText().toString().trim();
 					password = password_edit_text.getText().toString().trim();
 					passwordLength = password.length();
-					
+					// Check if password entry and password verify match
 					if (!password.equals(verify_password_edit_text.getText()
 							.toString().trim())) {
 						Toast.makeText(getApplicationContext(),
@@ -65,24 +69,28 @@ public class TellerSignUp extends ActionBarActivity {
 							.show();
 						return;
 					}
+					// Password must be > 6 characters long
 					if (passwordLength < 6) {
 						Toast.makeText(getApplicationContext(),
 							"Password must be at least 6 characters!",
 							Toast.LENGTH_SHORT).show();
 						return;
 					}
+					// Password must not be only all numbers
 					if (password.matches("[0-9]+")) {
 						Toast.makeText(getApplicationContext(),
 							"Password must contain at least 1 letter!",
 							Toast.LENGTH_SHORT).show();
 						return;
 					}
+					// Password must not be only all letters
 					if (password.matches("[a-zA-Z]+")) {
 						Toast.makeText(getApplicationContext(),
 							"Password must contain at least 1 number!",
 							Toast.LENGTH_SHORT).show();
 						return;
-					}	
+					}
+					// Email must be a valid email or Parse -> error
 					email = email_edit_text.getText().toString().trim();
 					if ( !email.contains("@") ) {
 					Toast.makeText(getApplicationContext(),
@@ -91,7 +99,7 @@ public class TellerSignUp extends ActionBarActivity {
 					return;
 					}
 					
-					
+					// If any fields are empty, reject
 					if (name.equals("") || username.equals("")
 						|| password.equals("") || email.equals("")) {
 						Toast.makeText(getApplicationContext(),
@@ -100,22 +108,23 @@ public class TellerSignUp extends ActionBarActivity {
 
 						return;
 					}
+					// Sign up for a teller with provided info
 					Teller teller = new Teller();
 					teller.signup( username, password, email);
 					
-					// TODO Auto-generated method stub
+					// Bundle Teller object to send to Teller Home Page view
 					Bundle userBundleOut = new Bundle();
 					userBundleOut.putParcelable("user", teller);
 					intentTellerHomePage.putExtra("user", teller);
 					startActivity(intentTellerHomePage);
 				}
 			});	
-			
+			// Set cancel button click listener
 			cancelButton.setOnClickListener(new View.OnClickListener() {
 	
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
+					// Bundle Teller object to just return to Teller Home Page
 					Bundle userBundleOut = new Bundle();
 					userBundleOut.putParcelable("user", teller);
 					intentTellerHomePage.putExtra("user", teller);
@@ -140,6 +149,4 @@ public class TellerSignUp extends ActionBarActivity {
 		int id = item.getItemId();
 		return super.onOptionsItemSelected(item);
 	}
-	
-	//hello
 }
