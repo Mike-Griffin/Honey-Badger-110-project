@@ -18,11 +18,11 @@ import android.widget.Toast;
 
 public class TellerAddAccounts extends ActionBarActivity {
 	
-	//local variables
+	//declare local variables
 	private EditText amount_edit_text;
 	private double amount = 0.0;
 
-	//user bundle
+	//customer user bundle
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,14 +33,14 @@ public class TellerAddAccounts extends ActionBarActivity {
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
 		
-		//buttons for telleraddaccount
+		//buttons for teller add account
 		final Intent intentTellerHomePage = new Intent (TellerAddAccounts.this, TellerCustomerInfo.class);
 		final Button cancelButton = (Button) findViewById(R.id.cancel);
 		final Button addCheckingButton = (Button) findViewById(R.id.addChecking);
 		final Button addSavingButton = (Button) findViewById(R.id.savingAccount);
 		amount_edit_text = (EditText) findViewById(R.id.amount_cred);
 	
-		
+		////check to see if bundle exist
 		Bundle userBundle = this.getIntent().getExtras();
 		if (userBundle == null) {
 			Toast.makeText(getApplicationContext(), "Bundle does not exist",
@@ -49,7 +49,7 @@ public class TellerAddAccounts extends ActionBarActivity {
 			final User user = userBundle.getParcelable("user");
 			
 			Log.d("teller", user.getUser());
-			
+			//checks the user type 
 			if(user.getUserType() >= 2){
 				ParseUser.logOut();
 				try {
@@ -60,26 +60,29 @@ public class TellerAddAccounts extends ActionBarActivity {
 					e.printStackTrace();
 				}
 			}		    
-			
+			//checking button listener 
 			addCheckingButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					try {
+					//gets the text from the field and stores it into local variable amount
 					amount = Double.parseDouble(amount_edit_text.getText()
 							.toString().trim());
 					} catch (NumberFormatException e) {
+						//verifies user input
 						Toast.makeText(getApplicationContext(), "Please enter a valid amount!", 
 								Toast.LENGTH_SHORT).show();
 						return;
 					}
-					
+					//if open account then check to see if account has been made created 
 					if(user.openAccount("Checking Account", amount)){
 						Toast.makeText(getApplicationContext(), "Account successfully opened",
 								Toast.LENGTH_SHORT).show();		  
 					}
 					else{
+						//if account made was unsucesssful then display openeing failed
 						Toast.makeText(getApplicationContext(), "Account opening failed", 
 								Toast.LENGTH_SHORT).show();
 					}
@@ -97,13 +100,14 @@ public class TellerAddAccounts extends ActionBarActivity {
 					startActivity(intentTellerHomePage);	
 				}
 			});
-			
+			//add saving button to create new saving account 
 			addSavingButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					try {
+					//gets the value from text field and stores into amount variable 
 					amount = Double.parseDouble(amount_edit_text.getText()
 							.toString().trim());
 					} catch (NumberFormatException e) {
@@ -111,7 +115,7 @@ public class TellerAddAccounts extends ActionBarActivity {
 								Toast.LENGTH_SHORT).show();
 						return;
 					}
-					
+					//checks to see if the accoutn was sucessfully created
 					if(user.openAccount("Saving Account", amount)){
 						Toast.makeText(getApplicationContext(), "Account successfully opened",
 								Toast.LENGTH_SHORT).show();
@@ -128,7 +132,7 @@ public class TellerAddAccounts extends ActionBarActivity {
 						Toast.makeText(getApplicationContext(), "Account opening failed", 
 								Toast.LENGTH_SHORT).show();
 					}
-					
+					//logout 
 					ParseUser.logOut();
 					  try {
 						  if(user == null) {
@@ -147,7 +151,7 @@ Log.d("null", "usernull");
 			});
 			
 			
-			
+			//click listener for cancelButton
 			cancelButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
@@ -164,17 +168,17 @@ Log.d("null", "usernull");
 	}
 
 	@Override
+	// Inflate the menu; this adds items to the action bar if it is present.
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.teller_add_accounts, menu);
 		return true;
 	}
 
 	@Override
+	// Handle action bar item clicks here. The action bar will
+			// automatically handle clicks on the Home/Up button, so long
+			// as you specify a parent activity in AndroidManifest.xml.
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		return super.onOptionsItemSelected(item);
 	}

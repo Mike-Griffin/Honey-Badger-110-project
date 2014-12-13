@@ -24,12 +24,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class TellerHomePage extends ActionBarActivity {
-	
+	// Declare local variables for teller home page
 	private EditText username_edit_text;
 	private EditText password_edit_text;
 	private String username;
 	private String password;
-
+	// Creates bundle for teller 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,47 +38,43 @@ public class TellerHomePage extends ActionBarActivity {
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		
-	
+	    // Instantiates pages to navigate from Teller Home Page
 		final Intent intentTellerCustomerInfo = new Intent (TellerHomePage.this, TellerCustomerInfo.class);
 		final Intent intentSignUpTeller = new Intent (TellerHomePage.this, TellerSignUp.class);
-		
+		// Instantiates buttons on Teller Home Page
 		final Button lookUpButton = (Button) findViewById(R.id.lookUp);
 		final Button signUpTellerButton = (Button) findViewById(R.id.signUpTeller);
 		final Button interestButton = (Button) findViewById(R.id.updateInterest);
 		final Button penaltyButton = (Button) findViewById(R.id.updatePenalty);
-
+		// Instantiates text fields for Teller input
 		username_edit_text = (EditText) findViewById(R.id.username);
 		password_edit_text = (EditText) findViewById(R.id.pass);
-		
+		// Creates bundle for teller user from this
 		Bundle userBundle = this.getIntent().getExtras();
-		if (userBundle == null) {
+		if (userBundle == null) { // Error in finding bundle
 			Toast.makeText(getApplicationContext(), "Bundle does not exist",
 					Toast.LENGTH_SHORT).show();
 		} else {
 			final User teller = userBundle.getParcelable("user");
-			
-			
-			
+		
 			intentSignUpTeller.putExtra("user", teller);
-			//intentTellerCustomerInfo.putExtra("user", teller);
-
-			
+			// Creates Button listener for Sign Up for teller
 			signUpTellerButton.setOnClickListener(new View.OnClickListener() {
-				
+			
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
+					// Auto-generated method stub
 					Bundle userBundleOut = new Bundle();
 					userBundleOut.putParcelable("user", teller);
 					startActivity(intentSignUpTeller);
 				}
 			});
-		
+			// Creates Button listener for Look Up button on Teller home page
 			lookUpButton.setOnClickListener(new View.OnClickListener() {
-			
+			// Creates onClick listener for assigning the local variables from teller input
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				//gets username and password from the text fields
 				username = username_edit_text.getText().toString().trim();
 				password = password_edit_text.getText().toString().trim();
 				ParseObject parseUser = null;
@@ -92,7 +88,7 @@ public class TellerHomePage extends ActionBarActivity {
 					userBundleOut.putParcelable("user", teller);
 					intentTellerCustomerInfo.putExtra("user", teller);
 				} catch (com.parse.ParseException e) {
-					// TODO Auto-generated catch block
+					// Auto-generated catch block
 					Toast.makeText(
 						getApplicationContext(),
 						"User does not exist!",
@@ -106,7 +102,7 @@ public class TellerHomePage extends ActionBarActivity {
 			
 			
 			
-			
+			//button to start interest calculations 
 			interestButton.setOnClickListener(new View.OnClickListener() {			
 				@Override
 				public void onClick(View v) {	
@@ -115,7 +111,7 @@ public class TellerHomePage extends ActionBarActivity {
 						Toast.LENGTH_SHORT).show();	
 				}
 			});
-			
+			//button to start penalty calculations 
 			penaltyButton.setOnClickListener(new View.OnClickListener() {			
 				@Override
 				public void onClick(View v) {

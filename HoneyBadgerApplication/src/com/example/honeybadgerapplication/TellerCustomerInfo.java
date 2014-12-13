@@ -24,7 +24,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class TellerCustomerInfo extends ActionBarActivity {
+	//declaration of local variables 
 	private List<Account> account = new ArrayList<Account>();
 	private TableLayout accountTable;
 	private TableRow row0;
@@ -33,23 +35,26 @@ public class TellerCustomerInfo extends ActionBarActivity {
 	private TextView bal;
 	
 	@Override
+	//creates the customer bundle
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_teller_customer_info);
 		
+		//the pages that will be shown
 		final Intent intentClose = new Intent(TellerCustomerInfo.this, CloseAccount.class);
 		final Intent intentTellerHomePage = new Intent (TellerCustomerInfo.this, TellerHomePage.class);
 		final Intent intentTransfer = new Intent ( TellerCustomerInfo.this, AccountTransfer.class);
 		final Intent intentCreditDebit = new Intent ( TellerCustomerInfo.this, CreditDebit.class );
 		final Intent intentAddCustomerAccount = new Intent (TellerCustomerInfo.this, TellerAddAccounts.class);
 		
+		//links the button with id values
 		final Button closeButton = (Button) findViewById(R.id.tellerCloseAccountButton);
 		final Button cancelButton = (Button) findViewById(R.id.tellerCancel);
 		final Button transferButton = (Button) findViewById(R.id.tellerAccountTransferButton);
 		final Button creditDebitButton = (Button) findViewById(R.id.tellerCreditDebitButton);
 		final Button addCustomerAccountButton = (Button) findViewById(R.id.open_customer_account);
 		
-		
+		//customer bundle
 		Bundle userBundle = this.getIntent().getExtras();
 		if (userBundle == null) {
 			Toast.makeText(getApplicationContext(), "Bundle does not exist",
@@ -58,7 +63,7 @@ public class TellerCustomerInfo extends ActionBarActivity {
 		else {
 			final User teller = userBundle.getParcelable("user");
 			final User customer = teller.getCustomer();
-			
+			//creates the table and formatting for fields
 			accountTable = (TableLayout) findViewById(R.id.accountTable);
 			row0 = new TableRow(this);
 			type = new TextView(this);
@@ -73,7 +78,7 @@ public class TellerCustomerInfo extends ActionBarActivity {
 			row0.addView(aNum);
 			row0.addView(bal);
 			accountTable.addView(row0);
-
+			//check if the customer exist if it does then by the switch statement the combos are selected
 			if (customer != null) {
 				Account[] list = customer.getAccountList();
 				switch (customer.getAccountCombo()) {
@@ -91,7 +96,7 @@ public class TellerCustomerInfo extends ActionBarActivity {
 					break;
 				}
 			}
-
+			//checks if the account status is true
 			for (int i = 0; i < account.size(); i++) {
 				if (account.get(i).getStatus() == true) {
 
@@ -115,14 +120,12 @@ public class TellerCustomerInfo extends ActionBarActivity {
 					accountTable.addView(row);
 				}
 			}
-		
+			//customer account button when clicked
 			addCustomerAccountButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-		//			String username = teller.getCustomer().getUser();
-			//		String password = teller.getCustomer().getPass();
 
 					Bundle userBundleOut = new Bundle();
 					userBundleOut.putParcelable("user", teller);
@@ -132,12 +135,13 @@ public class TellerCustomerInfo extends ActionBarActivity {
 					
 				}
 			});
-			
+			//close button to close acccount the account
 			closeButton.setOnClickListener(new View.OnClickListener() {
 	
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
+					//check if the account combo is zero
 					if (customer.getAccountCombo() == 0) {
 						Toast.makeText(getApplicationContext(), "No Active Accounts!",
 								Toast.LENGTH_SHORT).show();
@@ -152,10 +156,11 @@ public class TellerCustomerInfo extends ActionBarActivity {
 					}
 				}
 			});
-			
+			//transfer button listener
 			transferButton.setOnClickListener(new View.OnClickListener(){
 				@Override
 				public void onClick(View v){
+					//check to see if there are active accounts
 					if (customer.getAccountCombo() == 0) {
 						Toast.makeText(getApplicationContext(), "No Active Accounts!",
 								Toast.LENGTH_SHORT).show();
@@ -170,7 +175,7 @@ public class TellerCustomerInfo extends ActionBarActivity {
 					}
 				}
 			});
-			
+			//debit button listener when the button is selected check if there are any active accounts
 			creditDebitButton.setOnClickListener(new View.OnClickListener(){
 				@Override
 				public void onClick(View v){
@@ -188,6 +193,7 @@ public class TellerCustomerInfo extends ActionBarActivity {
 					}		
 				}
 			});
+			//cancel button brings you back to the the teller home page
 			cancelButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
@@ -213,10 +219,10 @@ public class TellerCustomerInfo extends ActionBarActivity {
 	}
 
 	@Override
+	// Handle action bar item clicks here. The action bar will
+			// automatically handle clicks on the Home/Up button, so long
+			// as you specify a parent activity in AndroidManifest.xml.
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		return super.onOptionsItemSelected(item);
 	}
