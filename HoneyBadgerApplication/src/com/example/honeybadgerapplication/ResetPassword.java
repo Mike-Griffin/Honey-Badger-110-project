@@ -30,6 +30,7 @@ public class ResetPassword extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reset_password);
 		
+		//initialize parse for use in this class
 		Parse.initialize(this, "vqe8lK8eYQMNQoGS2e70O9RpbTLv5cektEfMFKiL",
 				"ZGPv4cdFtApvYktTgRp5wIACsrihpUAJ7QFOTln2");
 		ParseUser.enableAutomaticUser();

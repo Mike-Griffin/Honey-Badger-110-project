@@ -11,6 +11,8 @@ import android.os.Handler;
 
 public class Splash extends ActionBarActivity {
 
+	
+	//builds the splash screen and set delay length
 	private final int SPLASH_DISPLAY_LENGTH = 1000;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

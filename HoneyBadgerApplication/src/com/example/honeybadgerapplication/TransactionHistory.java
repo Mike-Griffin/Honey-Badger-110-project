@@ -15,6 +15,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+//class for transaction history
 public class TransactionHistory extends ActionBarActivity {
 	
 	private List<Account> accountHistory = new ArrayList<Account>();
@@ -62,27 +64,35 @@ public class TransactionHistory extends ActionBarActivity {
 			row0.addView(bal);
 			accountTable.addView(row0);
 
+			
+			//error handling
 			if (customer != null) {
 				Account[] list = customer.getAccountList();
 				
 				for (int i = 0; i < accountHistory.size(); i++) {
 					if (accountHistory.get(i).getStatus() == true) {
 
+						
+						//create sections on parse
 						TableRow row = new TableRow(this);
 						TextView transactionDate = new TextView(this);
 						TextView accountType = new TextView(this);
 						TextView accountNumber = new TextView(this);
 						TextView balance = new TextView(this);
 
+						//sets formatting
 						accountNumber.setPadding(60, 50, 0, 0);
 						balance.setPadding(60, 50, 0, 0);
 						
+						//fillout variables 
 						transactionDate.setText(accountHistory.get(i).getLastUpdated());
 						accountType.setText(accountHistory.get(i).getAccountType());
 						accountNumber.setText(Integer.toString(accountHistory.get(i)
 								.getAccountNumber()));
 						balance.setText("$" + String.format( "%.2f", accountHistory.get(i).getBalance()));
 						
+						
+						//adds data to parse
 						row.addView(transactionDate);
 						row.addView(accountType);
 						row.addView(accountNumber);
